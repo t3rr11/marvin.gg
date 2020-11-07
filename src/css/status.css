@@ -1,0 +1,67 @@
+.status-page-title {
+  width: fit-content;
+  padding-left: 20px;
+}
+.graph-container {
+  width: fit-content;
+  padding: 20px 20px;
+}
+.graph {
+  display: inline-block;
+}
+.graph > .graph-title {
+  text-align: center;
+}
+.graph > .graph-data {
+  text-align: center;
+}
+.status-info {
+  width: fit-content;
+  padding: 50px;
+  border-radius: 10px;
+  background-color: var(--NavyBlue);
+  margin: auto;
+}
+.status-info-category {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.status-info-title {
+  font-size: 16px;
+}
+.status-info-uptime {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+}
+.status-info-data > .online-box {
+  width: 10px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 2px;
+  background-color: #1eb51e;
+  display: inline-block;
+}
+.status-info-data > .warning-box {
+  width: 10px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 2px;
+  background-color: #b7b912;
+  display: inline-block;
+}
+.status-info-data > .offline-box {
+  width: 10px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 2px;
+  background-color: #dc0a0a;
+  display: inline-block;
+}
+.status-info-data > .empty-box {
+  width: 10px;
+  height: 15px;
+  border-radius: 3px;
+  margin: 2px;
+  background-color: gray;
+  display: inline-block;
+}

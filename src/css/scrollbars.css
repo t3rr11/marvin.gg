@@ -1,0 +1,10 @@
+.scrollbar { overflow-y: auto; overflow-x: hidden; scrollbar-color: var(--LightNavyBlue) var(--DarkNavyBlue); }
+.scrollbar::-webkit-scrollbar { width: 15px; }
+.scrollbar::-webkit-scrollbar-track { background: var(--DarkNavyBlue); }
+.scrollbar::-webkit-scrollbar-thumb { background: var(--LightNavyBlue); }
+.scrollbar::-webkit-scrollbar-thumb:hover { background: var(--LightNavyBlue); }
+.scroller {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-color: var(--DarkNavyBlue) var(--LightNavyBlue);
+}

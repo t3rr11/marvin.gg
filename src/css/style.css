@@ -1,0 +1,30 @@
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro|Baloo+Thambi+2|Nunito|Work+Sans|Open+Sans";
+@import url('header.css');
+@import url('home.css');
+@import url('status.css');
+@import url('logs.css');
+@import url('loader.css');
+@import url('scrollbars.css');
+
+:root {
+  --DarkerNavyBlue: #181a1f;
+  --DarkNavyBlue: #1A1D22;
+  --MedNavyBlue: #1f2227;
+  --NavyBlue: #21242A;
+  --InbetweenerNavyBlue: #25282F;
+  --LightNavyBlue: #292C33;
+  --LighterNavyBlue: #353841;
+  --PurpleGradient: linear-gradient( 178.1deg,  rgba(60,55,106,1) 8.5%, rgba(23,20,69,1) 82.4% );
+  --BlueGradient: linear-gradient( 359.8deg,  rgba(56,104,178,1) 7.3%, rgba(31,67,122,1) 84.8% );
+  --GreenGradient: linear-gradient( 178deg,  rgba(33,96,66,1) 0%, rgba(174,219,130,0.78) 90% );
+  --MidnightGradient: linear-gradient( 179.4deg,  rgba(12,20,69,1) -16.9%, rgba(71,30,84,1) 119.9% );
+  --BlueFilter: invert(27%) sepia(51%) saturate(2996%) hue-rotate(185deg) brightness(104%) contrast(90%);
+}
+
+body { background-color: var(--DarkNavyBlue); width: 100vw; height: 100vh; }
+.app > .page-content {
+  height: 100vh;
+  width: 100vw;
+  padding-left: 200px;
+  color: #fff;
+}
