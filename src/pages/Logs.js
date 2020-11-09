@@ -21,7 +21,8 @@ class Logs extends React.Component {
       backend: { },
       express: { },
       database: { },
-      globals: { }
+      globals: { },
+      errorHandler: { }
     },
     lastUpdate: new Date().toISOString()
   }
@@ -47,7 +48,8 @@ class Logs extends React.Component {
           await apiRequest.GetExpressLogs({ date: expressStartup.data[0].date }),
           await apiRequest.GetDatabaseLogs({ date: frontendStartup.data[0].date }),
           await apiRequest.GetBroadcastLogs({ date: frontendStartup.data[0].date }),
-          await apiRequest.GetGlobalsLogs({ date: globalsStartup.data[0].date })
+          await apiRequest.GetGlobalsLogs({ date: globalsStartup.data[0].date }),
+          await apiRequest.GetErrorHandlerLogs({ date: new Date(new Date() - (1000 * 86400)).toISOString() })
         ]).then((log_data) => {
 
           //Save state
@@ -59,6 +61,7 @@ class Logs extends React.Component {
               express: log_data[2].data,
               database: log_data[3].data.concat(log_data[4].data),
               globals: log_data[5].data,
+              errorHandler: log_data[6].data,
             },
             lastUpdate: new Date().toISOString()
           });
@@ -79,7 +82,7 @@ class Logs extends React.Component {
     let broadcast_logs = await apiRequest.GetBroadcastLogs({ date: this.state.lastUpdate });
     if(!logs?.isError) {
       if(logs.data.length > 0 || broadcast_logs.data.length > 0) {
-        let { frontend, backend, express, database, globals } = this.state.logs;
+        let { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
         let startupDetected = false;
         for(let i in broadcast_logs.data) { database.unshift(broadcast_logs.data[i]); }
         for(let i in logs.data) {
@@ -91,6 +94,7 @@ class Logs extends React.Component {
               case "Express": { express.unshift(logs.data[i]); break; }
               case "Database": { database.unshift(logs.data[i]); break; }
               case "Globals": { globals.unshift(logs.data[i]); break; }
+              case "ErrorHandler": { errorHandler.unshift(logs.data[i]); break; }
             }
           }
         }
@@ -104,7 +108,7 @@ class Logs extends React.Component {
           //Save state
           this.setState({
             status: { status: 'ready', statusText: `Finished Updating Logs.`, loading: false },
-            logs: { frontend, backend, express, database, globals },
+            logs: { frontend, backend, express, database, globals, errorHandler },
             lastUpdate: new Date().toISOString()
           });
         }
@@ -117,7 +121,7 @@ class Logs extends React.Component {
     const { status, statusText } = this.state.status;
     if(status === "error") { return (<Error statusText={ statusText } />) }
     else if(status === "ready") {
-      const { frontend, backend, express, database, globals } = this.state.logs;
+      const { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
       const buildLog = (log, type) => {
         return (
           <div className={`${ type }-log-data`}>
@@ -160,6 +164,12 @@ class Logs extends React.Component {
                 <div className="log-info-name">Database</div>
               </div>
               <div className="logs scrollbar" id="database-logs">{ database.map((log) => { return buildLog(log, "database") }) }</div>
+            </div>
+            <div className="log-container" id="errorHandler">
+              <div className="log-info">
+                <div className="log-info-name">Errors</div>
+              </div>
+              <div className="logs scrollbar" id="errorHandler-logs">{ errorHandler.map((log) => { return buildLog(log, "errorHandler") }) }</div>
             </div>
           </div>
         </div>

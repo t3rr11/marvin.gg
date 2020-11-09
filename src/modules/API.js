@@ -35,3 +35,4 @@ export const GetExpressLogs = async (data) => apiRequest(`/GetExpressLogs`, data
 export const GetDatabaseLogs = async (data) => apiRequest(`/GetDatabaseLogs`, data);
 export const GetGlobalsLogs = async (data) => apiRequest(`/GetGlobalsLogs`, data);
 export const GetBroadcastLogs = async (data) => apiRequest(`/GetBroadcastLogs`, data);
+export const GetErrorHandlerLogs = async (data) => apiRequest(`/GetErrorHandlerLogs`, data);
