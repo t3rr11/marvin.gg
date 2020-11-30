@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Config from '../Config';
 import * as Misc from '../Misc';
+import * as apiRequest from '../modules/API';
 
 export class Header extends Component {
 
   state = {
     loggedIn: false,
+    isAdmin: false,
     showCopied: false,
     platforms: null
   }
@@ -21,9 +23,13 @@ export class Header extends Component {
   }
 
   getPlatforms() {
+    if(localStorage.getItem("adminToken")) {
+      const adminToken = localStorage.getItem("adminToken");
+      apiRequest.CheckAuthorization({ token: adminToken }).then((response) => { if(response.code === 200) { this.setState({ isAdmin: true }); } });
+    }
     if(localStorage.getItem("DestinyMemberships")) {
-      var BungieMemberships = JSON.parse(localStorage.getItem("DestinyMemberships"));
-      var platforms = [];
+      let BungieMemberships = JSON.parse(localStorage.getItem("DestinyMemberships"));
+      let platforms = [];
       for(var i in BungieMemberships) {
         platforms.push({
           "platform": Misc.getPlatformName(BungieMemberships[i].membershipType),
@@ -51,7 +57,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { loggedIn, platforms } = this.state;    
+    const { loggedIn, isAdmin, platforms } = this.state;    
     return (
       <header className="header">
         <div className="header-logo"><img src="/images/icons/logo.png" alt="logo" /></div>
@@ -67,21 +73,22 @@ export class Header extends Component {
             <Link className="header-link" to="/clans" onClick={ () => this.props.setPage("clans") }>Clans</Link>
             <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
           </div>
-          <div className={ `header-menu-item ${ this.props.currentPage === "dashboard" ? "active" : "" }` }>
-            <img alt="dash-icon" className="header-menu-item-icon" src="/images/icons/dashboard.png" />
-            <Link className="header-link" to="/dashboard" onClick={ () => this.props.setPage("dashboard") }>Dashboard</Link>
-            <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
-          </div>
-          <div className={ `header-menu-item ${ this.props.currentPage === "status" ? "active" : "" }` }>
-            <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/discord.png" />
-            <Link className="header-link" to="/status" onClick={ () => this.props.setPage("status") }>Status</Link>
-            <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
-          </div>
-          <div className={ `header-menu-item ${ this.props.currentPage === "logs" ? "active" : "" }` }>
-            <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/logs.png" />
-            <Link className="header-link" to="/logs" onClick={ () => this.props.setPage("logs") }>Logs</Link>
-            <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
-          </div>
+          {
+            isAdmin ? (
+              <React.Fragment>
+                <div className={ `header-menu-item ${ this.props.currentPage === "status" ? "active" : "" }` }>
+                  <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/discord.png" />
+                  <Link className="header-link" to="/status" onClick={ () => this.props.setPage("status") }>Status</Link>
+                  <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+                </div>
+                <div className={ `header-menu-item ${ this.props.currentPage === "logs" ? "active" : "" }` }>
+                  <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/logs.png" />
+                  <Link className="header-link" to="/logs" onClick={ () => this.props.setPage("logs") }>Logs</Link>
+                  <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+                </div>
+              </React.Fragment>
+            ) : null
+          }
         </div>
         <div className="header-buttons">
           <div className="spacer"></div>

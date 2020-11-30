@@ -28,12 +28,27 @@ class Logs extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ status: { status: 'startingUp', statusText: `Obtaining the logs...`, loading: true } });
-    this.SetupLogs();
+    this.setState({ status: { status: 'startUp', statusText: `Checking authorization...`, loading: true } });
+    this.CheckAuthorization();
   }
   componentWillUnmount() { clearInterval(updateTimer); updateTimer = null; }
 
+  async CheckAuthorization() {
+    const adminToken = localStorage.getItem("adminToken");
+    if(adminToken) {
+      await apiRequest.CheckAuthorization({ token: adminToken }).then((response) => {
+        if(response.code === 200) {
+          if(this.state.status.status === "startUp") { this.SetupLogs(); }
+          setTimeout(() => this.CheckAuthorization(), 1000 * 60);
+        }
+        else { window.location.href = "/"; }
+      });
+    }
+    else { window.location.href = "/"; }
+  }
+
   async SetupLogs() {
+    this.setState({ status: { status: 'startingUp', statusText: `Obtaining the logs...`, loading: true } });
     await Promise.all([
       await apiRequest.GetFrontendStartup(),
       await apiRequest.GetBackendStartup(),
@@ -49,19 +64,19 @@ class Logs extends React.Component {
           await apiRequest.GetDatabaseLogs({ date: frontendStartup.data[0].date }),
           await apiRequest.GetBroadcastLogs({ date: frontendStartup.data[0].date }),
           await apiRequest.GetGlobalsLogs({ date: globalsStartup.data[0].date }),
-          await apiRequest.GetErrorHandlerLogs({ date: new Date(new Date() - (1000 * 86400)).toISOString() })
+          await apiRequest.GetErrorHandlerLogs({ date: new Date((new Date() - (1000 * 86400)) + 37800000).toISOString() })
         ]).then((log_data) => {
 
           //Save state
           this.setState({
             status: { status: 'ready', statusText: `Finished Updating Logs.`, loading: false },
             logs: {
-              frontend: log_data[0].data,
-              backend: log_data[1].data,
-              express: log_data[2].data,
-              database: log_data[3].data.concat(log_data[4].data),
-              globals: log_data[5].data,
-              errorHandler: log_data[6].data,
+              frontend: log_data[0].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              backend: log_data[1].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              express: log_data[2].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              database: log_data[3].data.concat(log_data[4].data).sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              globals: log_data[5].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              errorHandler: log_data[6].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
             },
             lastUpdate: new Date().toISOString()
           });
@@ -88,13 +103,13 @@ class Logs extends React.Component {
         for(let i in logs.data) {
           if(logs.data[i].type === "Startup") { startupDetected = true; }
           else {
-            switch(logs.data[i].location) {
+            switch(logs.data[i].location || logs.data[i].type) {
               case "Frontend": { frontend.unshift(logs.data[i]); break; }
               case "Backend": { backend.unshift(logs.data[i]); break; }
               case "Express": { express.unshift(logs.data[i]); break; }
               case "Database": { database.unshift(logs.data[i]); break; }
               case "Globals": { globals.unshift(logs.data[i]); break; }
-              case "ErrorHandler": { errorHandler.unshift(logs.data[i]); break; }
+              case "Error": { errorHandler.unshift(logs.data[i]); break; }
             }
           }
         }
@@ -104,6 +119,7 @@ class Logs extends React.Component {
           express.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
           database.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
           globals.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+          errorHandler.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime());
           
           //Save state
           this.setState({
@@ -127,7 +143,7 @@ class Logs extends React.Component {
           <div className={`${ type }-log-data`}>
             <div className={`${ log.type }-log`}>{ log.type }</div>
             <div className={`${ log.type }-log`}>{ log.log }</div>
-            <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString() }</div>
+            <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
           </div>
         );
       }

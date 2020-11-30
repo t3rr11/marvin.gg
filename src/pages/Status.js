@@ -38,12 +38,25 @@ class Status extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ status: { status: 'startingUp', statusText: `Getting Live Analytics...`, loading: true } });
-    this.SetupAnalytics();
+    this.setState({ status: { status: 'startUp', statusText: `Getting Live Analytics...`, loading: true } });
+    this.CheckAuthorization();
   }
 
   componentWillUnmount() { clearInterval(updateTimer); updateTimer = null; clearInterval(updateAPIStatusTimer); updateAPIStatusTimer = null; }
 
+  async CheckAuthorization() {
+    const adminToken = localStorage.getItem("adminToken");
+    if(adminToken) {
+      await apiRequest.CheckAuthorization({ token: adminToken }).then((response) => {
+        if(response.code === 200) {
+          if(this.state.status.status === "startUp") { this.SetupAnalytics(); }
+          setTimeout(() => this.CheckAuthorization(), 1000 * 60);
+        }
+        else { window.location.href = "/"; }
+      });
+    }
+    else { window.location.href = "/"; }
+  }
   async SetupAnalytics() {
     let backend; let frontend; let apiStatus;
 
@@ -55,8 +68,9 @@ class Status extends React.Component {
 
     if(!backend?.isError && !frontend?.isError && !apiStatus?.isError) {
       //Define variables
-      let index = [], rt_index = [], clans = [], rt_clans = [], processing = [], rt_processing = [], backend_uptime = [], speed = [], APIFaults = 0;
+      let index = [], rt_index = [], clans = [], rt_clans = [], processing = [], rt_processing = [], backend_uptime = [], speed = []; 
       let users = [], servers = [], commandsInput = [], frontend_uptime = [];
+      let APIFaults = { logs: 0, faults: 0 };
       let hours = new Date().getHours();
       let APIStatus = {
         0: { id: 0, faults: 0, defined: false, time: "12-1am", date : null, offset: 0-hours > 0 ? 0-hours-24 : 0-hours }, 
@@ -111,8 +125,9 @@ class Status extends React.Component {
       //Set loop index and go through and find faults.
       for(let i in liveAPIStatusData) {
         if(!APIStatus[new Date(liveAPIStatusData[i].date).getHours()].defined) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].defined = true; }
-        if(!liveAPIStatusData[i].APIStatus) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].faults++; APIFaults++; }
+        if(!liveAPIStatusData[i].APIStatus) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].faults++; APIFaults.faults++; }
         APIStatus[new Date(liveAPIStatusData[i].date).getHours()].date = liveAPIStatusData[i].date;
+        APIFaults.logs++;
       }
 
       //Save state
@@ -185,8 +200,9 @@ class Status extends React.Component {
     const apiStatus = await apiRequest.GetDailyAPIStatus();
     const liveAPIStatusData = apiStatus.data.reverse();
 
-    let { index, rt_index, clans, rt_clans, processing, rt_processing, uptime, speed, APIFaults } = this.state.backendData;
+    let { index, rt_index, clans, rt_clans, processing, rt_processing, uptime, speed } = this.state.backendData;
     let hours = new Date().getHours();
+    let APIFaults = { logs: 0, faults: 0 };
     let APIStatus = {
       0: { id: 0, faults: 0, defined: false, time: "12-1am", date : null, offset: 0-hours > 0 ? 0-hours-24 : 0-hours }, 
       1: { id: 1, faults: 0, defined: false, time: "1-2am", date: null, offset: 1-hours > 0 ? 1-hours-24 : 1-hours }, 
@@ -217,8 +233,9 @@ class Status extends React.Component {
     //Set loop index and go through and find faults.
     for(let i in liveAPIStatusData) {
       if(!APIStatus[new Date(liveAPIStatusData[i].date).getHours()].defined) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].defined = true; }
-      if(!liveAPIStatusData[i].APIStatus) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].faults++; APIFaults++; }
+      if(!liveAPIStatusData[i].APIStatus) { APIStatus[new Date(liveAPIStatusData[i].date).getHours()].faults++; APIFaults.faults++; }
       APIStatus[new Date(liveAPIStatusData[i].date).getHours()].date = liveAPIStatusData[i].date;
+      APIFaults.logs++;
     }
 
     //Save state
@@ -259,7 +276,7 @@ class Status extends React.Component {
         <div className="offline-box" data-tip data-for={`${ status.id }-tooltip`}>
           <ReactTooltip id={`${ status.id }-tooltip`} place="top" effect="solid" backgroundColor="#bf4949">
             <div className="box-date">{ new Date(status.date).toLocaleDateString("en-AU", { year: 'numeric', month: 'long', day: 'numeric' }) } - { status.time }</div>
-            <div>Server offline</div>
+            <div>Major outage detected</div>
           </ReactTooltip>
         </div>
       )
@@ -277,14 +294,14 @@ class Status extends React.Component {
                   Object.values(APIStatus).sort((a,b) => a.offset - b.offset).map((status) => {
                     if(status.defined) {
                       if(status.faults === 0) { return onlineBox(status); }
-                      else if(status.faults === 300) { return offlineBox(status); }
+                      else if(status.faults > 43200) { return offlineBox(status); }
                       else { return warningBox(status); }
                     }
                     else { return offlineBox(status); }
                   })
                 }
               </div>
-              <div className="status-info-uptime">{ (((86400 - APIFaults) / 86400) * 100).toFixed(2) } UPTIME</div>
+              <div className="status-info-uptime">{ 100 - ((APIFaults.faults/APIFaults.logs) * 100).toFixed(2) }% UPTIME</div>
             </div>
             <div className="status-info-category">
               <div className="status-info-title">Marvin Backend Status - { formatSmallTime(backend_uptime[backend_uptime.length-1].y / 1000) }</div>
@@ -293,14 +310,14 @@ class Status extends React.Component {
                   Object.values(APIStatus).sort((a,b) => a.offset - b.offset).map((status) => {
                     if(status.defined) {
                       if(status.faults === 0) { return onlineBox(status); }
-                      else if(status.faults === 300) { return offlineBox(status); }
+                      else if(status.faults > 43200) { return offlineBox(status); }
                       else { return warningBox(status); }
                     }
                     else { return offlineBox(status); }
                   })
                 }
               </div>
-              <div className="status-info-uptime">{ (((86400 - APIFaults) / 86400) * 100).toFixed(2) } UPTIME</div>
+              <div className="status-info-uptime">{ 100 - ((APIFaults.faults/APIFaults.logs) * 100).toFixed(2) }% UPTIME</div>
             </div>
             <div className="status-info-category">
               <div className="status-info-title">Marvin Frontend Status - { formatSmallTime(frontend_uptime[frontend_uptime.length-1].y / 1000) }</div>
@@ -309,14 +326,14 @@ class Status extends React.Component {
                   Object.values(APIStatus).sort((a,b) => a.offset - b.offset).map((status) => {
                     if(status.defined) {
                       if(status.faults === 0) { return onlineBox(status); }
-                      else if(status.faults === 300) { return offlineBox(status); }
+                      else if(status.faults > 43200) { return offlineBox(status); }
                       else { return warningBox(status); }
                     }
                     else { return offlineBox(status); }
                   })
                 }
               </div>
-              <div className="status-info-uptime">{ (((86400 - APIFaults) / 86400) * 100).toFixed(2) } UPTIME</div>
+              <div className="status-info-uptime">{ 100 - ((APIFaults.faults/APIFaults.logs) * 100).toFixed(2) }% UPTIME</div>
             </div>
           </div>
           <div className="graph-container">
