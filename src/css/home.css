@@ -1,3 +1,102 @@
-.home-title {
-  font-size: 20px;
+h2::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
+h3::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
+.home-content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.howToConnect {
+  margin: 20px;
+  display: grid;
+  grid-template-rows: 450px 40px 270px;
+}
+.features {
+  margin: 20px;
+  display: grid;
+  grid-template-rows: 450px 40px 350px;
+}
+.connectContainer {
+  justify-content: center;
+  display: inherit;
+}
+.paraTitle {
+  font-size: 22px;
+  margin-left: 5px;
+}
+.paraContainer {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: inherit;
+  height: max-content;
+}
+.para {
+  width: 98%;
+  margin: 5px auto;
+}
+.para::selection { background-color: rgba(0, 0, 0, 0.4); }
+.d_highlight {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  width: auto;
+  height: auto;
+  padding: .2em;
+  margin: -.2em 0;
+  border-radius: 3px;
+  font-size: 85%;
+  font-family: SourceCodePro, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  text-indent: 0;
+  border: none;
+}
+.d_highlight::selection { background-color: rgba(0, 0, 0, 0.8); }
+.marvinsDisplayImages {
+  height: 350px;
+  margin: auto;
+  padding: 20px;
+}
+.marvinsDisplayImages > img {
+  height: 100%;
+}
+.marvinBtn {
+  height: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.animatedLogo {
+  margin-top: 20px;
+}
+.statusLabels {
+  margin: auto;
+}
+.usersStatusLabel {
+  background-color: #337ab7;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.guildsStatusLabel {
+  background-color: #337ab7;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  margin-left: 5px;
+  margin-right: 5px;
 }

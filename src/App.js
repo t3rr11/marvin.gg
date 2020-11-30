@@ -28,12 +28,14 @@ class App extends React.Component {
     return (
       <Router>
         <div className="app">
+          <div className="alert">This website is in beta... Like way in beta, if things don't work that'd be why.</div>
           <Header setPage={ ((page) => this.setPage(page)) } currentPage={ this.state.currentPage } />
           <Switch>
             <Route path="/" render={ props => {
               switch(props.location.pathname) {
                 case "/": { return <Home /> }
                 case "/home": { return <Home /> }
+                case "/clans": { return <Home /> }
                 case "/status": { return <Status /> }
                 case "/logs": { return <Logs /> }
                 case "/loader": { return <Loader statusText={ "Testing" } /> }

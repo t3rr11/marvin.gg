@@ -2,7 +2,7 @@ async function apiRequest(path, data) {
   //Headers for requests
   let encodedData; if(data) { encodedData = Object.keys(data).map(function(k) { return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }).join('&'); }
   const headers = { headers: { "Content-Type": "application/json" } };
-  const request = await fetch(`http://marvin.gg:3001${path}?${ encodedData ? encodedData : "" }`, headers);
+  const request = await fetch(`https://api.marvin.gg${path}?${ encodedData ? encodedData : "" }`, headers);
   const response = await request.json();
   if(request.ok && response.ErrorCode && response.ErrorCode !== 1) {
     //Error with api, might have sent bad headers.

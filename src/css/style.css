@@ -25,6 +25,21 @@ body { background-color: var(--DarkNavyBlue); width: 100vw; height: 100vh; }
 .app > .page-content {
   height: 100vh;
   width: 100vw;
-  padding-left: 200px;
+  padding-left: 210px;
+  padding-top: 65px;
   color: #fff;
+}
+.app > .alert {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: tomato;
+  border-radius: 0px 0px 10px 10px;
+  text-align: center;
+  margin: 0 auto;
+  width: fit-content;
+  height: 20px;
+  line-height: 0px;
+  font-size: 16px;
 }

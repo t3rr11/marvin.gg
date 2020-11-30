@@ -1,4 +1,4 @@
-.header {
+.left-header {
   height: 100vh;
   width: 200px;
   line-height: 10px;
@@ -6,21 +6,34 @@
   color: white;
   display: grid;
   background-color: var(--NavyBlue);
-  border-right: 1px solid var(--LightNavyBlue);
-  grid-template-rows: 70px 45px auto 75px;
+  box-shadow: 1px 0 2px 2px var(--NavyBlue);
+  grid-template-rows: auto;
   position: fixed;
-  z-index: 9999;
+  z-index: 10;
+}
+.top-header {
+  height: 60px;
+  width: 100vw;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: grid;
+  background-color: var(--InbetweenerNavyBlue);
+  box-shadow: 0 1px 1px var(--NavyBlue);
+  grid-template-columns: 150px auto 130px;
+  position: fixed;
+  z-index: 11;
 }
 .header-logo {
-  display: inline-block;
-  padding-top: 10px;
+  height: 60px;
   cursor: pointer;
-  margin: auto;
+  grid-column: span 2;
 }
 .header-logo > img {
   display: inline-block;
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  margin: -4px 5px 0px 5px;
 }
 .header-home-link {
   display: inline-block;
@@ -30,13 +43,14 @@
   font-size: 26px;
   font-weight: bold;
   color: white;
-  margin: auto;
+  margin-top: 5px;
 }
 .header-menu {
   display: inline-block;
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 70px;
 }
 .header-menu > .active { background-color: var(--DarkNavyBlue); }
 .header-menu-item {
@@ -80,20 +94,25 @@
   border: 1px solid var(--LighterNavyBlue);
   border-radius: 10px;
 }
+.header-user-containter {
+  display: inline-block;
+  padding-right: 10px;
+  grid-column: 3;
+  width: 120px;
+  height: 60px;
+  line-height: 45px;
+}
 .header-login-link {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: #ddd;
-  font-size: 18px;
-  margin-top: 8px;
-  margin-left: 10px;
-  height: 35px;
-  line-height: 25px;
+  font-size: 16px;
+  height: 30px;
+  line-height: 15px;
   padding: 5px;
   border: 1px #ddd solid;
   border-radius: 10px;
-  width: 180px;
-  margin: auto;
+  width: 120px;
   text-align: center;
   cursor: pointer;
 }
