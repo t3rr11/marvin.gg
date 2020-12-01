@@ -5,11 +5,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
   display: grid;
-  background-color: var(--NavyBlue);
-  box-shadow: 1px 0 2px 2px var(--NavyBlue);
+  background: rgba(0,0,0,0.1);
   grid-template-rows: auto;
   position: fixed;
   z-index: 10;
+  top: 60px;
 }
 .top-header {
   height: 60px;
@@ -17,8 +17,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   display: grid;
-  background-color: var(--InbetweenerNavyBlue);
-  box-shadow: 0 1px 1px var(--NavyBlue);
+  background: rgba(0,0,0,0.15);
   grid-template-columns: 150px auto 130px;
   position: fixed;
   z-index: 11;
@@ -50,9 +49,9 @@
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 70px;
+  padding-top: 10px;
 }
-.header-menu > .active { background-color: var(--DarkNavyBlue); }
+.header-menu > .active { background-color: rgba(0,0,0,0.4); }
 .header-menu-item {
   display: grid;
   grid-template-columns: 40px auto 30px;
@@ -80,20 +79,47 @@
   margin-left: 5px;
 }
 .header-menu-item:hover {
-  background-color: var(--DarkNavyBlue);
+  background-color: rgba(0,0,0,0.4);
   cursor: pointer;
 }
-.header-buttons {
+.donation-links {
   display: grid;
-  grid-template-rows: 20px 45px;
+  height: 75px;
+  grid-template-columns: 35px auto;
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+  padding: 5px 0 10px 0px;
+  background: rgba(0,0,0,0.05);
 }
-.header-buttons > .spacer {
-  width: 85%;
-  margin: auto;
-  margin-bottom: 10px;
-  border: 1px solid var(--LighterNavyBlue);
-  border-radius: 10px;
+.donate-link#patreon {
+  display: inline-block;
+  grid-row: 1;
+  width: fit-content;
+  height: 30px;
+  padding: 5px;
 }
+.donate-link#paypal {
+  display: inline-block;
+  grid-row: 1;
+  width: fit-content;
+  height: 30px;
+  padding: 5px;
+}
+.donate-link#kofi {
+  display: block;
+  grid-row: 2;
+  grid-column: span 2;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  font-size: 18px;
+  text-decoration: none;
+  color:white;
+}
+.donate-link#kofi > img { margin-right: 5px; }
+.donate-link#kofi:hover { color:white; }
 .header-user-containter {
   display: inline-block;
   padding-right: 10px;
@@ -116,7 +142,7 @@
   text-align: center;
   cursor: pointer;
 }
-.header-login-link:hover { background-color: var(--DarkNavyBlue); color: #ddd; text-decoration: none; }
+.header-login-link:hover { background-color: rgba(0,0,0,0.4); color: #ddd; text-decoration: none; }
 .header-username {
   display: block;
   position: relative;
@@ -135,7 +161,7 @@
   text-align: center;
   cursor: pointer;
 }
-.header-username:hover { background-color: var(--DarkNavyBlue); color: #ddd; text-decoration: none; }
+.header-username:hover { background-color: rgba(0,0,0,0.4); color: #ddd; text-decoration: none; }
 .platformSelection {
   height: 26px;
   line-height: 26px;

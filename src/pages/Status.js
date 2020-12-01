@@ -285,7 +285,6 @@ class Status extends React.Component {
     else if(status === "ready") {
       return (
         <div className="page-content">
-          <h2 className="status-page-title">Server Status</h2>
           <div className="status-info">
             <div className="status-info-category">
               <div className="status-info-title">Bungie API Status</div>
@@ -343,8 +342,8 @@ class Status extends React.Component {
                 <div>{ processing ? `Tracking: ${ clans[clans.length-1].y } Clans` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, clans.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Clans" />
                 <AreaSeries data={ clans } color={ "#00a6ef" } fill={ "#1c5169" } opacity={ 0.7 } curve={'curveLinear'} />
@@ -356,8 +355,8 @@ class Status extends React.Component {
                 <div>{ index ? `Current Index: ${ index[index.length-1].y }` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, index.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Index" />
                 <AreaSeries data={ index } color={ "#00a6ef" } fill={ "#1c5169" } opacity={ 0.7 } curve={'curveLinear'} />
@@ -369,8 +368,8 @@ class Status extends React.Component {
                 <div>{ processing ? `Currently Processing: ${ processing[processing.length-1].y }` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, processing.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Clans" />
                 <AreaSeries data={ processing } color={ "#00a6ef" } fill={ "#1c5169" } opacity={ 0.7 } curve={'curveLinear'} />
@@ -382,8 +381,8 @@ class Status extends React.Component {
                 <div>{ rt_clans ? `Tracking: ${ rt_clans[rt_clans.length-1].y } Clans` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, rt_clans.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Clans" />
                 <AreaSeries data={ rt_clans } color={ "#00bbaf" } fill={ "#1b4d53" } opacity={ 0.7 } curve={'curveLinear'} />
@@ -395,8 +394,8 @@ class Status extends React.Component {
                 <div>{ rt_index ? `Current Index: ${ rt_index[rt_index.length-1].y }` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, rt_index.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Index" />
                 <AreaSeries data={ rt_index } color={ "#00bbaf" } fill={ "#1b4d53" } opacity={ 0.7 } curve={'curveLinear'} />
@@ -408,8 +407,8 @@ class Status extends React.Component {
                 <div>{ rt_processing ? `Currently Processing: ${ rt_processing[processing.length-1].y }` : `Offline` }</div>
               </div>
               <XYPlot xType="time" width={ 550 } height={ 250 } yDomain={[0, Math.max.apply(Math, rt_processing.map(function(o) { return o.y; }))+1]}>
-                <VerticalGridLines style={{ stroke: "#333333" }} />
-                <HorizontalGridLines style={{ stroke: "#333333" }} />
+                <VerticalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
+                <HorizontalGridLines style={{ stroke: "rgba(0,0,0,0.1)" }} />
                 <XAxis title="Time" />
                 <YAxis title="Clans" />
                 <AreaSeries data={ rt_processing } color={ "#00bbaf" } fill={ "#1b4d53" } opacity={ 0.7 } curve={'curveLinear'} />

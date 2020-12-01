@@ -127,6 +127,11 @@ export class Header extends Component {
               ) : null
             }
           </div>
+          <div className="donation-links">
+            <a href="https://paypal.me/guardianstats" className="donate-link" id="paypal"><img src="./images/icons/paypal.png" width="26px" height="26px" /></a>
+            <a href="https://www.patreon.com/Terrii" className="donate-link" id="patreon"><img src="./images/icons/patreon.png" width="26px" height="26px" /></a>
+            <a href="https://ko-fi.com/terrii_dev" className="donate-link" id="kofi"><img src="./images/icons/kofi.png" width="26px" height="26px" />Buy me a coffee?</a>
+          </div>
         </div>
       </header>
     )

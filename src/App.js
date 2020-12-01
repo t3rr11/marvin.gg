@@ -24,10 +24,14 @@ class App extends React.Component {
     else { this.setState({ currentPage: localStorage.getItem("currentPage") }); }
   }
   setPage = (page) => { localStorage.setItem("currentPage", page); this.setState({ currentPage: page }); }
+  getRandomBackground() {
+    const backgrounds = ["BlueGradient", "GreenGradient", "MidnightGradient", "PurpleGradient"];
+    return `var(--${ backgrounds[Math.floor(Math.random() * backgrounds.length)] })`;
+  }
   render() {
     return (
       <Router>
-        <div className="app">
+        <div className="app" style={{ background: this.getRandomBackground() }}>
           <div className="alert">This website is in beta... Like way in beta, if things don't work that'd be why.</div>
           <Header setPage={ ((page) => this.setPage(page)) } currentPage={ this.state.currentPage } />
           <Switch>

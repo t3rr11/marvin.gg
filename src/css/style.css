@@ -22,11 +22,12 @@
 }
 
 body { background-color: var(--DarkNavyBlue); width: 100vw; height: 100vh; }
+.app { background: var(--BlueGradient); }
 .app > .page-content {
   height: 100vh;
   width: 100vw;
-  padding-left: 210px;
-  padding-top: 65px;
+  padding-left: 200px;
+  padding-top: 60px;
   color: #fff;
 }
 .app > .alert {
@@ -34,7 +35,7 @@ body { background-color: var(--DarkNavyBlue); width: 100vw; height: 100vh; }
   left: 0;
   right: 0;
   z-index: 9999;
-  background-color: tomato;
+  background-color: #ff6347ad;
   border-radius: 0px 0px 10px 10px;
   text-align: center;
   margin: 0 auto;
@@ -42,4 +43,5 @@ body { background-color: var(--DarkNavyBlue); width: 100vw; height: 100vh; }
   height: 20px;
   line-height: 0px;
   font-size: 16px;
+  color: #151515;
 }

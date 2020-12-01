@@ -17,10 +17,11 @@
 }
 .status-info {
   width: fit-content;
-  padding: 50px;
+  padding: 20px;
   border-radius: 10px;
-  background-color: var(--NavyBlue);
+  background-color: rgba(0,0,0,0.1);
   margin: auto;
+  margin-top: 20px;
 }
 .status-info-category {
   display: inline-block;
@@ -64,4 +65,7 @@
   margin: 2px;
   background-color: gray;
   display: inline-block;
+}
+.rv-xy-plot__axis__tick__text {
+  fill: white;
 }
