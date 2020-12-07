@@ -16,7 +16,7 @@ export class Home extends Component {
 
   setIndex(i) { this.setState({ index: i }); }
   componentDidMount() {
-    document.title = "Marvin - Guardianstats";
+    document.title = "Marvin - Home";
     galleryScroller = setInterval(() => { if(this.state.index === images.length - 1) { this.setIndex(0) } else { this.setIndex(this.state.index + 1) }  }, 5000);
     return fetch('https://api.marvin.gg/GetFrontendStatus', { method: 'GET' }).then((response) => response.json()).then(async (response) => {
       if(!response.isError) { this.setState({ users: response.data[0].users, guilds: response.data[0].servers }); }

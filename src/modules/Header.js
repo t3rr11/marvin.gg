@@ -105,9 +105,9 @@ export class Header extends Component {
               <Link className="header-link" to="/home" onClick={ () => this.props.setPage("home") }>Home</Link>
               <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
             </div>
-            <div className={ `header-menu-item ${ this.props.currentPage === "clans" ? "active" : "" }` }>
+            <div className={ `header-menu-item ${ this.props.currentPage === "commands" ? "active" : "" }` }>
               <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/clans.png" />
-              <Link className="header-link" to="/clans" onClick={ () => this.props.setPage("clans") }>Clans</Link>
+              <Link className="header-link" to="/clans" onClick={ () => this.props.setPage("commands") }>Commands</Link>
               <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
             </div>
             {
