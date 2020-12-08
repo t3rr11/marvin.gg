@@ -1,0 +1,72 @@
+.commands-content { padding-top: 10px; height: -webkit-fill-available; overflow-y: auto; padding-bottom: 10px; }
+.commands-content > .categories {
+  width: 100%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 275px);
+}
+.commands-content > .categories > .category {
+  display: block;
+  min-width: 275px;
+  height: max-content;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-left: 10px;
+  grid-row: span 2;
+}
+.commands-content > .categories > .category-long {
+  display: block;
+  min-width: 560px;
+  min-height: 230px;
+  height: max-content;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-left: 10px;
+  grid-column: span 2;
+}
+
+.commands-content > .categories > .category > .category-title,
+.commands-content > .categories > .category-long > .category-title {
+  font-size: 18px;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  width: 100%;
+  background: rgba(0,0,0,0.1);
+}
+
+.commands-content > .categories > .category > .category-title::selection,
+.commands-content > .categories > .category-long > .category-title::selection { background-color: rgba(0, 0, 0, 0.4); }
+
+.commands-content > .categories > .category > .category-paragraph,
+.commands-content > .categories > .category-long > .category-paragraph {
+  padding: 5px;
+}
+
+.commands-content > .categories > .category > .category-paragraph > .category-row,
+.commands-content > .categories > .category-long > .category-paragraph > .category-row {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  width: auto;
+  height: auto;
+  padding: .2em;
+  margin: -.2em 0;
+  border-radius: 3px;
+  font-size: 75%;
+  font-family: SourceCodePro, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  text-indent: 0;
+  border: none;
+  margin: 3px auto;
+  color: darkgray;
+}
+
+.commands-content > .categories > .category > .category-paragraph > .category-row::selection,
+.commands-content > .categories > .category-long > .category-paragraph > .category-row::selection { background-color: rgba(0, 0, 0, 0.4); }
+
+.commands-content > .categories > .category > .category-paragraph > .category-row > .d_highlight,
+.commands-content > .categories > .category-long > .category-paragraph > .category-row > .d_highlight {
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+}

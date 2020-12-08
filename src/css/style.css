@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro|Baloo+Thambi+2|Nunito|Work+Sans|Open+Sans";
 @import url('header.css');
 @import url('home.css');
+@import url('commands.css');
 @import url('status.css');
 @import url('logs.css');
 @import url('loader.css');
