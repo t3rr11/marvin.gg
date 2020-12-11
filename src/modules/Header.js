@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Config from '../Config';
 import * as Misc from '../Misc';
-import * as apiRequest from '../modules/API';
+import * as apiRequest from '../modules/requests/API';
+import * as discord from '../modules/requests/DiscordAuth';
 
 export class Header extends Component {
 
@@ -14,50 +15,25 @@ export class Header extends Component {
   }
 
   async componentDidMount() {
-    this.getPlatforms();
+    this.checkLogin();
   }
 
-  GotoAuth() {
-    this.props.setPage("home");
-    window.location.href = `https://www.bungie.net/en/oauth/authorize?client_id=${ Config.client_Id }&response_type=code&state=1`;
-  }
+  GotoAuth() { this.props.setPage("home"); discord.linkWithDiscord(); }
 
-  getPlatforms() {
+  checkLogin() {
     if(localStorage.getItem("adminToken")) {
       const adminToken = localStorage.getItem("adminToken");
       apiRequest.CheckAuthorization({ token: adminToken }).then((response) => { if(response.code === 200) { this.setState({ isAdmin: true }); } });
     }
-    if(localStorage.getItem("DestinyMemberships")) {
-      let BungieMemberships = JSON.parse(localStorage.getItem("DestinyMemberships"));
-      let platforms = [];
-      for(var i in BungieMemberships) {
-        platforms.push({
-          "platform": Misc.getPlatformName(BungieMemberships[i].membershipType),
-          "name": BungieMemberships[i].displayName,
-          "id": BungieMemberships[i].membershipId
-        });
-      }
-      this.setState({ loggedIn: true, platforms });
+    if(localStorage.getItem("DiscordInfo")) {
+      let discordInfo = JSON.parse(localStorage.getItem("DiscordInfo"));
+      this.setState({ loggedIn: true, discordInfo });
     }
   }
-  setPlatform(event) {
-    var selectedMbmId = event.target.id;
-    localStorage.setItem("SelectedAccount", JSON.stringify(this.state.platforms.find(e => e.id === selectedMbmId)));
-    this.setState(this.state);
-  }
-
   toggleMenuSlider() { console.log("Toggled Menu"); }
-  toggleSettingsModal() {
-    console.log("Toggled");
-    this.props.toggleSettingsModal();
-  }
-  showMembershipId() {
-    this.setState({ showCopied: true, });
-    setTimeout(() => { this.setState({ showCopied: false, }); }, 10000);
-  }
 
   render() {
-    const { loggedIn, isAdmin, platforms } = this.state;    
+    const { loggedIn, isAdmin, discordInfo } = this.state;    
     return (
       <header className="header">
         <div className="top-header">
@@ -67,34 +43,9 @@ export class Header extends Component {
           </div>
           <div className="header-user-containter">
           {
-            loggedIn ? (
-              <div className="header-username">
-                {
-                  localStorage.getItem("SelectedAccount") === "Please Select Platform" ? ( <div>{ localStorage.getItem("SelectedAccount") }</div> ) :
-                  (
-                    <div className="platformSelection">
-                      <div className="platformName">
-                        <img alt="platformLogo" src={`./images/icons/platforms/${ (JSON.parse(localStorage.getItem("SelectedAccount")).platform).toLowerCase() }.png`} />
-                        <div onClick={ () => this.showMembershipId() }>{ JSON.parse(localStorage.getItem("SelectedAccount")).name }</div>
-                      </div>
-                      <div className={ this.state.showCopied ? 'platformMbmId show' : 'platformMbmId' }>{ JSON.parse(localStorage.getItem("SelectedAccount")).id }</div>
-                    </div>
-                  )
-                }
-                {
-                  localStorage.getItem("SelectedAccount") === "Please Select Platform" ? (
-                    platforms.map(function(platform) {
-                      return (
-                        <div className="platformSelection">
-                          <img alt="platformLogo" src={`./images/icons/platforms/${ (platform.platform).toLowerCase() }.png`} />
-                          <div onClick={ ((e) => this.setPlatform(e)) } id={ platform.id }>{ platform.name }</div>
-                        </div>
-                      )
-                    }, this)
-                  ) : null
-                }
-              </div>
-            ) : ( <div className="header-login-link" onClick={ (() => this.GotoAuth()) }>Connect</div> )
+            loggedIn ? 
+            (<div className="header-username">{ <div>{`${ discordInfo.username }#${ discordInfo.discriminator }`}</div> }</div>) :
+            (<div className="header-login-link" onClick={ (() => this.GotoAuth()) }>Connect</div>)
           }
           </div>
         </div>

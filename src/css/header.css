@@ -145,20 +145,16 @@
 }
 .header-login-link:hover { background-color: rgba(0,0,0,0.4); color: #ddd; text-decoration: none; }
 .header-username {
-  display: block;
-  position: relative;
+  display: inline-block;
   text-decoration: none;
   color: #ddd;
-  font-size: 18px;
-  margin-top: 8px;
-  margin-left: 10px;
-  height: 35px;
-  line-height: 25px;
+  font-size: 16px;
+  height: 30px;
+  line-height: 15px;
   padding: 5px;
   border: 1px #ddd solid;
   border-radius: 10px;
-  width: 180px;
-  margin: auto;
+  width: 120px;
   text-align: center;
   cursor: pointer;
 }

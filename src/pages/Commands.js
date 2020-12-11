@@ -95,7 +95,16 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~toggle item broadcasts</span></div>
                 <div className="category-row"><span className="d_highlight">~toggle title broadcasts</span></div>
                 <div className="category-row"><span className="d_highlight">~toggle clan broadcasts</span></div>
-                <div className="category-row"><span className="d_highlight">~toggle gunsmith broadcasts</span></div>
+              </div>
+            </div>
+            <div className="category">
+              <div className="category-title">Announcements</div>
+              <div className="category-paragraph">
+                <div className="category-row"><span className="d_highlight">~set announcements #channel</span></div>
+                <div className="category-row"><span className="d_highlight">~remove announcements</span></div>
+                <div className="category-row"><span className="d_highlight">~manage announcements</span></div>
+                <div className="category-row"><span className="d_highlight">~toggle update announcements</span></div>
+                <div className="category-row"><span className="d_highlight">~toggle gunsmith announcements</span></div>
               </div>
             </div>
             <div className="category">

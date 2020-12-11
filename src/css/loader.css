@@ -5,15 +5,17 @@
 }
 .smallLoaderBG {
   position: absolute;
-  top: 60px;
-  right: 15px;
+  top: 65px;
+  right: 5px;
   display: grid;
   grid-template-columns: 50px auto;
-  border: 1px solid var(--NavyBlue);
-  background-color: var(--InbetweenerNavyBlue);
+  background-color: rgba(0,0,0,0.2);
   padding-right: 15px;
   border-radius: 10px;
   align-items: center;
+}
+.smallLoaderBG > img {
+  width: 50px;
 }
 .loader {
   position: absolute;
@@ -63,9 +65,10 @@
   color: white;
 }
 .smallLoaderText {
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 5px;
   height: 20px;
+  color: white;
 }
 @keyframes animate {
   0% {

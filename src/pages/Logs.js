@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
 import { formatSmallTime } from '../modules/Misc';
-import * as apiRequest from '../modules/API';
+import * as apiRequest from '../modules/requests/API';
 
 let updateTimer = null;
 
