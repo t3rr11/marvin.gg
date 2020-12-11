@@ -3,8 +3,8 @@ import * as Misc from '../Misc';
 async function Request(path, isStat, isAuthRequired) {
   //Headers for requests
   var headers, authHeaders = null;
-  try { headers = { headers: { "X-API-Key": "fc1f06b666154eeaa8f89d91f32c23e7", "Content-Type": "application/json" } } } catch (err) { headers = {  }; }
-  try { authHeaders = { headers: { "X-API-Key": "fc1f06b666154eeaa8f89d91f32c23e7", "Content-Type": "application/json", "Authorization": `Bearer ${ JSON.parse(localStorage.getItem('Authorization')).access_token }` } } } catch (err) { authHeaders = { }; }
+  try { headers = { headers: { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json" } } } catch (err) { headers = {  }; }
+  try { authHeaders = { headers: { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json", "Authorization": `Bearer ${ JSON.parse(localStorage.getItem('Authorization')).access_token }` } } } catch (err) { authHeaders = { }; }
   return await fetch(`https://${isStat ? 'stats' : 'www'}.bungie.net${path}`, isAuthRequired ? authHeaders : headers).then(async (request) => {
     try {
       const response = await request.text();
@@ -19,8 +19,11 @@ async function Request(path, isStat, isAuthRequired) {
     catch (err) { return { "isError": true, "Data": err } }
   });
 }
-async function BungieReq(path) {
-  return await fetch(`https://www.bungie.net${ path }`, { headers: { "X-API-Key": "fc1f06b666154eeaa8f89d91f32c23e7", "Content-Type": "application/json" } }).then(async (request) => {
+async function BungieReq(path, requiresKey) {
+  let headers;
+  if(requiresKey) { headers = { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json" } }
+  else { headers = { "Content-Type": "application/json" } }
+  return await fetch(`https://www.bungie.net${ path }`).then(async (request) => {
     try {
       const response = await request.text();
       if(Misc.isJSON(response)) {
@@ -41,7 +44,7 @@ export const GetProfile = async (membershipType, membershipId, components, auth 
 export const GetActivityHistory = async (membershipType, membershipId, characterId, count, mode, page = 0) => Request(`/Platform/Destiny2/${membershipType}/Account/${membershipId}/Character/${characterId}/Stats/Activities/?count=${count}&mode=${mode}&page=${page}`, false, false);
 export const GetHistoricStatsForAccount = async (membershipType, membershipId) => Request(`/Platform/Destiny2/${membershipType}/Account/${membershipId}/Stats/?groups=101`, false, false);
 export const GetPGCR = async (instanceId) => Request(`/Platform/Destiny2/Stats/PostGameCarnageReport/${instanceId}/`, true, false);
-export const GetManifest = async url => BungieReq(url, false, false);
+export const GetManifest = async url => BungieReq(url, false);
 export const SearchUsers = async username => Request(`/Platform/User/SearchUsers/?q=${username}`, false, false);
 export const SearchDestinyPlayer = async username => Request(`/Platform/Destiny2/SearchDestinyPlayer/-1/${username}/`, false, false);
 export const GetMembershipId = async platformName => Request(`/Platform/Destiny2/SearchDestinyPlayer/-1/${platformName}/`, false, false);
