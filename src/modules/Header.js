@@ -57,7 +57,7 @@ export class Header extends Component {
               <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
             </div>
             <div className={ `header-menu-item ${ this.props.currentPage === "commands" ? "active" : "" }` }>
-              <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/clans.png" />
+              <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/info.png" />
               <Link className="header-link" to="/commands" onClick={ () => this.props.setPage("commands") }>Commands</Link>
               <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
             </div>
@@ -76,6 +76,17 @@ export class Header extends Component {
                   </div>
                 </React.Fragment>
               ) : null
+            }
+          </div>
+          <div className="background-colors">
+            <div className="auto-color-box" style={ localStorage.getItem("background") === "Auto" ?  { border: "1px solid white" } : { } } onClick={ (() => this.props.setBackground("Auto")) }>Auto</div>
+            { 
+              this.props.backgrounds.map((bg) => {
+                let style;
+                if(this.props.currentBackground === bg) { style = { background: `var(--${ bg })`, border: `1px solid white` } }
+                else { style = { background: `var(--${ bg })` } }
+                return <div className="color-box" style={ style } onClick={ (() => this.props.setBackground(bg)) }></div>
+              })
             }
           </div>
           <div className="donation-links">

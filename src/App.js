@@ -18,17 +18,7 @@ import * as Manifest from './modules/handlers/ManifestHandler';
 import * as discord from './modules/requests/DiscordAuth';
 import './css/style.css';
 
-let store = createStore(counterReducer);
-
-function counterReducer(state = { value: 0 }, action) {
-  switch (action.type) {
-    case 'counter/incremented':
-      return { value: state.value + 1 }
-    case 'counter/decremented':
-      return { value: state.value - 1 }
-    default: return state
-  }
-}
+const backgrounds = ["BlueGradient", "GreenGradient", "PureLust", "FeelTheLove", "MidnightGradient", "Lawrencium"];
 
 class App extends React.Component {
   state = {
@@ -45,7 +35,7 @@ class App extends React.Component {
     isLive: false
   }
   async componentDidMount() {
-    this.setState({ status: { status: 'startingUp', statusText: `Loading Guardianstats ${ this.state.siteVersion }`, loading: true }, currentBackground: this.getRandomBackground() });
+    this.setState({ status: { status: 'startingUp', statusText: `Loading Guardianstats ${ this.state.siteVersion }`, loading: true }, currentBackground: this.getBackground() });
     if(!localStorage.getItem("siteVersion")) { this.forceReset(); }
     else {
       this.updatePage();
@@ -73,9 +63,13 @@ class App extends React.Component {
     else { this.setState({ currentPage: localStorage.getItem("currentPage") }); }
   }
   setPage = (page) => { localStorage.setItem("currentPage", page); this.setState({ currentPage: page }); }
-  getRandomBackground() {
-    const backgrounds = ["BlueGradient", "GreenGradient", "MidnightGradient", "PurpleGradient"];
-    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  setBackground = (background) => {
+    localStorage.setItem("background", background);
+    this.setState({ currentBackground: this.getBackground() });
+  }
+  getBackground() {
+    if(localStorage.getItem("background") && localStorage.getItem("background") !== "Auto") { return localStorage.getItem("background"); }
+    else { return backgrounds[Math.floor(Math.random() * backgrounds.length)]; }
   }
   forceReset() {
     localStorage.clear();
@@ -88,7 +82,10 @@ class App extends React.Component {
       <Router>
         <div className="app" style={{ background: `var(--${this.state.currentBackground})` }}>
           <div className="footer">Beta { generate({ version: this.state.siteVersion, versionSeparator: "-" })}</div>
-          <Header setPage={ ((page) => this.setPage(page)) } currentPage={ this.state.currentPage } />
+          <Header 
+            setPage={ ((page) => this.setPage(page)) } currentPage={ this.state.currentPage }
+            backgrounds={ backgrounds } currentBackground={ this.state.currentBackground } setBackground={ ((bg) => this.setBackground(bg)) }
+          />
           <Switch>
             <Route path="/" render={ props => {
               switch(props.location.pathname) {
