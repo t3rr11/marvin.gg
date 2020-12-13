@@ -3,6 +3,11 @@
 .scrollbar::-webkit-scrollbar-track { background: var(--DarkNavyBlue); }
 .scrollbar::-webkit-scrollbar-thumb { background: var(--LightNavyBlue); }
 .scrollbar::-webkit-scrollbar-thumb:hover { background: var(--LightNavyBlue); }
+.transScrollbar { overflow-y: auto; overflow-x: hidden; scrollbar-color: var(--LightNavyBlue) var(--DarkNavyBlue); }
+.transScrollbar::-webkit-scrollbar { width: 15px; }
+.transScrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+.transScrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); }
+.transScrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
 .scroller {
   overflow-y: scroll;
   overflow-x: hidden;

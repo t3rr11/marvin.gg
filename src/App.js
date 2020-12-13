@@ -6,6 +6,7 @@ import { createStore } from 'redux';
 import Header from './modules/Header';
 import Home from './pages/Home';
 import Commands from './pages/Commands';
+import Clans from './pages/Clans';
 import Status from './pages/Status';
 import Logs from './pages/Logs';
 import Error from './modules/Error';
@@ -92,6 +93,7 @@ class App extends React.Component {
                 case "/": { return <Home /> }
                 case "/home": { return <Home /> }
                 case "/commands": { return <Commands /> }
+                case "/clans": { return <Clans /> }
                 case "/status": { return <Status /> }
                 case "/logs": { return <Logs /> }
                 case "/loader": { return <Loader statusText={ "Testing" } /> }

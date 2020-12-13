@@ -19,6 +19,7 @@ async function apiRequest(path, data) {
 }
 
 export const Test = async () => apiRequest(`/Test`);
+export const GetAllClans = async () => apiRequest(`/GetAllClans`);
 export const GetBackendStatus = async () => apiRequest(`/GetBackendStatus`);
 export const GetFrontendStatus = async () => apiRequest(`/GetFrontendStatus`);
 export const GetBackendStatusHistory = async () => apiRequest(`/GetBackendStatusHistory`);

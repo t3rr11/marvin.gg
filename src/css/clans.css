@@ -1,0 +1,42 @@
+.clans-container {
+  height: 100%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+  overflow-y: auto;
+  padding-top: 10px;
+}
+.clans-container > .clans-footer {
+  grid-column: span 5;
+  height: 75px;
+}
+.clans-container > .clans-footer > div {
+  width: fit-content;
+  margin: auto;
+}
+.clan-container {
+  display: grid;
+  width: 300px;
+  height: 75px;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.1);
+  grid-template-columns: 60px auto;
+}
+.clan-container:hover { background: rgba(0,0,0,0.2); cursor: pointer; }
+.clan-container > .clan-details > .clan-name {
+  margin-top: 6px;
+  height: 20px;
+  width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clan-banner-icon-container > .clan-banner-icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.not-tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); }
+.tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); }
