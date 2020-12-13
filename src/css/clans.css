@@ -1,16 +1,22 @@
-.clans-container {
+.clans-content {
+  display: grid;
   height: 100%;
+  grid-template-rows: auto 100px;
+}
+.clans-container {
+  width: 100%;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+  grid-template-rows: repeat(auto-fill, 75px);
   overflow-y: auto;
-  padding-top: 10px;
+  padding-top: 5px;
 }
-.clans-container > .clans-footer {
-  grid-column: span 5;
-  height: 75px;
+.clans-footer {
+  margin-top: 25px;
+  height: 100px;
 }
-.clans-container > .clans-footer > div {
+.clans-footer > div {
   width: fit-content;
   margin: auto;
 }
@@ -37,6 +43,15 @@
   position: relative;
   width: 60px;
   height: 60px;
+}
+.clans-search-container {
+  padding-top: 8px;
+  padding-left: 15px;
+  height: 40px;
+}
+.clans-searchbar {
+  width: 300px;
+  margin-left: 3px;
 }
 .not-tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); }
 .tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); }

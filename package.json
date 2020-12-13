@@ -19,7 +19,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-tooltip": "^4.2.11",
-    "react-vis": "^1.11.7"
+    "react-vis": "^1.11.7",
+    "string-similarity": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
