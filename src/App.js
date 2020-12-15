@@ -7,6 +7,7 @@ import Header from './modules/Header';
 import Home from './pages/Home';
 import Commands from './pages/Commands';
 import Clans from './pages/Clans';
+import Clan from './pages/Clan';
 import Status from './pages/Status';
 import Logs from './pages/Logs';
 import Error from './modules/Error';
@@ -88,20 +89,17 @@ class App extends React.Component {
             backgrounds={ backgrounds } currentBackground={ this.state.currentBackground } setBackground={ ((bg) => this.setBackground(bg)) }
           />
           <Switch>
-            <Route path="/" render={ props => {
-              switch(props.location.pathname) {
-                case "/": { return <Home /> }
-                case "/home": { return <Home /> }
-                case "/commands": { return <Commands /> }
-                case "/clans": { return <Clans /> }
-                case "/status": { return <Status /> }
-                case "/logs": { return <Logs /> }
-                case "/loader": { return <Loader statusText={ "Testing" } /> }
-                case "/discord": { return (window.location.href = "https://discord.gg/jbEbYej") }
-                case "/test": { return "" }
-                default: { return <Error error={ "This page was not found" } /> }
-              }
-            }}/>
+            <Route exact path="/" render={ props => { return <Home /> } }/>
+            <Route path="/home" render={ props => { return <Home /> } }/>
+            <Route path="/commands" render={ props => { return <Commands /> } }/>
+            <Route path="/clans" render={ props => { return <Clans selectedClan={ ((clanID) => props.history.push(`/clan/${ clanID }`)) } /> } }/>
+            <Route path="/clan" render={ props => { return <Clan /> } }/>
+            <Route path="/status" render={ props => { return <Status /> } }/>
+            <Route path="/logs" render={ props => { return <Logs /> } }/>
+            <Route path="/loader" render={ props => { return <Loader statusText={ "Testing" } /> } }/>
+            <Route path="/discord" render={ props => { return (window.location.href = "https://discord.gg/jbEbYej") } }/>
+            <Route path="/test" render={ props => { return "" } }/>
+            <Route path="*" render={ props => { return <Error error={ "This page was not found" } /> } }/>
           </Switch>
           { this.state.status.loading ? <SmallLoader error={ this.state.status.error } statusText={ this.state.status.statusText } /> : "" }
         </div>

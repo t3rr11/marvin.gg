@@ -39,6 +39,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.clan-container > .clan-details > .clan-members { position: relative; padding-left: 16px; }
+.clan-container > .clan-details > .clan-members::before {
+  background-image: url('../assets/icons/member.png');
+  background-size: 15px 15px;
+  display: inline-block;
+  position: absolute;
+  width: 15px; 
+  height: 15px;
+  margin-top: 5px;
+  margin-left: -17px;
+  content:"";
+}
+.clan-container > .clan-details > .clan-tracking {
+  margin-top: -5px;
+  font-size: 14px;
+  color: lightgray;
+}
 .clan-banner-icon-container > .clan-banner-icon {
   position: relative;
   width: 60px;
