@@ -39,3 +39,4 @@ export const GetGlobalsLogs = async (data) => apiRequest(`/GetGlobalsLogs`, data
 export const GetBroadcastLogs = async (data) => apiRequest(`/GetBroadcastLogs`, data);
 export const GetErrorHandlerLogs = async (data) => apiRequest(`/GetErrorHandlerLogs`, data);
 export const CheckAuthorization = async (data) => apiRequest(`/CheckAuthorization`, data);
+export const GetClan = async (data) => apiRequest(`/GetClan`, data);

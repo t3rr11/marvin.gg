@@ -29,7 +29,7 @@ export class Clans extends Component {
     this.GetClans();
   }
 
-  async GetClans() {
+  GetClans() {
     apiRequest.GetAllClans().then((data) => {
       if(!data?.isError) {
         this.setState({
@@ -48,7 +48,7 @@ export class Clans extends Component {
   ClanComponent = (clan) => {
     return (
       <div className={`clan-container ${ clan.isTracking ? "tracking" : "not-tracking" }`} onClick={ (() => this.props.selectedClan(clan.clanID)) }>
-        <div className="clan-banner-icon-container"><ClanBannerGenerator clanID={ clan.clanID } clanBanner={ clan.clanBanner } /></div>
+        <div className="clan-banner-icon-container"><ClanBannerGenerator type="small" clanID={ clan.clanID } clanBanner={ clan.clanBanner } width="45px" height="60px" /></div>
         <div className="clan-details">
           <div className="clan-name">{ Misc.htmlDecode(clan.clanName) } ({ Misc.htmlDecode(clan.clanCallsign) })</div>
           <div className="clan-members">{ clan.memberCount } / 100</div>
@@ -60,7 +60,7 @@ export class Clans extends Component {
 
   render() {
     const { status, statusText } = this.state.status;
-    if(status === "error") { return (<Error statusText={ statusText } />) }
+    if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
       return (
         <div className="page-content" style={{ overflow: "hidden" }}>

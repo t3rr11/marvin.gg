@@ -18,15 +18,36 @@ export class Clan extends Component {
 
   componentDidMount() {
     document.title = "Marvin - Clan";
+    this.GetClan();
+  }
+
+  GetClan() {
+    const clanID = "2099336";
+    apiRequest.GetClan({ clanID }).then((data) => {
+      if(!data?.isError) {
+        if(data.message === "Success") {
+          this.setState({
+            status: { status: 'ready', statusText: `Finished grabbing clan data.`, loading: false },
+            clan: data.data[0]
+          });
+        }
+        else if(data.message === "Not Found") { this.setState({ status: { status: 'error', statusText: `Clan was not found`, loading: false } }); }
+        else { this.setState({ status: { status: 'error', statusText: data.data, loading: false } }); }
+      }
+      else { this.setState({ status: { status: 'error', statusText: data.data, loading: false } }); }
+    });
   }
 
   render() {
     const { status, statusText } = this.state.status;
-    if(status === "error") { return (<Error statusText={ statusText } />) }
+    const clan = this.state.clan;
+    if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
       return (
         <div className="page-content" style={{ overflow: "hidden" }}>
-          
+          <div className="clan-banner-container">
+            <ClanBannerGenerator clanID={ clan.clanID } clanBanner={ clan.clanBanner } width="180px" height="240px" />
+          </div>
         </div>
       );
     }

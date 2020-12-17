@@ -135,7 +135,7 @@ class Logs extends React.Component {
 
   render() {
     const { status, statusText } = this.state.status;
-    if(status === "error") { return (<Error statusText={ statusText } />) }
+    if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
       const { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
       const buildLog = (log, type) => {

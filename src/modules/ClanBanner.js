@@ -63,50 +63,65 @@ const ClanBannerGenerator = props => {
       decalBgImage.src = ClanBanner.decal.backgroundImagePath;
 
       gonfalonImage.onload = () => {
-        ctxGonfalon.drawImage(gonfalonImage, 0, 0, ctxGonfalon.canvas.width, ctxGonfalon.canvas.height);
+        ctxGonfalon.drawImage(gonfalonImage, 0, 4, ctxGonfalon.canvas.width, ctxGonfalon.canvas.height);
         ctxGonfalon.globalCompositeOperation = 'source-in';
         ctxGonfalon.fillStyle = getColor(ClanBanner.gonfalon.color);
         ctxGonfalon.fillRect(0, 0, ctxGonfalon.canvas.width, ctxGonfalon.canvas.height);
       };
 
       detailImage.onload = () => {
-        ctxDetail.drawImage(detailImage, 0, 0, ctxDetail.canvas.width, ctxDetail.canvas.height);
+        ctxDetail.drawImage(detailImage, 5, 4, ctxDetail.canvas.width-10, ctxDetail.canvas.height-10);
         ctxDetail.globalCompositeOperation = 'source-in';
         ctxDetail.fillStyle = getColor(ClanBanner.detail.color);
         ctxDetail.fillRect(0, 0, ctxDetail.canvas.width, ctxDetail.canvas.height);
       };
   
       decalFgImage.onload = () => {
-        ctxDecalFg.drawImage(decalFgImage, 0, 0, ctxDecalFg.canvas.width, ctxDecalFg.canvas.height);
+        ctxDecalFg.drawImage(decalFgImage, 0, 4, ctxDecalFg.canvas.width, ctxDecalFg.canvas.height);
         ctxDecalFg.globalCompositeOperation = 'source-in';
         ctxDecalFg.fillStyle = getColor(ClanBanner.decal.foregroundColor);
         ctxDecalFg.fillRect(0, 0, ctxDecalFg.canvas.width, ctxDecalFg.canvas.height);
       };
   
       decalBgImage.onload = () => {
-        ctxDecalBg.drawImage(decalBgImage, 0, 0, ctxDecalBg.canvas.width, ctxDecalBg.canvas.height);
+        ctxDecalBg.drawImage(decalBgImage, 0, 4, ctxDecalBg.canvas.width, ctxDecalBg.canvas.height);
         ctxDecalBg.globalCompositeOperation = 'source-in';
         ctxDecalBg.fillStyle = getColor(ClanBanner.decal.backgroundColor);
         ctxDecalBg.fillRect(0, 0, ctxDecalBg.canvas.width, ctxDecalBg.canvas.height);
       };
     }
-
+    
     staffImage.src = ClanBanner.staff.imagePath;
     staffImage.onload = () => {
       ctxStaff.drawImage(staffImage, 0, 0, ctxStaff.canvas.width, ctxStaff.canvas.height);
       ctxStaff.globalCompositeOperation = 'source-atop';
+      ctxStaff.fillStyle = "rgba(0,0,0,0.4)";
+      ctxStaff.fillRect(0, 0, ctxStaff.canvas.width, ctxStaff.canvas.height);
     };
   }, [])
   
-  return (
-    <div className="clan-banner-icon">
-      <canvas ref={gonfalonRef} width="45px" height="60px" style={{ position: "absolute", top: "6px", left: "7px" }} />
-      <canvas ref={detailRef} width="45px" height="60px" style={{ position: "absolute", top: "6px", left: "7px" }} />
-      <canvas ref={decalBgRef} width="45px" height="60px" style={{ position: "absolute", top: "6px", left: "7px" }} />
-      <canvas ref={decalFgRef} width="45px" height="60px" style={{ position: "absolute", top: "6px", left: "7px" }} />
-      <canvas ref={staffRef} width="45px" height="60px" style={{ position: "absolute", top: "6px", left: "7px" }} />
-    </div>
-  )
+  if(props.type === "small") {
+    return (
+      <div className="clan-banner-icon">
+        <canvas ref={gonfalonRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "6px", left: "7px" }} />
+        <canvas ref={detailRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "6px", left: "7px" }} />
+        <canvas ref={decalBgRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "6px", left: "7px" }} />
+        <canvas ref={decalFgRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "6px", left: "7px" }} />
+        <canvas ref={staffRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "6px", left: "7px" }} />
+      </div>
+    )
+  }
+  else {
+    return (
+      <div className="clan-banner-icon">
+        <canvas ref={gonfalonRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "20px", left: "17px" }} />
+        <canvas ref={detailRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "20px", left: "17px" }} />
+        <canvas ref={decalBgRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "20px", left: "17px" }} />
+        <canvas ref={decalFgRef} width={ props.width } height={ props.height } style={{ position: "absolute", top: "20px", left: "17px" }} />
+        <canvas ref={staffRef} width={`${ parseInt(props.width.replace(/px/g, ""))+19 }px`} height={`${ parseInt(props.height.replace(/px/g, ""))+50 }px`} style={{ position: "absolute", top: "6px", left: "7px" }} />
+      </div>
+    )
+  }
 }
 
 export default ClanBannerGenerator

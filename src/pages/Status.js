@@ -281,7 +281,7 @@ class Status extends React.Component {
         </div>
       )
     }
-    if(status === "error") { return (<Error statusText={ statusText } />) }
+    if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
       return (
         <div className="page-content">
