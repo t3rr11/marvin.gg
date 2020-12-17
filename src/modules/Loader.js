@@ -22,8 +22,8 @@ export class Loader extends React.Component {
       if(loader === "class") {
         return (
           <div className="loaderBG">
-            <Lottie options={ classLoaderOptions } height={250} width={250} style={{ position: "relative", margin: "0 auto", top: "30px", left: "100px" }} isStopped={false} isPaused={false} />
-            <div className="loaderText" style={{ position: "relative", margin: "0 auto", left: "100px" }}>
+            <Lottie options={ classLoaderOptions } height={250} width={250} style={{ position: "relative", margin: "0 auto", top: "30px" }} isStopped={false} isPaused={false} />
+            <div className="loaderText" style={{ position: "relative", margin: "0 auto" }}>
               <p> { this.props.statusText } </p>
             </div>
           </div>

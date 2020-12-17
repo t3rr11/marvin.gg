@@ -40,3 +40,4 @@ export const GetBroadcastLogs = async (data) => apiRequest(`/GetBroadcastLogs`, 
 export const GetErrorHandlerLogs = async (data) => apiRequest(`/GetErrorHandlerLogs`, data);
 export const CheckAuthorization = async (data) => apiRequest(`/CheckAuthorization`, data);
 export const GetClan = async (data) => apiRequest(`/GetClan`, data);
+export const GetClanMembers = async (data) => apiRequest(`/GetClanMembers`, data);

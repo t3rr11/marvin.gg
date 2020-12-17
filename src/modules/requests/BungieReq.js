@@ -56,3 +56,4 @@ export const GetVendors = async (membershipType, membershipId, characterId) => R
 export const GetTWABs = async () => Request(`/Platform/Trending/Categories/`, false, false);
 export const GetClan = async (membershipType, membershipId) => Request(`/Platform/GroupV2/User/${ membershipType }/${ membershipId }/0/1/`, false, false);
 export const GetClanById = async (clan_id) => Request(`/Platform/GroupV2/${ clan_id }/`, false, false);
+export const GetClanMembersById = async (clan_id) => Request(`/Platform/GroupV2/${ clan_id }/Members/`, false, false);

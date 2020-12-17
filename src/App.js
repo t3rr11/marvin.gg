@@ -93,7 +93,7 @@ class App extends React.Component {
             <Route path="/home" render={ props => { return <Home /> } }/>
             <Route path="/commands" render={ props => { return <Commands /> } }/>
             <Route path="/clans" render={ props => { return <Clans selectedClan={ ((clanID) => props.history.push(`/clan/${ clanID }`)) } /> } }/>
-            <Route path="/clan" render={ props => { return <Clan /> } }/>
+            <Route path="/clan" render={ props => { return <Clan props={ props } /> } }/>
             <Route path="/status" render={ props => { return <Status /> } }/>
             <Route path="/logs" render={ props => { return <Logs /> } }/>
             <Route path="/loader" render={ props => { return <Loader statusText={ "Testing" } /> } }/>

@@ -1,3 +1,59 @@
-.clan-banner-container { 
+.clan-content {
+  display: grid;
+  grid-template-columns: 220px auto 300px;
+  height: 100%;
+}
+.clan-content > .clan-banner-container { 
   position: relative;
+}
+.clan-content > .clan-banner-container > .creation-date {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 290px;
+}
+.clan-content > .clan-banner-container > .join-btn {
+  width: fit-content;
+  padding: 2px 10px;
+  margin: auto;
+  text-align: center;
+  margin-top: 320px;
+  cursor: pointer;
+}
+.join-btn.inviteOnly { background: rgba(166,41,53,0.6); border: 1px solid#a62935; }
+.join-btn.inviteOnly:hover { background: rgba(190, 48, 62, 0.6); border: 1px solid #a62935; }
+.join-btn.request, .join-btn.join { background: rgba(183,140,37,0.8); border: 1px solid #ffce1f; }
+.join-btn.request:hover, .join-btn.join:hover { background: rgba(223, 170, 48, 0.8); border: 1px solid #ffd53e; }
+.clan-content > .clan-details {
+  margin-top: 10px;
+}
+.clan-content > .clan-details > .clan-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.clan-content > .clan-details > .clan-motto {
+  font-style: italic;
+}
+.clan-content > .clan-details > .clan-about {
+  max-width: 720px;
+  white-space: pre-wrap;
+}
+.clan-content > .clan-details > .clan-name > .clan-members {
+  position: relative;
+  font-size: 16px;
+  padding-left: 16px;
+  font-weight: normal;
+  margin-top: -2px;
+  top: -1px;
+}
+.clan-content > .clan-details > .clan-name > .clan-members::before {
+  background-image: url('../assets/icons/member.png');
+  background-size: 15px 15px;
+  display: inline-block;
+  position: absolute;
+  width: 15px; 
+  height: 15px;
+  margin-top: 15px;
+  margin-left: -17px;
+  content:"";
 }
