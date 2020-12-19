@@ -57,3 +57,33 @@
   margin-left: -17px;
   content:"";
 }
+.clan-members-container {
+  height: 100%;
+  overflow-y: scroll;
+}
+.clan-member-container {
+  position: relative;
+  display: grid;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin: 3px;
+  padding: 5px;
+}
+.clan-member-container.founder { background:rgba(167, 129, 41, 0.5); }
+.founder-tag {
+  position: absolute;
+  display: inline-block;
+  color: #ffee73;
+  border: 1px #ffee73 solid;
+  padding: 1px 3px;
+  font-size: 12px;
+  line-height: 13px;
+  border-radius: 3px;
+  margin-left: 5px;
+  top: 9px;
+}
+.clan-member-details > .clan-member-last-seen {
+  font-size: 14px;
+  color: rgba(180, 180, 180, 0.8);
+}

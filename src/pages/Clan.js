@@ -90,7 +90,7 @@ export class Clan extends Component {
               <div className="clan-motto">"{ clanData.detail.motto }"</div>
               <div className="clan-about">{ clanData.detail.about }</div>
             </div>
-            <ClanMembers clanMembers={ this.state.clanMembers } isTracking={ marvinData ? true : false } />
+            <ClanMembers clanDetails={ clanData } clanMembers={ this.state.clanMembers } isTracking={ marvinData ? true : false } />
           </div>
         </div>
       );
@@ -101,24 +101,44 @@ export class Clan extends Component {
 
 class ClanMembers extends Component {
   render() {
-    console.log(this.props.isTracking);
     if(this.props.clanMembers?.length > 0) {
+      let clanDetails = this.props.clanDetails;
       let clanMembers = this.props.clanMembers;
       return (
-        <div className="clan-members-container">
+        <div className="clan-members-container transScrollbar">
+          { 
+            clanMembers
+              .filter(e => e.membershipID === clanDetails.founder.destinyUserInfo.membershipId)
+              .map(member => {
+              return <Member member={member} founder={true} />
+            })
+          }
           {
-            clanMembers.map(member => {
-              return (
-                <div className="clan-member-details">
-                  <div>{ member.displayName }</div>
-                </div>
-              )
+            clanMembers
+              .filter(e => e.membershipID !== clanDetails.founder.destinyUserInfo.membershipId)
+              .sort((a,b) => new Date(b.lastPlayed) - new Date(a.lastPlayed))
+              .map(member => {
+              return <Member member={member} founder={false} /> 
             })
           }
         </div>
       )
     }
     else { return <Loader statusText="Loading Clan Members" /> }
+  }
+}
+
+class Member extends Component {
+  render() {
+    let member = this.props.member;
+    return (
+      <div className={`clan-member-container ${ this.props.founder ? "founder" : "" }`}>
+        <div className="clan-member-details">
+          <div className="clan-member-name">{ member.displayName } { this.props.founder ? (<div className="founder-tag">Founder</div>) : "" }</div>
+          <div className="clan-member-last-seen">{ member.lastPlayed ? `Last seen: ${ Misc.formatTime((new Date().getTime() - new Date(member.lastPlayed).getTime()) / 1000) } ago` : "Private Account" }</div>
+        </div>
+      </div>
+    )
   }
 }
 

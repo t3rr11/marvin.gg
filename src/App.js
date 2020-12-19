@@ -32,7 +32,7 @@ class App extends React.Component {
     },
     currentPage: "home",
     currentBackground: "MidnightGradient",
-    siteVersion: "1.0.2",
+    siteVersion: "1.0.3",
     showSettingsModal: false,
     isLive: false
   }
@@ -74,7 +74,6 @@ class App extends React.Component {
     else { return backgrounds[Math.floor(Math.random() * backgrounds.length)]; }
   }
   forceReset() {
-    localStorage.clear();
     indexedDB.deleteDatabase("manifest");
     localStorage.setItem("siteVersion", this.state.siteVersion);
     window.location.reload();
