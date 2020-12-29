@@ -32,7 +32,7 @@ class App extends React.Component {
     },
     currentPage: "home",
     currentBackground: "MidnightGradient",
-    siteVersion: "1.0.3",
+    siteVersion: "1.0.4",
     showSettingsModal: false,
     isLive: false
   }

@@ -1,7 +1,7 @@
 var client_id = "631351366799065088";
 var client_secret = "jv_o_MT_Q8OjIZErSnO3qdqtYAf_16rH";
 var scope = "identify guilds";
-var redirect_uri = "http://localhost:3000";
+var redirect_uri = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://marvin.gg';
 var discord_login_url = "https://discord.com/api/oauth2/authorize";
 var discord_token_url = "https://discord.com/api/oauth2/token";
 var discord_api_url = "https://discord.com/api";
