@@ -37,7 +37,9 @@ export const GetExpressLogs = async (data) => apiRequest(`/GetExpressLogs`, data
 export const GetDatabaseLogs = async (data) => apiRequest(`/GetDatabaseLogs`, data);
 export const GetGlobalsLogs = async (data) => apiRequest(`/GetGlobalsLogs`, data);
 export const GetBroadcastLogs = async (data) => apiRequest(`/GetBroadcastLogs`, data);
+export const GetBroadcasts = async (data) => apiRequest(`/GetBroadcasts`, data);
 export const GetErrorHandlerLogs = async (data) => apiRequest(`/GetErrorHandlerLogs`, data);
 export const CheckAuthorization = async (data) => apiRequest(`/CheckAuthorization`, data);
 export const GetClan = async (data) => apiRequest(`/GetClan`, data);
 export const GetClanMembers = async (data) => apiRequest(`/GetClanMembers`, data);
+export const GetClanBroadcasts = async (data) => apiRequest(`/GetClanBroadcasts`, data);

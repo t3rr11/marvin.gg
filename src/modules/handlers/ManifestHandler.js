@@ -18,6 +18,7 @@ DB.version(1).stores({
   DestinyVendorDefinition: 'definition'
 });
 
+function SetNextManifestCheck() { localStorage.setItem('nextManifestCheck', new Date().getTime() + (1000 * 60 * 60)); }
 export function StoreManifest(callback) {
   callback({ status: 'storingManifest', statusText: 'Storing Manifest...', error: false, loading: true, manifestMounted: false });
   Promise.all([
@@ -66,7 +67,6 @@ export async function ClearManifest() {
   DB.table('DestinyTalentGridDefinition').clear();
   DB.table('DestinyVendorDefinition').clear();
 }
-function SetNextManifestCheck() { localStorage.setItem('nextManifestCheck', new Date().getTime() + (1000 * 60 * 60)); }
 export async function Load(callback) {
   callback({ status: 'loadingManifest', statusText: 'Loading Manifest...', error: false, loading: true, manifestMounted: false });
   if(await Dexie.exists("manifest")) {

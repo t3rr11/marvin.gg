@@ -1,12 +1,32 @@
-import React, { useEffect, useRef } from 'react';
-import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, AreaSeries } from 'react-vis';
-import ReactTooltip from 'react-tooltip';
+import React from 'react';
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
-import { formatSmallTime } from '../modules/Misc';
 import * as apiRequest from '../modules/requests/API';
 
 let updateTimer = null;
+const buildLog = (log, type) => {
+  return (
+    <div className={`${ type }-log-data`}>
+      <div className={`${ log.type }-log`}>{ log.type }</div>
+      <div className={`${ log.type }-log`}>{ log.log }</div>
+      <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
+    </div>
+  );
+}
+const buildBroadcast = (log, type) => {
+  return (
+    <div className={`${ type }-log-data`}>
+      <div className={`${ log.type }-log`}>{ log.type }</div>
+      <div className={`${ log.type }-log`}>{ log.clanID }</div>
+      <div className={`${ log.type }-log`}>{ log.guildID }</div>
+      <div className={`${ log.type }-log`}>{ log.membershipID }</div>
+      <div className={`${ log.type }-log`}>{ log.displayName }</div>
+      <div className={`${ log.type }-log`}>{ log.broadcast }</div>
+      <div className={`${ log.type }-log`}>{ log.count }</div>
+      <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
+    </div>
+  );
+}
 
 class Logs extends React.Component {
   state = {
@@ -24,6 +44,7 @@ class Logs extends React.Component {
       globals: { },
       errorHandler: { }
     },
+    view: "overview",
     lastUpdate: new Date().toISOString()
   }
 
@@ -47,6 +68,8 @@ class Logs extends React.Component {
     else { window.location.href = "/"; }
   }
 
+  setView(page) { this.setState({ view: page }); }
+
   async SetupLogs() {
     this.setState({ status: { status: 'startingUp', statusText: `Obtaining the logs...`, loading: true } });
     await Promise.all([
@@ -62,7 +85,7 @@ class Logs extends React.Component {
           await apiRequest.GetBackendLogs({ date: backendStartup.data[0].date }),
           await apiRequest.GetExpressLogs({ date: expressStartup.data[0].date }),
           await apiRequest.GetDatabaseLogs({ date: frontendStartup.data[0].date }),
-          await apiRequest.GetBroadcastLogs({ date: frontendStartup.data[0].date }),
+          await apiRequest.GetBroadcasts({ date: frontendStartup.data[0].date }),
           await apiRequest.GetGlobalsLogs({ date: globalsStartup.data[0].date }),
           await apiRequest.GetErrorHandlerLogs({ date: new Date((new Date() - (1000 * 86400)) + 37800000).toISOString() })
         ]).then((log_data) => {
@@ -74,7 +97,8 @@ class Logs extends React.Component {
               frontend: log_data[0].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
               backend: log_data[1].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
               express: log_data[2].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              database: log_data[3].data.concat(log_data[4].data).sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              clan: log_data[3].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              database: log_data[4].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
               globals: log_data[5].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
               errorHandler: log_data[6].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
             },
@@ -94,12 +118,12 @@ class Logs extends React.Component {
   }
   async UpdateLogs() {
     let logs = await apiRequest.GetLogs({ date: this.state.lastUpdate });
-    let broadcast_logs = await apiRequest.GetBroadcastLogs({ date: this.state.lastUpdate });
+    let broadcasts = await apiRequest.GetBroadcasts({ date: this.state.lastUpdate });
     if(!logs?.isError) {
-      if(logs.data.length > 0 || broadcast_logs.data.length > 0) {
+      if(logs.data.length > 0 || broadcasts.data.length > 0) {
         let { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
         let startupDetected = false;
-        for(let i in broadcast_logs.data) { database.unshift(broadcast_logs.data[i]); }
+        for(let i in broadcasts.data) { database.unshift(broadcasts.data[i]); }
         for(let i in logs.data) {
           if(logs.data[i].type === "Startup") { startupDetected = true; }
           else {
@@ -137,61 +161,133 @@ class Logs extends React.Component {
     const { status, statusText } = this.state.status;
     if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
-      const { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
-      const buildLog = (log, type) => {
-        return (
-          <div className={`${ type }-log-data`}>
-            <div className={`${ log.type }-log`}>{ log.type }</div>
-            <div className={`${ log.type }-log`}>{ log.log }</div>
-            <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
-          </div>
-        );
-      }
       return (
         <div className="page-content" style={{ overflow: "hidden" }}>
-          <h2 className="logs-page-title">Marvins Logs</h2>
-          <div className="logs-container">
-            <div className="log-container" id="backend">
-              <div className="log-info">
-                <div className="log-info-name">Backend</div>
-              </div>
-              <div className="logs scrollbar" id="backend-logs">{ backend.map((log) => { return buildLog(log, "backend") }) }</div>
-            </div>
-            <div className="log-container" id="frontend">
-              <div className="log-info">
-                <div className="log-info-name">Frontend</div>
-              </div>
-              <div className="logs scrollbar" id="frontend-logs">{ frontend.map((log) => { return buildLog(log, "frontend") }) }</div>
-            </div>
-            <div className="log-container" id="express">
-              <div className="log-info">
-                <div className="log-info-name">Express</div>
-              </div>
-              <div className="logs scrollbar" id="express-logs">{ express.map((log) => { return buildLog(log, "express") }) }</div>
-            </div>
-            <div className="log-container" id="globals">
-              <div className="log-info">
-                <div className="log-info-name">Globals</div>
-              </div>
-              <div className="logs scrollbar" id="globals-logs">{ globals.map((log) => { return buildLog(log, "globals") }) }</div>
-            </div>
-            <div className="log-container" id="database">
-              <div className="log-info">
-                <div className="log-info-name">Database</div>
-              </div>
-              <div className="logs scrollbar" id="database-logs">{ database.map((log) => { return buildLog(log, "database") }) }</div>
-            </div>
-            <div className="log-container" id="errorHandler">
-              <div className="log-info">
-                <div className="log-info-name">Errors</div>
-              </div>
-              <div className="logs scrollbar" id="errorHandler-logs">{ errorHandler.map((log) => { return buildLog(log, "errorHandler") }) }</div>
-            </div>
+          <div className="logs-menu">
+            <div className={ this.state.view === 'overview' ? 'active' : '' } onClick={ (() => this.setView("overview")) }>Overview</div>
+            <div className={ this.state.view === 'frontend' ? 'active' : '' } onClick={ (() => this.setView("frontend")) }>Frontend</div>
+            <div className={ this.state.view === 'backend' ? 'active' : '' } onClick={ (() => this.setView("backend")) }>Backend</div>
+            <div className={ this.state.view === 'express' ? 'active' : '' } onClick={ (() => this.setView("express")) }>Express</div>
+            <div className={ this.state.view === 'globals' ? 'active' : '' } onClick={ (() => this.setView("globals")) }>Globals</div>
+            <div className={ this.state.view === 'database' ? 'active' : '' } onClick={ (() => this.setView("database")) }>Database</div>
+            <div className={ this.state.view === 'errorHandler' ? 'active' : '' } onClick={ (() => this.setView("errorHandler")) }>Errors</div>
           </div>
+          <LoadLogs view={ this.state.view } logs={ this.state.logs } />
         </div>
       )
     }
     else { return (<Loader statusText={ statusText } />) }
+  }
+}
+
+class LoadLogs extends React.Component {
+  render() {
+    const view = this.props.view;
+    if(view === "overview") {
+      return (
+        <div className="logs-container transScrollbar" style={{ gridTemplateColumns: "54% 44%", gridTemplateRows: "300px 300px 200px", gridGap: "5px 10px" }}>
+          <BackendLogs data={ this.props.logs.backend } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "1", gridColumn: "1" }} />
+          <FrontendLogs data={ this.props.logs.frontend } style={{ fontSize: "14px", gridRow: "1", gridColumn: "2" }} />
+          <DatabaseLogs data={ this.props.logs.database } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "2", gridColumn: "span 2" }} />
+          <ErrorLogs data={ this.props.logs.errorHandler } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "3", gridColumn: "span 2" }} />
+        </div>
+      )
+    }
+    else if(view === "backend") { return (<div className="logs-container"><BackendLogs data={ this.props.logs.backend } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+    else if(view === "frontend") { return (<div className="logs-container"><FrontendLogs data={ this.props.logs.frontend } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+    else if(view === "express") { return (<div className="logs-container"><ExpressLogs data={ this.props.logs.express } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+    else if(view === "globals") { return (<div className="logs-container"><GlobalLogs data={ this.props.logs.globals } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+    else if(view === "database") { return (<div className="logs-container"><DatabaseLogs data={ this.props.logs.database } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+    else if(view === "errorHandler") { return (<div className="logs-container"><ErrorLogs data={ this.props.logs.errorHandler } style={{ fontSize: "14px", paddingLeft: "10px", gridRow: "span 1/2", gridColumn: "1" }} /></div>) }
+  }
+}
+
+class BackendLogs extends React.Component {
+  render() {
+    const backend = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="backend" style={ this.props.style }>
+        <div className="logs transScrollbar" id="backend-logs">
+          <div className="log-info"><div className="log-info-name">Backend</div></div>
+          { backend.map((log) => { return buildLog(log, "backend") }) }
+        </div>
+      </div>
+    )
+  }
+}
+class FrontendLogs extends React.Component {
+  render() {
+    const frontend = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="frontend" style={ this.props.style }>
+        <div className="logs transScrollbar" id="frontend-logs">
+          <div className="log-info"><div className="log-info-name">Frontend</div></div>
+          { frontend.map((log) => { return buildLog(log, "frontend") }) }
+        </div>
+      </div>
+    )
+  }
+}
+class ExpressLogs extends React.Component {
+  render() {
+    const express = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="express" style={ this.props.style }>
+        <div className="logs transScrollbar" id="express-logs">
+          <div className="log-info"><div className="log-info-name">Express</div></div>
+          { express.map((log) => { return buildLog(log, "express") }) }
+        </div>
+      </div>
+    )
+  }
+}
+class GlobalLogs extends React.Component {
+  render() {
+    const globals = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="globals" style={ this.props.style }>
+        <div className="logs transScrollbar" id="globals-logs">
+          <div className="log-info"><div className="log-info-name">Globals</div></div>
+          { globals.map((log) => { return buildLog(log, "globals") }) }
+        </div>
+      </div>
+    )
+  }
+}
+class DatabaseLogs extends React.Component {
+  render() {
+    const database = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="database" style={ this.props.style }>
+        <div className="logs transScrollbar" id="database-logs">
+          <div className="log-info"><div className="log-info-name">Database</div></div>
+          <div className={`database-log-data`}>
+            <div className="database-log">Type</div>
+            <div className="database-log">ClanID</div>
+            <div className="database-log">GuildID</div>
+            <div className="database-log">MembershipID</div>
+            <div className="database-log">DisplayName</div>
+            <div className="database-log">Broadcast</div>
+            <div className="database-log">Count</div>
+            <div className="database-log">Date</div>
+          </div>
+          { database.map((log) => { return buildBroadcast(log, "database") }) }
+        </div>
+      </div>
+    )
+  }
+}
+class ErrorLogs extends React.Component {
+  render() {
+    const errorHandler = this.props.data;
+    return (
+      <div className="log-container transScrollbar" id="errorHandler" style={ this.props.style }>
+        <div className="logs transScrollbar" id="errorHandler-logs">
+          <div className="log-info"><div className="log-info-name">Errors</div></div>
+          { errorHandler.map((log) => { return buildLog(log, "errorHandler") }) }
+        </div>
+      </div>
+    )
   }
 }
 
