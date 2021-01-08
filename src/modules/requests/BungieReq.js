@@ -1,10 +1,11 @@
 import * as Misc from '../Misc';
+import * as Config from '../../Config';
 
 async function Request(path, isStat, isAuthRequired) {
   //Headers for requests
   var headers, authHeaders = null;
-  try { headers = { headers: { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json" } } } catch (err) { headers = {  }; }
-  try { authHeaders = { headers: { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json", "Authorization": `Bearer ${ JSON.parse(localStorage.getItem('Authorization')).access_token }` } } } catch (err) { authHeaders = { }; }
+  try { headers = { headers: { "X-API-Key": Config.apiKey, "Content-Type": "application/json" } } } catch (err) { headers = {  }; }
+  try { authHeaders = { headers: { "X-API-Key": Config.apiKey, "Content-Type": "application/json", "Authorization": `Bearer ${ JSON.parse(localStorage.getItem('Authorization')).access_token }` } } } catch (err) { authHeaders = { }; }
   return await fetch(`https://${isStat ? 'stats' : 'www'}.bungie.net${path}`, isAuthRequired ? authHeaders : headers).then(async (request) => {
     try {
       const response = await request.text();
@@ -21,7 +22,7 @@ async function Request(path, isStat, isAuthRequired) {
 }
 async function BungieReq(path, requiresKey) {
   let headers;
-  if(requiresKey) { headers = { "X-API-Key": "f4be3b9dd8374307b89fd109222e8998", "Content-Type": "application/json" } }
+  if(requiresKey) { headers = { "X-API-Key": Config.apiKey, "Content-Type": "application/json" } }
   else { headers = { "Content-Type": "application/json" } }
   return await fetch(`https://www.bungie.net${ path }`).then(async (request) => {
     try {
