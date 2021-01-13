@@ -24,6 +24,7 @@ export const GetBackendStatus = async () => apiRequest(`/GetBackendStatus`);
 export const GetFrontendStatus = async () => apiRequest(`/GetFrontendStatus`);
 export const GetBackendStatusHistory = async () => apiRequest(`/GetBackendStatusHistory`);
 export const GetFrontendStatusHistory = async () => apiRequest(`/GetFrontendStatusHistory`);
+export const GetFrontendStatusHistoryByDate = async (data) => apiRequest(`/GetFrontendStatusHistoryByDate`, data);
 export const GetLogHistory = async () => apiRequest(`/GetLogHistory`);
 export const GetDailyAPIStatus = async () => apiRequest(`/GetDailyAPIStatus`);
 export const GetFrontendStartup = async () => apiRequest(`/GetFrontendStartup`);
@@ -43,3 +44,14 @@ export const CheckAuthorization = async (data) => apiRequest(`/CheckAuthorizatio
 export const GetClan = async (data) => apiRequest(`/GetClan`, data);
 export const GetClanMembers = async (data) => apiRequest(`/GetClanMembers`, data);
 export const GetClanBroadcasts = async (data) => apiRequest(`/GetClanBroadcasts`, data);
+export const GetGuilds = async (data, callback) => { callback(await apiRequest(`/GetGuilds`, data)); }
+export const GetClansFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetClansFromGuildID`, data)); }
+export const GetUsersFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetUsersFromGuildID`, data)); }
+export const GetGuildDashboard = async (data, callback) => { callback(await apiRequest(`/GetGuildDashboard`, data)); }
+export const GetGlobals = async (callback) => { callback(await apiRequest(`/GetGlobals`)); }
+
+export const GetWeeklyFrontendStatus = async () => apiRequest(`/GetWeeklyFrontendLogs`);
+export const GetWeeklyBackendStatus = async () => apiRequest(`/GetWeeklyBackendLogs`);
+export const GetAggregateWeeklyFrontendLogs = async () => apiRequest(`/GetAggregateWeeklyFrontendLogs`);
+
+export const SaveAuth = async (auth, callback) => { callback(await apiRequest(`/SaveAuth`, auth)); }

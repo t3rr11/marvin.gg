@@ -1,0 +1,113 @@
+/* Server Selection */
+.server-selections-title {
+  text-align: center;
+  margin: auto auto;
+  font-size: 24px;
+  padding-top: 10px;
+}
+.server-selections-desc {
+  text-align: center;
+  margin: auto auto;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+.server-selections {
+  display: flex;
+  grid-gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.server-info-container {
+  display: inline-grid;
+  background: rgba(0,0,0,0.2);
+  grid-template-columns: 60px auto;
+  border-radius: 10px;
+  position: relative;
+  padding: 5px;
+  height: 70px;
+  width: fit-content;
+  cursor: pointer;
+}
+.server-info-container:hover { background: rgba(0,0,0,0.3); }
+.server-info-container > .server-icon {
+  display: inline-block;
+  background-size: 50px 50px;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+.server-info-container > .server-name {
+  display: inline-block;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 0px 10px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.server-details-container > .server-icon {
+  display: inline-block;
+  background-size: 50px 50px;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+/* Server Details */
+.server-clan-banners {
+  position: relative;
+}
+
+/* Clan Rankings */
+.rankings_title {
+  display: grid;
+  grid-template-columns: auto 80px 130px 100px 110px 100px 100px 190px 180px;
+  font-weight: bold;
+  border-top: 1px var(--LightNavyBlue) solid;
+  border-bottom: 1px var(--LightNavyBlue) solid;
+}
+.rankings_title > div {
+  position: relative;
+  padding: 5px;
+}
+.rankings_title > div:last-child { margin-right: 0px; }
+.rankings_title > div > div {
+  display: inline-block;
+  padding-right: 5px;
+}
+.rankings_title > div > .caret_down {
+  background-image: url("../assets/icons/arrow.png");
+  background-size: 15px 15px;
+  transform: rotate(270deg);
+  position: absolute;
+  top: 9px;
+  height: 15px;
+  width: 15px;
+}
+.rankings_title > div > .caret_up {
+  background-image: url("../assets/icons/arrow.png");
+  background-size: 15px 15px;
+  transform: rotate(90deg);
+  position: absolute;
+  top: 9px;
+  height: 15px;
+  width: 15px;
+}
+.rankings_title > div:hover {
+  background-color: var(--NavyBlue);
+  cursor: pointer;
+  color: #c7c7c7;
+}
+.clan_member {
+  display: grid;
+  grid-template-columns: auto 80px 130px 100px 110px 100px 100px 190px 180px;
+  margin-bottom: 1px;
+  padding: 5px 2px;
+  border-bottom: 1px var(--LightNavyBlue) solid;
+}
+.clan_member > div { padding-left: 2px; }
+.clan_member > div:first-child { padding-left: 0px; }

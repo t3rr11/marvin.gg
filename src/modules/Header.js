@@ -51,33 +51,62 @@ export class Header extends Component {
         </div>
         <div className="left-header">
           <div className="header-menu">
-            <div className={ `header-menu-item ${ this.props.currentPage === "home" ? "active" : "" }` }>
-              <img alt="home-icon" className="header-menu-item-icon" src="/images/icons/home.png" />
-              <Link className="header-link" to="/home" onClick={ () => this.props.setPage("home") }>Home</Link>
-              <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+            <div className={`header-menu-item-container ${ this.props.currentPage === "home" ? "active" : "" }`}>
+              <div className={ `header-menu-item ${ this.props.currentPage === "home" ? "active" : "" }` }>
+                <img alt="home-icon" className="header-menu-item-icon" src="/images/icons/home.png" />
+                <Link className="header-link" to="/home" onClick={ () => this.props.setPage("home") }>Home</Link>
+                <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "home" ? "active" : "" }`} src="/images/icons/arrow.png" />
+              </div>
             </div>
-            <div className={ `header-menu-item ${ this.props.currentPage === "commands" ? "active" : "" }` }>
-              <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/info.png" />
-              <Link className="header-link" to="/commands" onClick={ () => this.props.setPage("commands") }>Commands</Link>
-              <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+            <div className={`header-menu-item-container ${ this.props.currentPage === "commands" ? "active" : "" }`}>
+              <div className={ `header-menu-item ${ this.props.currentPage === "commands" ? "active" : "" }` }>
+                <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/info.png" />
+                <Link className="header-link" to="/commands" onClick={ () => this.props.setPage("commands") }>Commands</Link>
+                <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "commands" ? "active" : "" }`} src="/images/icons/arrow.png" />
+              </div>
             </div>
-            <div className={ `header-menu-item ${ this.props.currentPage === "clans" || this.props.currentPage === "clan" ? "active" : "" }` }>
-              <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/clans.png" />
-              <Link className="header-link" to="/clans" onClick={ () => this.props.setPage("clans") }>Clans</Link>
-              <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+            <div className={`header-menu-item-container ${ this.props.currentPage === "clans" ? "active" : "" }`}>
+              <div className={ `header-menu-item ${ this.props.currentPage === "clans" || this.props.currentPage === "clan" ? "active" : "" }` }>
+                <img alt="clans-icon" className="header-menu-item-icon" src="/images/icons/clans.png" />
+                <Link className="header-link" to="/clans" onClick={ () => this.props.setPage("clans") }>Clans</Link>
+                <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "clans" ? "active" : "" }`} src="/images/icons/arrow.png" />
+              </div>
             </div>
             {
               isAdmin ? (
                 <React.Fragment>
-                  <div className={ `header-menu-item ${ this.props.currentPage === "status" ? "active" : "" }` }>
-                    <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/discord.png" />
-                    <Link className="header-link" to="/status" onClick={ () => this.props.setPage("status") }>Status</Link>
-                    <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+                  <div className={`header-menu-item-container ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
+                    <div className={ `header-menu-item ${ this.props.currentPage === "dashboard" ? "active" : "" }` }>
+                      <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/dashboard.png" />
+                      <Link className="header-link" to="/dashboard" onClick={ () => this.props.setPage("dashboard") }>Dashboard</Link>
+                      <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "dashboard" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                    </div>
+                    <div className={`sub-menu-items ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "serverDetails" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverDetails") }>Server Details</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "serverRankings" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverRankings") }>Server Rankings</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "manageMarvin" ? "active" : "" }`} onClick={ () => this.props.setSubPage("manageMarvin") }><s>Manage Marvin</s></div>
+                    </div>
                   </div>
-                  <div className={ `header-menu-item ${ this.props.currentPage === "logs" ? "active" : "" }` }>
-                    <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/logs.png" />
-                    <Link className="header-link" to="/logs" onClick={ () => this.props.setPage("logs") }>Logs</Link>
-                    <img alt="arrow-icon" className="header-menu-item-arrow" src="/images/icons/arrow.png" />
+                  <div className={`header-menu-item-container ${ this.props.currentPage === "logs" ? "active" : "" }`}>
+                    <div className={ `header-menu-item ${ this.props.currentPage === "logs" ? "active" : "" }` }>
+                      <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/logs.png" />
+                      <Link className="header-link" to="/logs" onClick={ () => this.props.setPage("logs") }>Logs</Link>
+                      <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "logs" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                    </div>
+                  </div>
+                  <div className={`header-menu-item-container ${ this.props.currentPage === "status" ? "active" : "" }`}>
+                    <div className={ `header-menu-item ${ this.props.currentPage === "status" ? "active" : "" }` }>
+                      <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/discord.png" />
+                      <Link className="header-link" to="/status" onClick={ () => this.props.setPage("status") }>Status</Link>
+                      <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "status" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                    </div>
+                  </div>
+                  <div className={`header-menu-item-container ${ this.props.currentPage === "graphs" ? "active" : "" }`}>
+                    <div className={ `header-menu-item ${ this.props.currentPage === "graphs" ? "active" : "" }` }>
+                      <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/graph.png" />
+                      <Link className="header-link" to="/graphs" onClick={ () => this.props.setPage("graphs") }>Graphs</Link>
+                      <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "graphs" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                    </div>
                   </div>
                 </React.Fragment>
               ) : null
