@@ -48,21 +48,82 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.server-details-container > .server-icon {
-  display: inline-block;
-  background-size: 50px 50px;
-  border-radius: 20px;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-}
 
 /* Server Details */
-.server-clan-banners {
-  position: relative;
+.server-details-container {
+  height: 100%;
 }
+.server-details-container > .server-name {
+  cursor: default;
+}
+.server-clan-banners {
+  display: flex;
+  position: absolute;
+  grid-gap: 5px;
+  height: 80px;
+  right: 10px;
+  top: 0;
+}
+.server-clan-banner {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 70px;
+}
+.server-clan-banner > .clan-banner-icon {
+  position: relative;
+  display: inline-block;
+  top: -15px;
+}
+.server-tracked-items-title {
+  padding: 5px 8px 0px 8px;
+}
+.server-tracked-items {
+  padding: 5px 5px 0px 5px;
+}
+.server-tracked-items > .item-container {
+  display: inline-grid;
+  justify-content: start;
+  border: 1px#b3b3b324 solid;
+  margin: 0px 2px 3px;
+  text-align: center;
+  cursor: pointer;
+}
+.server-tracked-items > .item-container > .item-image {
+  height: 45px;
+  width: 45px;
+  margin: 4px;
+  pointer-events: none;
+}
+.item-tooltip {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 70px;
+}
+.item-tooltip .tooltip-text {
+  display: none;
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  width: max-content;
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: right;
+  border-radius: 6px;
+  padding: 5px;
+  z-index: 1;
+}
+.item-tooltip:hover .tooltip-text { display: block; }
 
 /* Clan Rankings */
+.server_rankings {
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: calc(100% - 2px);
+  width: calc(100% - 10px);
+}
 .rankings_title {
   display: grid;
   grid-template-columns: auto 80px 130px 100px 110px 100px 100px 190px 180px;
@@ -98,7 +159,7 @@
   width: 15px;
 }
 .rankings_title > div:hover {
-  background-color: var(--NavyBlue);
+  background-color: rgba(0,0,0,0.1);
   cursor: pointer;
   color: #c7c7c7;
 }
@@ -111,3 +172,29 @@
 }
 .clan_member > div { padding-left: 2px; }
 .clan_member > div:first-child { padding-left: 0px; }
+
+/* Others */
+.server-selection-btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(0,0,0,0.2);
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 18px auto;
+}
+.server-selection-btn:hover {
+  background: rgba(0,0,0,0.4);
+}
+.server-selection-btn > .arrow {
+  display: inline-block;
+  background-image: url("../assets/icons/arrow.png");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 15px;
+  margin-top: 5px;
+}

@@ -102,6 +102,7 @@
 .sub-menu-items.active {
   display: block;
   padding-bottom: 5px;
+  max-height: 250px;
 }
 .sub-menu-item {
   background-color: rgba(0,0,0,0.2);

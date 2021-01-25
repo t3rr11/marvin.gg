@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { generate } from 'build-number-generator';
-import { createStore } from 'redux';
 
 import Header from './modules/Header';
 import Home from './pages/Home';
 import Commands from './pages/Commands';
 import Clans from './pages/Clans';
 import Clan from './pages/Clan';
+import Guild from './pages/Guild';
 import Dashboard from './pages/Dashboard';
 import Status from './pages/Status';
 import Logs from './pages/Logs';
@@ -31,6 +30,7 @@ class App extends React.Component {
       status: "StartUp",
       statusText: "",
       loading: true,
+      error: false,
       manifestMounted: false
     },
     currentPage: "home",
@@ -39,37 +39,44 @@ class App extends React.Component {
     siteVersion: "1.0.6",
     showSettingsModal: false,
     isLive: false,
-    loggedIn: false
+    loggedIn: false,
+    discordInfo: null
   }
   async componentDidMount() {
     this.setState({ status: { status: 'startingUp', statusText: `Loading Guardianstats ${ this.state.siteVersion }`, loading: true }, currentBackground: this.getBackground() });
-    if(!localStorage.getItem("siteVersion")) { this.forceReset(); }
+    if(!localStorage.getItem("siteVersion")) { this.forceReset(true); }
     else {
-      await DiscordAuth.checkAuth((isError, isLoggedIn, data) => {
-        if(isLoggedIn) {
-          this.setState({ loggedIn: true });
-          Timers.startDiscordAuthTimer();
-        }
-      });
-      this.updatePage();
-      if(localStorage.getItem("siteVersion") === this.state.siteVersion) {
-        if(!await Checks.checkSettingsExist()) { Settings.setDefaultSettings(); }
-        await new Promise(resolve => Manifest.Load((state) => { this.setState({ status: state }); if(state.manifestMounted) { resolve(); } }));
-        if(!this.state.status.error) {
-          if(Misc.getURLVars()["code"]) {
-            const code = Misc.getURLVars()["code"];
-            this.setState({ status: { status: 'verifyingDiscordCode', statusText: `Connecting with Discord...`, error: false, loading: true } });
-            DiscordAuth.getAccessToken(code);
+      if(!Misc.getURLVars()["failed"]) {
+        await DiscordAuth.checkAuth((isError, isLoggedIn, data) => {
+          if(isLoggedIn) {
+            this.setState({ loggedIn: true, discordInfo: JSON.parse(localStorage.getItem("DiscordInfo")) });
+            Timers.startDiscordAuthTimer();
+          }
+        });
+        this.updatePage();
+        if(localStorage.getItem("siteVersion") === this.state.siteVersion) {
+          if(!await Checks.checkSettingsExist()) { Settings.setDefaultSettings(); }
+          await new Promise(resolve => Manifest.Load((state) => { this.setState({ status: state }); if(state.manifestMounted) { resolve(); } }));
+          if(!this.state.status.error) {
+            if(Misc.getURLVars()["code"]) {
+              const code = Misc.getURLVars()["code"];
+              this.setState({ status: { status: 'verifyingDiscordCode', statusText: `Connecting with Discord...`, error: false, loading: true } });
+              DiscordAuth.getAccessToken(code);
+            }
           }
         }
+        else { this.forceReset(true); } 
       }
-      else { this.forceReset(); }
+      else {
+        this.forceReset(false);
+        this.setState({ status: { status: 'failedToAuth', statusText: `Failed to auth with discord, Please try again or reconnect.`, error: true, loading: true }, discordInfo: null });
+      }
     }
   }
   updatePage() {
     if(!localStorage.getItem("currentPage") || window.location.pathname.split("/")[1] !== localStorage.getItem("currentPage")) {
       var currentPage = window.location.pathname.split("/")[1];
-      if(currentPage === "" || currentPage === "failed") { currentPage = "home"; }
+      if(currentPage === "") { currentPage = "home"; }
       this.setPage(currentPage);
     }
     else { this.setPage(localStorage.getItem("currentPage")); }
@@ -97,21 +104,25 @@ class App extends React.Component {
     if(localStorage.getItem("background") && localStorage.getItem("background") !== "Auto") { return localStorage.getItem("background"); }
     else { return backgrounds[Math.floor(Math.random() * backgrounds.length)]; }
   }
-  forceReset() {
+  forceReset(reload) {
     indexedDB.deleteDatabase("manifest");
+    localStorage.removeItem("DiscordInfo");
+    localStorage.removeItem("DiscordAuth");
+    localStorage.removeItem("nextDiscordAuthCheck");
+    localStorage.removeItem("nextManifestCheck");
     localStorage.setItem("siteVersion", this.state.siteVersion);
-    window.location.reload();
+    if(reload) { window.location.reload(); }
   }
   render() {
     const { status, statusText, loading, manifestMounted } = this.state.status;
     return (
       <Router>
         <div className="app" style={{ background: `var(--${this.state.currentBackground})` }}>
-          <div className="footer">Beta { generate({ version: this.state.siteVersion, versionSeparator: "-" })}</div>
           <Header 
             setPage={ ((page) => this.setPage(page)) } currentPage={ this.state.currentPage }
             setSubPage={ ((page) => this.setSubPage(page)) } currentSubPage={ this.state.currentSubPage }
             backgrounds={ backgrounds } currentBackground={ this.state.currentBackground } setBackground={ ((bg) => this.setBackground(bg)) }
+            discordInfo={ this.state.discordInfo } siteVersion={ this.state.siteVersion }
           />
           <Switch>
             <Route exact path="/" render={ props => { return <Home /> } }/>
@@ -119,6 +130,7 @@ class App extends React.Component {
             <Route path="/commands" render={ props => { return <Commands /> } }/>
             <Route path="/clans" render={ props => { return <Clans selectedClan={ ((clanID) => props.history.push(`/clan/${ clanID }`)) } /> } }/>
             <Route path="/clan" render={ props => { return <Clan props={ props } /> } }/>
+            <Route path="/guild" render={ props => { return <Guild props={ props } setSubPage={ ((page) => this.setSubPage(page)) } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/dashboard" render={ props => { return <Dashboard props={ props } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/status" render={ props => { return <Status /> } }/>
             <Route path="/logs" render={ props => { return <Logs /> } }/>

@@ -4,6 +4,7 @@ import Config from '../Config';
 import * as Misc from '../Misc';
 import * as apiRequest from '../modules/requests/API';
 import * as discord from '../modules/requests/DiscordAuth';
+import { generate } from 'build-number-generator';
 
 export class Header extends Component {
 
@@ -11,7 +12,8 @@ export class Header extends Component {
     loggedIn: false,
     isAdmin: false,
     showCopied: false,
-    platforms: null
+    platforms: null,
+    discordInfo: null
   }
 
   async componentDidMount() {
@@ -25,12 +27,13 @@ export class Header extends Component {
       const adminToken = localStorage.getItem("adminToken");
       apiRequest.CheckAuthorization({ token: adminToken }).then((response) => { if(response.code === 200) { this.setState({ isAdmin: true }); } });
     }
-    if(localStorage.getItem("DiscordInfo")) {
-      let discordInfo = JSON.parse(localStorage.getItem("DiscordInfo"));
-      this.setState({ loggedIn: true, discordInfo });
-    }
+    if(this.props.discordInfo) { this.setState({ loggedIn: true, discordInfo: this.props.discordInfo }); }
   }
   toggleMenuSlider() { console.log("Toggled Menu"); }
+
+  componentDidUpdate() {
+    if(this.props.discordInfo && !this.state.discordInfo) { this.setState({ loggedIn: true, discordInfo: this.props.discordInfo }); }
+  }
 
   render() {
     const { loggedIn, isAdmin, discordInfo } = this.state;    
@@ -72,21 +75,59 @@ export class Header extends Component {
                 <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "clans" ? "active" : "" }`} src="/images/icons/arrow.png" />
               </div>
             </div>
+            <div className={`header-menu-item-container ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
+              <div className={ `header-menu-item ${ this.props.currentPage === "dashboard" ? "active" : "" }` }>
+                <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/dashboard.png" />
+                <Link className="header-link" to="/dashboard" onClick={ () => this.props.setPage("dashboard") }>Dashboard</Link>
+                <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "dashboard" ? "active" : "" }`} src="/images/icons/arrow.png" />
+              </div>
+              <div className={`sub-menu-items ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
+                <div className={`sub-menu-item ${ this.props.currentSubPage === "serverDetails" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverDetails") }>Server Details</div>
+                <div className={`sub-menu-item ${ this.props.currentSubPage === "serverRankings" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverRankings") }>Server Rankings</div>
+                <div className={`sub-menu-item ${ this.props.currentSubPage === "manageMarvin" ? "active" : "" }`} onClick={ () => this.props.setSubPage("manageMarvin") }><s>Manage Marvin</s></div>
+              </div>
+            </div>
+            {
+              this.props.currentPage === "guild" ? (
+                <div className={`header-menu-item-container ${ this.props.currentPage === "guild" ? "active" : "" }`}>
+                  <div className={ `header-menu-item ${ this.props.currentPage === "guild" ? "active" : "" }` }>
+                    <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/graph.png" />
+                    <div className="header-link">Leaderboards</div>
+                    <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "guild" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                  </div>
+                  <div className={`sub-menu-items ${ this.props.currentPage === "guild" ? "active" : "" } transScrollbar`}>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "valor" ? "active" : "" }`} onClick={ () => this.props.setSubPage("valor") }>Valor</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "glory" ? "active" : "" }`} onClick={ () => this.props.setSubPage("glory") }>Glory</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "infamy" ? "active" : "" }`} onClick={ () => this.props.setSubPage("infamy") }>Infamy</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "seasonRank" ? "active" : "" }`} onClick={ () => this.props.setSubPage("seasonRank") }>Season Rank</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "timePlayed" ? "active" : "" }`} onClick={ () => this.props.setSubPage("timePlayed") }>Time Played</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "highestPower" ? "active" : "" }`} onClick={ () => this.props.setSubPage("highestPower") }>Highest Power</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "ironBanner" ? "active" : "" }`} onClick={ () => this.props.setSubPage("ironBanner") }>Iron Banner</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "levi" ? "active" : "" }`} onClick={ () => this.props.setSubPage("levi") }>Leviathan Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "eow" ? "active" : "" }`} onClick={ () => this.props.setSubPage("eow") }>Eater of Worlds Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "sos" ? "active" : "" }`} onClick={ () => this.props.setSubPage("sos") }>Spire of Stars Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "pLevi" ? "active" : "" }`} onClick={ () => this.props.setSubPage("pLevi") }>Prestige Levi Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "pEoW" ? "active" : "" }`} onClick={ () => this.props.setSubPage("pEoW") }>Prestige EoW Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "pSoS" ? "active" : "" }`} onClick={ () => this.props.setSubPage("pSoS") }>Prestige SoS Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "lastWish" ? "active" : "" }`} onClick={ () => this.props.setSubPage("lastWish") }>Last Wish Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "scourge" ? "active" : "" }`} onClick={ () => this.props.setSubPage("scourge") }>Scourge of the Past</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "sorrows" ? "active" : "" }`} onClick={ () => this.props.setSubPage("sorrows") }>Crown of Sorrows</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "garden" ? "active" : "" }`} onClick={ () => this.props.setSubPage("garden") }>Garden of Salvation</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "dsc" ? "active" : "" }`} onClick={ () => this.props.setSubPage("dsc") }>Deep Stone Crypt</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "shatteredThrone" ? "active" : "" }`} onClick={ () => this.props.setSubPage("shatteredThrone") }>Shattered Throne</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "pitOfHeresy" ? "active" : "" }`} onClick={ () => this.props.setSubPage("pitOfHeresy") }>Pit of Heresy</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "prophecy" ? "active" : "" }`} onClick={ () => this.props.setSubPage("prophecy") }>Prophecy</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "totalRaids" ? "active" : "" }`} onClick={ () => this.props.setSubPage("totalRaids") }>Total Raid Clears</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "activeScore" ? "active" : "" }`} onClick={ () => this.props.setSubPage("activeScore") }>Active Triumph Score</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "legacyScore" ? "active" : "" }`} onClick={ () => this.props.setSubPage("legacyScore") }>Legacy Triumph Score</div>
+                    <div className={`sub-menu-item ${ this.props.currentSubPage === "lifetimeScore" ? "active" : "" }`} onClick={ () => this.props.setSubPage("lifetimeScore") }>Lifetime Triumph Score</div>
+                  </div>
+                </div>
+              ) : null
+            }
             {
               isAdmin ? (
                 <React.Fragment>
-                  <div className={`header-menu-item-container ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
-                    <div className={ `header-menu-item ${ this.props.currentPage === "dashboard" ? "active" : "" }` }>
-                      <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/dashboard.png" />
-                      <Link className="header-link" to="/dashboard" onClick={ () => this.props.setPage("dashboard") }>Dashboard</Link>
-                      <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "dashboard" ? "active" : "" }`} src="/images/icons/arrow.png" />
-                    </div>
-                    <div className={`sub-menu-items ${ this.props.currentPage === "dashboard" ? "active" : "" }`}>
-                      <div className={`sub-menu-item ${ this.props.currentSubPage === "serverDetails" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverDetails") }>Server Details</div>
-                      <div className={`sub-menu-item ${ this.props.currentSubPage === "serverRankings" ? "active" : "" }`} onClick={ () => this.props.setSubPage("serverRankings") }>Server Rankings</div>
-                      <div className={`sub-menu-item ${ this.props.currentSubPage === "manageMarvin" ? "active" : "" }`} onClick={ () => this.props.setSubPage("manageMarvin") }><s>Manage Marvin</s></div>
-                    </div>
-                  </div>
                   <div className={`header-menu-item-container ${ this.props.currentPage === "logs" ? "active" : "" }`}>
                     <div className={ `header-menu-item ${ this.props.currentPage === "logs" ? "active" : "" }` }>
                       <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/logs.png" />
@@ -129,6 +170,7 @@ export class Header extends Component {
             <a href="https://ko-fi.com/terrii_dev" className="donate-link" id="kofi"><img src="./images/icons/kofi.png" width="26px" height="26px" />Buy me a coffee?</a>
           </div>
         </div>
+        <div className="footer">Beta { generate({ version: this.props.siteVersion, versionSeparator: "-" })}</div>
       </header>
     )
   }

@@ -7,6 +7,7 @@
 @import url('clans.css');
 @import url('clan.css');
 @import url('dashboard.css');
+@import url('guild.css');
 @import url('loader.css');
 @import url('scrollbars.css');
 
@@ -36,12 +37,22 @@
 }
 
 body { background: var(--BlueGradient); width: 100vw; height: 100vh; }
-.app > .page-content {
+.app {
   height: 100vh;
-  width: 100vw;
-  padding-left: 200px;
-  padding-top: 60px;
-  color: #fff;
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 60px auto;
+  color: white;
+}
+.app > header {
+  grid-column: 1;
+  grid-row: 1;
+}
+.app > .page-content {
+  position: relative;
+  height: 100%;
+  grid-column: 2;
+  grid-row: 2;
 }
 .app > .alert {
   position: absolute;
@@ -78,7 +89,7 @@ body { background: var(--BlueGradient); width: 100vw; height: 100vh; }
 }
 .footer {
   position: fixed;
-  bottom: 0;
-  right: 2px;
+  bottom: 125px;
+  left: 2px;
   color: white;
 }

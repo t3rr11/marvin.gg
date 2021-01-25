@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import ReactTooltip from 'react-tooltip';
 import Loader from '../modules/Loader';
 import Error from '../modules/Error';
+import ClanBannerGenerator from '../modules/ClanBanner';
 import * as API from '../modules/requests/API';
 import * as Misc from '../Misc';
-import ClanBannerGenerator from '../modules/ClanBanner';
+import { MANIFEST } from '../modules/handlers/ManifestHandler';
 
 export class Dashboard extends Component {
 
@@ -29,6 +31,8 @@ export class Dashboard extends Component {
     API.GetGuilds({ token: auth.access_token }, ({ isError, code, message, data }) => {
       if(!isError) {
         this.setState({ status: { status: 'ready', statusText: `Finished loading`, loading: false }, servers: data.sort((a,b) => a.name.length - b.name.length) });
+        //Temp
+        //this.selectServer(data[2]);
       }
       else { this.setState({ status: { status: 'error', statusText: message, loading: false } }); }
     });
@@ -56,6 +60,8 @@ export class Dashboard extends Component {
     });
   }
 
+  resetServerSelection = () => { this.setState({ selectedServer: null }); }
+
   render() {
     const { status, statusText } = this.state.status;
     if(status === "error") { return (<Error error={ statusText } />) }
@@ -65,13 +71,21 @@ export class Dashboard extends Component {
           case this.props.currentSubPage === "serverRankings": {
             return (
               <div className="page-content" style={{ overflow: "hidden" }}>
-                <ClanMemberRankings server={ this.state.selectedServer } clans={ this.state.clans } users={ this.state.users } globals={ this.state.globals } />
+                <div className="server-selection-btn" onClick={ (() => this.resetServerSelection()) }><span className="arrow"></span><span>Server Selection</span></div>
+                <div className="server-name" style={{ marginLeft: "150px", background: "rgba(0,0,0,0.2)", width: "fit-content", padding: "5px", borderRadius: "5px", marginTop: "5px" }}>
+                  { this.state.selectedServer.name }
+                </div>
+                <DiscordServerRankings server={ this.state.selectedServer } clans={ this.state.clans } users={ this.state.users } globals={ this.state.globals } />
               </div>
             )
           }
           case this.props.currentSubPage === "manageMarvin": {
             return (
               <div className="page-content" style={{ overflow: "hidden" }}>
+                <div className="server-selection-btn" onClick={ (() => this.resetServerSelection()) }><span className="arrow"></span><span>Server Selection</span></div>
+                <div className="server-name" style={{ marginLeft: "150px", background: "rgba(0,0,0,0.2)", width: "fit-content", padding: "5px", borderRadius: "5px", marginTop: "5px" }}>
+                  { this.state.selectedServer.name }
+                </div>
                 <DiscordServerManage server={ this.state.selectedServer } clans={ this.state.clans } users={ this.state.users } globals={ this.state.globals } />
               </div>
             )
@@ -79,6 +93,7 @@ export class Dashboard extends Component {
           default: {
             return (
               <div className="page-content" style={{ overflow: "hidden" }}>
+                <div className="server-selection-btn" onClick={ (() => this.resetServerSelection()) }><span className="arrow"></span><span>Server Selection</span></div>
                 <DiscordServerDetails server={ this.state.selectedServer } clans={ this.state.clans } users={ this.state.users } globals={ this.state.globals } />
               </div>
             )
@@ -129,17 +144,28 @@ export class DiscordServerContainer extends Component {
 
 export class DiscordServerDetails extends Component {
   render() {
-    let smallName = this.props.server.name.match(/\b(\w)/g).join('').slice(0, 2);
+    let server = this.props.server;
+    let smallName = server.name.match(/\b(\w)/g).join('').slice(0, 2);
     return(
       <div className="server-details-container">
-        { this.props.server.icon ? 
-          <div className="server-icon" style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${ this.props.server.id }/${ this.props.server.icon }.png")` }}></div> :
-          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName }</div>
-        }
-        <div className="server-name" >{ this.props.server.name }</div>
-        <div className="server-clan-banners">
-          { this.props.clans.map(clan => { return <ClanBannerGenerator type="small" clanID={ clan.clanID } clanBanner={ clan.clanBanner } width="45px" height="60px" /> }) }
+        <div className="server-name" style={{ marginLeft: "150px", background: "rgba(0,0,0,0.2)", width: "fit-content", padding: "5px", borderRadius: "5px", marginTop: "5px" }}>
+          { server.name }
         </div>
+        <div className="server-clan-banners">
+          {
+            this.props.clans.map(clan => {
+              return (
+                <div className="server-clan-banner" data-tip data-for={ `${ clan.clanID }-tooltip` }>
+                  <ClanBannerGenerator type="small" clanID={ clan.clanID } clanBanner={ clan.clanBanner } width="45px" height="60px" />
+                  <ReactTooltip id={ `${ clan.clanID }-tooltip` } place="bottom" effect="solid" backgroundColor="#1a1d2d">
+                    <div>{ clan.clanName }</div>
+                  </ReactTooltip>
+                </div>
+              )
+            })
+          }
+        </div>
+        <TrackedItemsContainer server={ server } globals={ this.props.globals } />
       </div>
     );
   }
@@ -155,19 +181,17 @@ export class DiscordServerManage extends Component {
   }
 }
 
-export class ClanMemberRankings extends Component {
+export class DiscordServerRankings extends Component {
 
   state = {
-    sortBy: "most",
+    sortBy: "least",
     type: "lastPlayed",
     users: []
   }
 
   componentDidMount() {
     const users = this.props.users;
-    this.setState({ users }, (() => {
-      this.sortRankings(this.state.type);
-    }));
+    this.setState({ users }, (() => { this.sortRankings(this.state.type); }));
   }
 
   sortRankings(type) {
@@ -188,7 +212,7 @@ export class ClanMemberRankings extends Component {
   render() {
     const users = this.state.users;
     return(
-      <div className="clan_stats_container transScrollbar">
+      <div className="server_rankings transScrollbar">
         <div className="rankings_title">
           <div id="displayName"><div>Display Name</div></div>
           <div id="seasonRank" onClick={ ((e) => this.sortRankings("seasonRank")) }><div>SR</div><div className={ this.state.type === "seasonRank" ? "caret_down" : "caret_up" }> </div></div>
@@ -220,6 +244,41 @@ export class ClanMemberRankings extends Component {
         }
       </div>
     );
+  }
+}
+
+export class TrackedItemsContainer extends Component {
+  render() {
+    let server = this.props.server;
+    let globalItems = this.props.globals.map(e => { return e.hash });
+    let extraItems = server.broadcasts.extraItems.map(e => { if(e.enabled) return e.hash });
+    let ignoredItems = server.broadcasts.extraItems.map(e => { if(!e.enabled) return e.hash });
+    let trackedItems = [];
+    if(server.broadcasts.mode === "Auto") { trackedItems = [...globalItems.filter(e => !ignoredItems.includes(e)), ...extraItems.filter(e => !globalItems.includes(e))]; }
+    else { trackedItems = extraItems; }
+    //TODO need to add manifest library and pull item images and names etc. Possbily use the css for the armory items?
+    return(
+      <React.Fragment>
+        <div className="server-tracked-items-title">Items tracked by this server, not ordered in any way just yet as this page is still way in beta.</div>
+        <div className="server-tracked-items">
+          {
+            trackedItems.map((collectibleHash) => {
+              let itemData = MANIFEST?.DestinyCollectibleDefinition[collectibleHash];
+              if(itemData) {
+                return (
+                  <div className="item-container" data-tip data-for={ `${ collectibleHash }-tooltip` }>
+                    <img className="item-image" src={ `https://bungie.net${ itemData?.displayProperties?.icon }` } />
+                    <ReactTooltip id={ `${ collectibleHash }-tooltip` } place="bottom" effect="solid" backgroundColor="#1a1d2d">
+                      <div>{ itemData?.displayProperties?.name }</div>
+                    </ReactTooltip>
+                  </div>
+                )
+              }
+            })
+          }
+        </div>
+      </React.Fragment>
+    )
   }
 }
 

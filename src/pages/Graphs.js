@@ -88,6 +88,16 @@ class Graphs extends React.Component {
           });
         }
       });
+      backendData.map((e, index) => {
+        if(index > 0) {
+          backend.push({
+            clans: e.clans,
+            rt_clans: e.rt_clans,
+            total_clans: e.clans + e.rt_clans,
+            date: new Date(e.date).toLocaleString("en-AU")
+          });
+        }
+      });
     });
 
     //Setup data updating
@@ -97,7 +107,7 @@ class Graphs extends React.Component {
     }, 3660000 - new Date().getTime() % 3660000);
 
     //Save state
-    this.setState({ status: { status: 'ready', statusText: `Finished Updating Graphs.`, loading: false }, frontend });
+    this.setState({ status: { status: 'ready', statusText: `Finished Updating Graphs.`, loading: false }, frontend, backend });
   }
 
   render() {
@@ -144,6 +154,25 @@ class Graphs extends React.Component {
             <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
             <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
             <Area type="monotone" dataKey="servers" stroke="#84d5d8" fillOpacity={1} fill="url(#colorServers)" />
+          </AreaChart>
+
+          <AreaChart width={600} height={200} data={ this.state.backend } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+            <defs>
+              <linearGradient id="colorClans" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#3868b2" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
+              </linearGradient>
+              <linearGradient id="colorRTClans" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#3868b2" stopOpacity={0.5}/>
+                <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+            <XAxis dataKey="date" interval={37} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+            <YAxis yAxisId={1} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+            <YAxis yAxisId={2} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} ticks={[0,5,10,20,50]} />
+            <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+            <Area yAxisId={1} type="monotone" dataKey="total_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorClans)" />
+            <Area yAxisId={2} type="monotone" dataKey="rt_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorRTClans)" />
           </AreaChart>
 
         </div>

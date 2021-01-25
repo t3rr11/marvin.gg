@@ -48,6 +48,7 @@ export const GetGuilds = async (data, callback) => { callback(await apiRequest(`
 export const GetClansFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetClansFromGuildID`, data)); }
 export const GetUsersFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetUsersFromGuildID`, data)); }
 export const GetGuildDashboard = async (data, callback) => { callback(await apiRequest(`/GetGuildDashboard`, data)); }
+export const GetGuildRankings = async (data, callback) => { callback(await apiRequest(`/GetGuildRankings`, data)); }
 export const GetGlobals = async (callback) => { callback(await apiRequest(`/GetGlobals`)); }
 
 export const GetWeeklyFrontendStatus = async () => apiRequest(`/GetWeeklyFrontendLogs`);

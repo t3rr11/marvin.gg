@@ -1,0 +1,52 @@
+.guildRankings {
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: calc(100% - 2px);
+  width: calc(100% - 10px);
+}
+.guildRankingsTitle {
+  display: grid;
+  grid-template-columns: 30px auto max-content;
+  font-weight: bold;
+  border-bottom: 1px rgba(0,0,0,0.2) solid;
+}
+.guildRankingsTitle > div {
+  position: relative;
+  padding: 5px;
+}
+.guildRankingsTitle > #values > div {
+  display: inline-block;
+  width: 150px;
+}
+.guildRankingsTitle > div:first-child { padding-left: 8px; }
+.guildRankingsTitle > div:last-child { padding-right: 10px; text-align: right; }
+.guildRankingsTitle > div > div {
+  display: inline-block;
+  padding-right: 5px;
+}
+.guildRankingsTitle > div:hover {
+  background-color: rgba(0,0,0,0.1);
+  cursor: pointer;
+  color: #c7c7c7;
+}
+.guildMember {
+  display: grid;
+  grid-template-columns: 30px auto max-content;
+  padding: 5px 2px;
+  border-bottom: 1px rgba(0,0,0,0.2) solid;
+}
+.guildMember > div { padding-left: 2px; }
+.guildMember:nth-child(even) { background: rgba(0,0,0,0.05) }
+.guildMember > div:first-child { padding-left: 5px; }
+.guildMember > div:last-child { padding-right: 10px; text-align: right; }
+.guildMember:last-child { border-bottom: 0px; }
+.guildMember > #values > div {
+  display: inline-block;
+  width: 150px;
+}
+.guildMember.hl {
+  background: rgba(0,0,0,0.2);
+  border-top: 1px rgba(0,0,0,0.05) solid;
+  margin-top: -1px;
+}
