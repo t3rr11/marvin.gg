@@ -75,7 +75,7 @@ export class Leaderboards extends Component {
   }
 
   selectServer = (server) => {
-    this.props.props.location.pathname = `/leaderboards/${ server.id }/valor/${ window.location.search }`;
+    this.props.props.location.pathname = `/leaderboards/${ server.id }/${ this.props.currentSubPage ? this.props.currentSubPage : "valor" }/${ window.location.search }`;
     this.GetGuild();
   }
   resetServerSelection = () => {
