@@ -36,7 +36,7 @@ class App extends React.Component {
     currentPage: "home",
     currentSubPage: "",
     currentBackground: "MidnightGradient",
-    siteVersion: "1.0.6",
+    siteVersion: "1.1.1",
     showSettingsModal: false,
     isLive: false,
     loggedIn: false,
@@ -54,7 +54,8 @@ class App extends React.Component {
           }
         });
         this.updatePage();
-        if(localStorage.getItem("siteVersion") === this.state.siteVersion) {
+        if(localStorage.getItem("siteVersion").split('.')[1] === this.state.siteVersion.split('.')[1]) {
+          if(localStorage.getItem("siteVersion").split('.')[2] !== this.state.siteVersion.split('.')[2]) { this.softReset(); }
           if(!await Checks.checkSettingsExist()) { Settings.setDefaultSettings(); }
           await new Promise(resolve => Manifest.Load((state) => { this.setState({ status: state }); if(state.manifestMounted) { resolve(); } }));
           if(!this.state.status.error) {
@@ -65,7 +66,7 @@ class App extends React.Component {
             }
           }
         }
-        else { this.forceReset(true); } 
+        else { this.forceReset(true); }
       }
       else {
         this.forceReset(false);
@@ -103,6 +104,9 @@ class App extends React.Component {
   getBackground() {
     if(localStorage.getItem("background") && localStorage.getItem("background") !== "Auto") { return localStorage.getItem("background"); }
     else { return backgrounds[Math.floor(Math.random() * backgrounds.length)]; }
+  }
+  softReset() {
+    localStorage.setItem("siteVersion", this.state.siteVersion);
   }
   forceReset(reload) {
     indexedDB.deleteDatabase("manifest");
