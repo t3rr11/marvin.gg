@@ -88,14 +88,14 @@ export class Header extends Component {
               </div>
             </div>
             {
-              this.props.currentPage === "guild" ? (
-                <div className={`header-menu-item-container ${ this.props.currentPage === "guild" ? "active" : "" }`}>
-                  <div className={ `header-menu-item ${ this.props.currentPage === "guild" ? "active" : "" }` }>
+              this.props.currentPage === "guild" || this.props.currentPage === "leaderboards" ? (
+                <div className={`header-menu-item-container ${ this.props.currentPage === "guild" || this.props.currentPage === "leaderboards" ? "active" : "" }`}>
+                  <div className={ `header-menu-item ${ this.props.currentPage === "guild" || this.props.currentPage === "leaderboards" ? "active" : "" }` }>
                     <img alt="discord-icon" className="header-menu-item-icon" src="/images/icons/graph.png" />
                     <div className="header-link">Leaderboards</div>
-                    <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "guild" ? "active" : "" }`} src="/images/icons/arrow.png" />
+                    <img alt="arrow-icon" className={`header-menu-item-arrow ${ this.props.currentPage === "guild" || this.props.currentPage === "leaderboards" ? "active" : "" }`} src="/images/icons/arrow.png" />
                   </div>
-                  <div className={`sub-menu-items ${ this.props.currentPage === "guild" ? "active" : "" } transScrollbar`}>
+                  <div className={`sub-menu-items ${ this.props.currentPage === "guild" || this.props.currentPage === "leaderboards" ? "active" : "" } transScrollbar`}>
                     <div className={`sub-menu-item ${ this.props.currentSubPage === "valor" ? "active" : "" }`} onClick={ () => this.props.setSubPage("valor") }>Valor</div>
                     <div className={`sub-menu-item ${ this.props.currentSubPage === "glory" ? "active" : "" }`} onClick={ () => this.props.setSubPage("glory") }>Glory</div>
                     <div className={`sub-menu-item ${ this.props.currentSubPage === "infamy" ? "active" : "" }`} onClick={ () => this.props.setSubPage("infamy") }>Infamy</div>

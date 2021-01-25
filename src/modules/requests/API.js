@@ -45,6 +45,7 @@ export const GetClan = async (data) => apiRequest(`/GetClan`, data);
 export const GetClanMembers = async (data) => apiRequest(`/GetClanMembers`, data);
 export const GetClanBroadcasts = async (data) => apiRequest(`/GetClanBroadcasts`, data);
 export const GetGuilds = async (data, callback) => { callback(await apiRequest(`/GetGuilds`, data)); }
+export const GetAllGuilds = async (data, callback) => { callback(await apiRequest(`/GetAllGuilds`, data)); }
 export const GetClansFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetClansFromGuildID`, data)); }
 export const GetUsersFromGuildID = async (data, callback) => { callback(await apiRequest(`/GetUsersFromGuildID`, data)); }
 export const GetGuildDashboard = async (data, callback) => { callback(await apiRequest(`/GetGuildDashboard`, data)); }

@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Commands from './pages/Commands';
 import Clans from './pages/Clans';
 import Clan from './pages/Clan';
-import Guild from './pages/Guild';
+import Guild from './pages/Leaderboards';
 import Dashboard from './pages/Dashboard';
 import Status from './pages/Status';
 import Logs from './pages/Logs';
@@ -130,7 +130,7 @@ class App extends React.Component {
             <Route path="/commands" render={ props => { return <Commands /> } }/>
             <Route path="/clans" render={ props => { return <Clans selectedClan={ ((clanID) => props.history.push(`/clan/${ clanID }`)) } /> } }/>
             <Route path="/clan" render={ props => { return <Clan props={ props } /> } }/>
-            <Route path="/guild" render={ props => { return <Guild props={ props } setSubPage={ ((page) => this.setSubPage(page)) } currentSubPage={ this.state.currentSubPage } /> } }/>
+            <Route path="/leaderboards" render={ props => { return <Guild props={ props } setSubPage={ ((page) => this.setSubPage(page)) } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/dashboard" render={ props => { return <Dashboard props={ props } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/status" render={ props => { return <Status /> } }/>
             <Route path="/logs" render={ props => { return <Logs /> } }/>

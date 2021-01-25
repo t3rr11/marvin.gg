@@ -8,35 +8,37 @@ import * as bungieRequest from '../modules/requests/BungieReq';
 import * as Manifest from '../modules/handlers/ManifestHandler';
 import * as Misc from '../Misc';
 
-export class Guild extends Component {
+export class Leaderboards extends Component {
 
   state = {
     status: {
       status: 'startingUp',
-      statusText: `Loading Guild`,
+      statusText: `Loading leaderboards`,
       loading: true
     },
     leaderboardType: null,
-    highlightedUser: null, 
+    highlightedUser: null,
     guild: { },
-    clans: { },
-    users: { }
+    clans: [],
+    users: [],
+    servers: []
   }
 
   componentDidMount() {
-    document.title = "Marvin - Guild";
+    document.title = "Marvin - Leaderboards";
     this.GetGuild();
   }
 
   GetGuild() {
     const path = this.props.props.location.pathname.split("/");
-    if(path[2] && path[3]) {
+    if(path[2]) {
       const guildID = path[2];
-      const leaderboardType = path[3];
+      const leaderboardType = path[3] ? path[3] : "valor";
       const highlightedUser = Misc.getURLVars()["hl"];
       this.props.setSubPage(leaderboardType);
       API.GetGuildRankings({ guildID }, ({ isError, code, message, data }) => {
         if(!isError) {
+          window.history.pushState({}, '', this.props.props.location.pathname);
           this.setState({ 
             status: { status: 'ready', statusText: `Finished loading`, loading: false },
             leaderboardType,
@@ -49,17 +51,57 @@ export class Guild extends Component {
         else { this.setState({ status: { status: 'error', statusText: message, loading: false } }); }
       });
     }
-    else { this.setState({ status: { status: 'error', statusText: "Not enough params in URL", loading: false } }); }
+    else {
+      if(localStorage.getItem("DiscordAuth")) { this.getServers(); }
+      else { this.setState({ status: { status: 'error', statusText: "Not logged in. Please login or use links provided by Marvin.", loading: false } }); }
+    }
+  }
+
+  getServers() {
+    let auth = JSON.parse(localStorage.getItem("DiscordAuth"));
+    if(this.state.servers.length > 0) {
+      window.history.pushState({}, '', `/leaderboards${ window.location.search }`);
+      this.setState({ status: { status: 'serverSelection', statusText: "Please select a server.", loading: false } });
+    }
+    else {
+      API.GetAllGuilds({ token: auth.access_token }, ({ isError, code, message, data }) => {
+        if(!isError) {
+          window.history.pushState({}, '', `/leaderboards${ window.location.search }`);
+          this.setState({ status: { status: 'serverSelection', statusText: "Please select a server.", loading: false }, servers: data.sort((a,b) => a.name.length - b.name.length) });
+        }
+        else { this.setState({ status: { status: 'error', statusText: message, loading: false } }); }
+      });
+    }
+  }
+
+  selectServer = (server) => {
+    this.props.props.location.pathname = `/leaderboards/${ server.id }/valor/${ window.location.search }`;
+    this.GetGuild();
+  }
+  resetServerSelection = () => {
+    this.props.props.location.pathname = `/leaderboards${ window.location.search }`;
+    this.GetGuild();
   }
 
   render() {
-    const { leaderboardType, highlightedUser, users, clans } = this.state;
+    const { leaderboardType, highlightedUser, guild, users, clans, servers } = this.state;
     const { status, statusText } = this.state.status;
     if(status === "error") { return (<Error error={ statusText } />) }
     else if(status === "ready") {
       return (
-        <div className="page-content" style={{ overflow: "hidden" }}>
+        <div className="page-content" id="leaderboards" style={{ overflow: "hidden" }}>
+          <div className="server-selection-btn" onClick={ (() => this.resetServerSelection()) }><span className="arrow"></span><span>Server Selection</span></div>
+          <div className="server-name" style={{ marginLeft: "150px", background: "rgba(0,0,0,0.2)", width: "fit-content", padding: "5px", borderRadius: "5px", marginTop: "5px", marginBottom: "1px" }}>
+            { guild.guildName.length > 0 ? guild.guildName : "Server" }
+          </div>
           <ServerRankings clans={clans} users={users.filter(e => !e.isPrivate)} leaderboardType={leaderboardType} highlightedUser={highlightedUser} currentSubPage={this.props.currentSubPage} />
+        </div>
+      );
+    }
+    else if(status === "serverSelection") {
+      return (
+        <div className="page-content" style={{ overflow: "hidden" }}>
+          <DiscordServerSelectionContainer servers={ servers } selectServer={ ((server) => this.selectServer(server)) } />
         </div>
       );
     }
@@ -90,7 +132,7 @@ class ServerRankings extends Component {
   componentDidUpdate() {
     if(this.props.currentSubPage !== this.state.currentSubPage) {
       const path = window.location.pathname.split("/");
-      window.history.pushState({}, '', `/guild/${ path[2] }/${ this.props.currentSubPage }${ window.location.search }`);
+      window.history.pushState({}, '', `/${ path[1] }/${ path[2] }/${ this.props.currentSubPage }/${ window.location.search }`);
       this.setState({
         clans: this.props.clans,
         users: this.props.users,
@@ -206,4 +248,33 @@ class ServerRankings extends Component {
   }
 }
 
-export default Guild;
+class DiscordServerSelectionContainer extends Component {
+  render() {
+    return(
+      <React.Fragment>
+        <div className="server-selections-title">Server Selection</div>
+        <div className="server-selections-desc">Below are a list of servers that Marvin and you have in common (max: 20), please select a server which you would like to see leaderboards for.</div>
+        <div className="server-selections">
+          { this.props.servers.map((server) => <DiscordServerContainer key={ server.id } server={server} selectServer={ ((server) => this.props.selectServer(server)) }/>) }
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+class DiscordServerContainer extends Component {
+  render() {
+    let smallName = this.props.server.name.match(/\b(\w)/g).join('').slice(0, 2);
+    return(
+      <div key={ this.props.server.id } className="server-info-container" onClick={ (() => this.props.selectServer(this.props.server)) }>
+        { this.props.server.icon ? 
+          <div className="server-icon" style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${ this.props.server.id }/${ this.props.server.icon }.png")` }}></div> :
+          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName }</div>
+        }
+        <div className="server-name" >{ this.props.server.name }</div>
+      </div>
+    );
+  }
+}
+
+export default Leaderboards;
