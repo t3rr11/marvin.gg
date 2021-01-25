@@ -34,11 +34,12 @@ export class Leaderboards extends Component {
     if(path[2]) {
       const guildID = path[2];
       const leaderboardType = path[3] ? path[3] : "valor";
-      const highlightedUser = Misc.getURLVars()["hl"];
+      let highlightedUser = this.state.highlightedUser;
+      if(!this.state.highlightedUser) { highlightedUser = Misc.getURLVars()["hl"]; }
       this.props.setSubPage(leaderboardType);
       API.GetGuildRankings({ guildID }, ({ isError, code, message, data }) => {
         if(!isError) {
-          window.history.pushState({}, '', this.props.props.location.pathname);
+          window.history.pushState({}, '', `${ this.props.props.location.pathname }`);
           this.setState({ 
             status: { status: 'ready', statusText: `Finished loading`, loading: false },
             leaderboardType,
