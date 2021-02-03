@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Status from './pages/Status';
 import Logs from './pages/Logs';
 import Graphs from './pages/Graphs';
+import SoT from './pages/SoT';
 import Error from './modules/Error';
 import Loader from './modules/Loader';
 import SmallLoader from './modules/SmallLoader';
@@ -141,6 +142,7 @@ class App extends React.Component {
             <Route path="/graphs" render={ props => { return <Graphs /> } }/>
             <Route path="/loader" render={ props => { return <Loader statusText={ "Testing" } /> } }/>
             <Route path="/discord" render={ props => { return (window.location.href = "https://discord.gg/jbEbYej") } }/>
+            <Route path="/sot" render={ props => { return <SoT /> } }/>
             <Route path="/test" render={ props => { return "" } }/>
             <Route path="*" render={ props => { return <Error error={ "This page was not found" } /> } }/>
           </Switch>

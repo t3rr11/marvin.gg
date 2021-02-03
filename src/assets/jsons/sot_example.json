@@ -1,0 +1,3193 @@
+{
+  "isError": false,
+  "Data": {
+    "isError": false,
+    "Data": {
+        "ActiveFrom": "2021-01-28T10:15:00Z",
+        "ActiveUntil": "2021-04-08T10:00:00Z",
+        "IsActive": true,
+        "Tiers": [
+            {
+                "Number": 1,
+                "Title": "Castaway of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 1,
+                        "Rewards": {
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "7c5dc3b9-1b95-4a48-aa8e-0ee8d35f6fc3.png",
+                                "EntitlementText": "Dark Warsmith Pistol",
+                                "EntitlementDescription": "When pirates talk about 'the heat of battle', they may be referring to this fiery flintlock."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 2,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "8da754f4-f4d4-46bf-bddb-ed05129feb58.png",
+                                "EntitlementText": "Castaway of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 1 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 3,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 4,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "3145b14f-0fe4-4823-9fe5-3d7a6335273b.png",
+                                "EntitlementText": "Shroudbreaker Makeup",
+                                "EntitlementDescription": "Daub yourself with an Ancient artefact design - but remember, it won't help you survive the Shroud…"
+                            }
+                        }
+                    },
+                    {
+                        "Number": 5,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 6,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 7,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "f5501239-08a4-4fc9-9063-7d40f5981e4f.png",
+                                "EntitlementText": "Shroudbreaker Flag",
+                                "EntitlementDescription": "Display your love of Ancient relics - and desire to conquer Season One - by flying this flag."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 8,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 9,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 10,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "564699b3-1e92-4792-8da5-d249f360104d.png",
+                                "EntitlementText": "Shroudbreaker Sail",
+                                "EntitlementDescription": "A Season One design celebrating the sought-after Shroudbreaker, used to reach the Shores of Gold."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "287e7f3f-e18e-4a6f-af47-cb558824d31a.png",
+                                "EntitlementText": "Crab Dab",
+                                "EntitlementDescription": "The latest craze sweeping the Sea of Thieves, or perhaps some form of ancient crab worship?"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 2,
+                "Title": "Sailor of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 11,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "31a71ddc-5514-4065-bed1-0741853554a1.png",
+                                "EntitlementText": "Sailor of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 2 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 12,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 13,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "fa10369d-faf3-4a4b-98dc-44dbd529967b.png",
+                                "EntitlementText": "Seasoned Kraken Lantern",
+                                "EntitlementDescription": "Krakens aren't usually green, but this lantern will turn envious pirates a similar shade."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 14,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 15,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 16,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "14d62c42-f661-4c35-8b5d-7be6b48e44c2.png",
+                                "EntitlementText": "Shroudbreaker Tattoo",
+                                "EntitlementDescription": "Glyphs of an Ancient design, inking history across your body. Umbra would be proud."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 17,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 18,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 19,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 20,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "da024fd8-fbf4-4ef0-8581-68f059553945.png",
+                                "EntitlementText": "Frostbite Eyepatch",
+                                "EntitlementDescription": "A glittering eyepatch that could almost have been carved from solid ice. Brr."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "12a7debc-2aac-492f-8c99-11aa5770e13e.png",
+                                "EntitlementText": "Dark Warsmith Blunderbuss",
+                                "EntitlementDescription": "Unleash war upon your enemies from the boiling barrel of your new favourite blunderbuss."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 3,
+                "Title": "Rogue of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 21,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "2eb5c4e7-344f-4fdd-a10d-e79e6d46879f.png",
+                                "EntitlementText": "Rogue of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 3 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 22,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 23,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "f9dfeb5e-b9bd-4d82-910e-b02e3fd4191b.png",
+                                "EntitlementText": "Frostbite Braided Hair",
+                                "EntitlementDescription": "An elegant braid will keep your hair neatly in place. Unfreezing it later is another matter."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 24,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 25,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            },
+                            "Legendary": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "b2b7a5c6-39b2-484b-9f49-c538aa593ca2.png",
+                                "EntitlementText": "Pirate Legend Bound Beard",
+                                "EntitlementDescription": "An intricately twined and twisted facial hair arrangement, kept in place with golden clasps."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 26,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 27,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "aba66064-664e-4d92-9581-148a7f31ee0a.png",
+                                "EntitlementText": "Frostbite Topknot Hair",
+                                "EntitlementDescription": "Hair piled into a tidy bun atop your head, kept in place thanks to the power of an icy shard."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 28,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 29,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 30,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "74fa22c0-0089-472a-a5da-c9723ab85ded.png",
+                                "EntitlementText": "Frostbite Belt",
+                                "EntitlementDescription": "The precious stone transforms this length of old rope into a hardy fashion accessory."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "6361084a-366e-4cf7-9a03-8da110c078c6.png",
+                                "EntitlementText": "Bear & Bird Wheel",
+                                "EntitlementDescription": "Doubles as a tribute to the Red Crested Breegull, a very rare bird indeed."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 4,
+                "Title": "Seafarer of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 31,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "9ca91ae7-04b0-4731-b45b-9c078c274c6b.png",
+                                "EntitlementText": "Seafarer of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 4 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 32,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 33,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 34,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 35,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 36,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "562b65e7-84d9-4634-b5f0-01800bd5168a.png",
+                                "EntitlementText": "Frostbite Beard",
+                                "EntitlementDescription": "A thick beard helps retain body heat. Adorning it with glittering chunks of ice? Not so much."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 37,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 38,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 39,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 40,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "54ac7f08-77e5-45dc-8668-eb879e29ee35.png",
+                                "EntitlementText": "Frostbite Boots",
+                                "EntitlementDescription": "Heavy boots with soles that help stop even the most stupefied pirate from slipping."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "6598919e-4a5c-4d25-abbd-d06117d612df.png",
+                                "EntitlementText": "Dark Warsmith Cutlass",
+                                "EntitlementDescription": "This cutlass glows so fiercely, it could almost be straight from a weaponsmith's forge."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 5,
+                "Title": "Shipmate of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 41,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "455f54d7-c1f0-4c71-97b3-e3c4bd65fd79.png",
+                                "EntitlementText": "Shipmate of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 5 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 42,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 43,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "0bd68aa4-71e1-4add-8248-89cdf62ce5b1.png",
+                                "EntitlementText": "Seasoned Aristocrat Hat",
+                                "EntitlementDescription": "With a stunning sapphire and perky feather, this hat absolutely must be worn at a rakish angle."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 44,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 45,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            },
+                            "Legendary": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "5d77ff56-8fa6-49a0-9227-b4aa2b6e71fd.png",
+                                "EntitlementText": "Pirate Legend Lengthy Hair",
+                                "EntitlementDescription": "Long, luxurious locks which prove that Pirate Legends don't often have time for a trim."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 46,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 47,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 48,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 49,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 50,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "7992f286-09ce-46d1-96a4-1d4f7344c796.png",
+                                "EntitlementText": "Frostbite Pegleg",
+                                "EntitlementDescription": "This timber will never shiver, as the pegleg is reinforced against harsh weather."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "9abd7b6d-4e35-436e-863d-c38e72bb87b2.png",
+                                "EntitlementText": "Ruby Splashtail Fishing Rod",
+                                "EntitlementDescription": "This rod honours the Splashtail, many a proud pirate's first catch. And second. And third…"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 6,
+                "Title": "Marauder of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 51,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "de40e4d0-0a19-4c59-a4ef-b8b44d9f8278.png",
+                                "EntitlementText": "Marauder of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 6 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 52,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 53,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 54,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 55,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "8314ead1-fabb-4f51-8b27-0128a84b012f.png",
+                                "EntitlementText": "Seasoned Bone Crusher Wheel",
+                                "EntitlementDescription": "A striking two-tone wheel that offers a black-and-white solution to steering your ship."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 56,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 57,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 58,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 59,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 60,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "b6bd3356-8b77-44aa-91d0-3705a857d2f7.png",
+                                "EntitlementText": "Frostbite Gloves",
+                                "EntitlementDescription": "Gloves are perfect for chilly nights – frozen fingers can’t play shanties, after all."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "5408832e-ecb3-4941-ade7-240a6ae5d7ad.png",
+                                "EntitlementText": "Mysteriously Casual",
+                                "EntitlementDescription": "As casually nonchalant as the Strangers themselves."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 7,
+                "Title": "Master of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 61,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "91e220cf-dcba-465e-944d-da2e411025c3.png",
+                                "EntitlementText": "Master of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 7 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 62,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 63,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 64,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 65,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            },
+                            "Legendary": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "4bf65139-2a82-4970-bc26-3950fe272731.png",
+                                "EntitlementText": "Pirate Legend Updo Hair",
+                                "EntitlementDescription": "A hair-raising approach to personal grooming that keeps long locks up and out of the way."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 66,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 67,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "6942b071-6f74-4aea-8e75-a05b92389267.png",
+                                "EntitlementText": "Frostbite Dress",
+                                "EntitlementDescription": "A dress made of thick fabric that provides both style and snugness."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 68,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 69,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 70,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "c09f3ef7-fbf6-43fc-8f28-2d04dc5432a7.png",
+                                "EntitlementText": "Frostbite Hook",
+                                "EntitlementDescription": "A hook so hardy, you could even use it to carve your initials into an iceberg."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "43d404b7-113a-4b49-9b0a-ea603cbeb76c.png",
+                                "EntitlementText": "Dark Warsmith Eye of Reach",
+                                "EntitlementDescription": "Be careful how you handle this red-hot rifle. You can't pull a trigger with burned fingers."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 8,
+                "Title": "Captain of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 71,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "256e04b2-43d0-454d-9aa8-97c154617354.png",
+                                "EntitlementText": "Captain of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 8 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 72,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 73,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-m",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 74,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-s",
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "a030c35e-6029-4293-b990-26498710958f.png",
+                                "EntitlementText": "Seasoned Parrot Cutlass",
+                                "EntitlementDescription": "Lunging through the air with this won't make you soar like a parrot, but it's a start."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 75,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 76,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 77,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 78,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 79,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 80,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "dcf8f0fc-8717-425b-b926-93aed60fe326.png",
+                                "EntitlementText": "Frostbite Trousers",
+                                "EntitlementDescription": "Nice warm legs are the key to making a speedy escape with treasure in hand."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "eed60e94-5a1f-4046-a233-ba4ce39b3b58.png",
+                                "EntitlementText": "Collector's Night Wulf Figurehead",
+                                "EntitlementDescription": "A figurehead fit for an apex predator - bright, ferocious and hungry for battle!"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 9,
+                "Title": "Commander of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 81,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "2254e165-c291-49d9-9859-4404ca766b8f.png",
+                                "EntitlementText": "Commander of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 9 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 82,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 83,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 84,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "112fec59-8fae-4f32-bfbc-40230995e8c4.png",
+                                "EntitlementText": "Eastern Winds Jade Eye of Reach",
+                                "EntitlementDescription": "An expertly crafted weapon with a long, jade dragon design coiled along its length."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 85,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 86,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 87,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 88,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 89,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 90,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "42e7f636-ad09-4732-92f4-158d6a14633a.png",
+                                "EntitlementText": "Frostbite Jacket",
+                                "EntitlementDescription": "A thick jacket that keeps out the cold. Handy if you’re stuck up in the crow’s nest."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "0abda442-3058-4ba3-89f3-51b0cdb75d72.png",
+                                "EntitlementText": "Ruby Splashtail Monarch Costume",
+                                "EntitlementDescription": "The Splashtail Monarch in folklore provides bounty from the sea… and maybe the occasional nightmare."
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "Number": 10,
+                "Title": "Legend of the Shroud",
+                "Levels": [
+                    {
+                        "Number": 91,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "347f96ae-c861-435a-8eba-d6ed3e3ee366.png",
+                                "EntitlementText": "Legend of the Shroud",
+                                "EntitlementDescription": "Reached Distinction Level 10 in Season One."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 92,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 93,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 94,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 95,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 96,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "gold-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 97,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "9495246b-098f-47e9-9db4-b251229579ce.png",
+                                "EntitlementText": "Frostbite Hat",
+                                "EntitlementDescription": "Durable headgear that helps keep your cunning pirate brain warm and toasty."
+                            }
+                        }
+                    },
+                    {
+                        "Number": 98,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "coins-s",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 99,
+                        "Rewards": {
+                            "Base": {
+                                "CurrencyType": "doubloons-l",
+                                "Locked": false,
+                                "Owned": false
+                            }
+                        }
+                    },
+                    {
+                        "Number": 100,
+                        "Rewards": {
+                            "Base": {
+                                "Locked": false,
+                                "Owned": false,
+                                "EntitlementUrl": "6b0c4f40-a162-4c73-a95f-cca801593710.png",
+                                "EntitlementText": "Shroudbreaker Scar",
+                                "EntitlementDescription": "Old wounds from a pitched battle that took place at the distant Shores of Gold? Oh, go on then."
+                            },
+                            "Legendary": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "b265e075-bfbf-4794-bb4b-7258dd74d13e.png",
+                                "EntitlementText": "Pirate Legend Curse",
+                                "EntitlementDescription": "Almost nobody asks to be cursed, but Pirate Legends can show this magical malady with pride."
+                            },
+                            "SeasonPass": {
+                                "Locked": true,
+                                "Owned": false,
+                                "EntitlementUrl": "6e6eac4a-eee5-4c68-afda-ed036326f669.png",
+                                "EntitlementText": "Silver Skull Sails",
+                                "EntitlementDescription": "Sky-blue cloth emblazoned with a silver skull-and-swords makes for some seriously fancy sails."
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "ChallengeGroups": [
+            {
+                "Id": "bf096f28-ffad-4eaf-b5d5-47ea5b316612",
+                "Challenges": [
+                    {
+                        "GoalId": "47856b14-1faa-4ea9-b347-300585119c22",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "m",
+                                "Title": "Purchase a Trading Company Voyage.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Vote on a Voyage proposed by another pirate. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Sail miles across the sea while on a Voyage.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Novice Voyager",
+                        "Copy": "Take part in a swift Trial to learn the basics of embarking on Trading Company Voyages.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "e9de3c71-5e3f-49c6-ac3e-8404e9999ac7",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Perform a sharp 'anchor turn' move.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "m",
+                                "Title": "Sail miles across the sea.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sail with all your sails billowing in the wind.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Novice Sailor",
+                        "Copy": "Even the longest journey begins by setting sail. Find your sea legs with this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "86af36ed-af82-4ff5-bee7-74d62b90a951",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "m",
+                                "Title": "Speak to the Mysterious Stranger in any tavern.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "m",
+                                "Title": "Begin any Tall Tale. The first is 'The Shroudbreaker', a book found next to the Mysterious Stranger in any tavern.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "During 'The Shroudbreaker' Tall Tale, recover the ship log of the Magpie's Wing.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Novice Story Seeker",
+                        "Copy": "The Sea of Thieves is full of Tall Tales. Experience one for yourself as part of this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "00d0a9a6-016e-42d0-81fa-55aa57077ffd",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Deliver a Cargo Run's items to their destination in any condition.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Gunpowder Barrel to the Merchant Alliance. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in an animal to the Merchant Alliance. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Novice Merchant",
+                        "Copy": "Join forces with the Merchant Alliance and ferry goods across the waves in this swift Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "b8a3b003-9e9e-4f9f-905f-a0b4d48732e1",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "m",
+                                "Title": "Speak to Larinna outside any tavern.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Kill a shark using a Gunpowder Barrel.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in an Ashen Key, Chest or Tome to Larinna or to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Novice Bilge Rat",
+                        "Copy": "Bilge Rats crave adventure and excitement. Get a taste of it by completing this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "d39cf2e8-c6c7-4316-93fb-875253469647",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Finish a Voyage for each of the Trading Companies.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Use the Captain's Table to vote on a Voyage. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Sail miles across the sea while on a Voyage.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Voyager",
+                        "Copy": "Take on varied Voyages from the Trading Companies and earn their trust in this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "56d6eb26-a52d-4ce0-bcfc-427cc7260f24",
+                        "Threshold": 2,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Race alongside another crew's ship - no firing!",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Sail miles across the sea.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Sailor",
+                        "Copy": "Prove that you can fearlessly steer your ship by completing this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c668bd79-a9d6-410d-be44-e26864b62052",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Discover and read Journals while on a Tall Tale. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Successfully complete Tall Tales.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 6,
+                                "XPGain": "s",
+                                "Title": "Reach a checkpoint in at least 6 Tall Tales.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Story Seeker",
+                        "Copy": "Seeking out and conquering Tall Tales from across the Sea of Thieves will also conquer this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "998691a6-dca2-4e3d-b4ab-9ff6769834f6",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Deliver a Cargo Run's Items on time and in perfect condition.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in a chicken, a pig and a snake.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Stronghold Gunpowder Barrel.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Merchant",
+                        "Copy": "Precision and punctuality will be needed to please the Merchants and finish this grand Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "a69d769a-6d75-491c-80f1-e9540d5ff96b",
+                        "Threshold": 5,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Set foot on any island within The Devil's Roar.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Collect a red Flame of Fate from the Ferry.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Complete any Gold Hoarders, Order of Souls or Athena's Fortune Voyage within The Devil's Roar.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Deliver Devil’s Roar Cargo Run items in any condition.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Chest of Rage.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Scorcher",
+                        "Copy": "You'll need to overcome fire, ash and falling rocks to conquer this heated grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "7f9c9abe-99ce-4213-bd81-2c54fa8ec001",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 2,
+                                "XPGain": "s",
+                                "Title": "Deliver both an Ashen Chest and Ashen Key to Larinna or to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Deliver an Ashen Tome to Larinna or to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Locate and speak with Duke, former Bilge Rat, wherever he may be lurking.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Proficient Bilge Rat",
+                        "Copy": "Earn some real respect from the Bilge Rats by handing in valuable treasures in this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "553a5478-6e31-442c-88fa-0555ce3c1e5d",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 20,
+                                "XPGain": "s",
+                                "Title": "Hit ships with Chainshots. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 100,
+                                "XPGain": "s",
+                                "Title": "Sail miles across the sea.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 100,
+                                "XPGain": "s",
+                                "Title": "Sail miles across the sea while on a Voyage.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Expert Sailor",
+                        "Copy": "Only those who can claim to tame the waves will succeed at this epic Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "22da4910-141d-41d9-ba7a-1a1c74ac52d7",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Speak with the Ferryman, Madame Olivia, Grace, Tallulah and the Mysterious Stranger.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 11,
+                                "XPGain": "s",
+                                "Title": "Complete all available Tall Tales.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 60,
+                                "XPGain": "s",
+                                "Title": "Find all Journals within the Tall Tales.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Expert Story Seeker",
+                        "Copy": "When you've completed this epic Trial, you'll have plenty of Tall Tales of your own to tell!",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "466a58f7-d624-43ee-8353-9044287a5821",
+                        "Threshold": 25,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Complete the 'Heart of Fire' Tall Tale.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Complete a Legendary Voyage in The Devil's Roar.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 8,
+                                "XPGain": "s",
+                                "Title": "Deliver Devil's Roar Cargo Run items, on time and in perfect condition.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Chest of Rage stolen from another crew.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 17,
+                                "XPGain": "s",
+                                "Title": "Set foot on all islands within The Devil's Roar. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Expert Scorcher",
+                        "Copy": "Only embracing the geysers and volcanoes of The Devil's Roar will see this epic Trial completed.",
+                        "Images": {},
+                        "Percentage": 0
+                    }
+                ],
+                "Title": "Trials of Adventure",
+                "Copy": "Accept Voyages, take on Tall Tales and more!",
+                "Images": {
+                    "WebUIDesktop": "https://compass-ssl.xboxlive.com/assets/89/87/8987c791-aeab-4ef8-a815-531bca8f15d3.png?n=AdventureWeb.png"
+                },
+                "ProgressValue": 0,
+                "Threshold": 14,
+                "Percentage": 0
+            },
+            {
+                "Id": "39d6fdc7-1e1c-43c0-8d2e-4e37d951e1f4",
+                "Challenges": [
+                    {
+                        "GoalId": "7e6bb147-a9bc-41a3-a80d-d945f37d5f53",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and examine a nameplate at Shipwreck Bay, or a unique rock painting at Snake Island, Plunder Valley or Thieves' Haven.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Set foot on an island somewhere on the waves.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Speak to Umbra at her camp located on the Lagoon of Whispers.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Aspiring Explorer",
+                        "Copy": "Get to know the Sea of Thieves and learn its secrets in this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "35ab91b6-3f29-4f85-ad62-b65a93b3fd25",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Catch a wild animal in a cage.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Start an island campfire at night and cook some food.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Pick up treasure that's been washed up on a shore. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Aspiring Scavenger",
+                        "Copy": "The sea provides! Learn to harvest nature's riches with this swift Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "319807c5-ec7c-456a-b785-360adbc4ab62",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and read one of Umbra's Journals.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and examine some of Umbra's Immortalisations.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Speak to Umbra at her camp located on the Lagoon of Whispers.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Aspiring Historian",
+                        "Copy": "Learn the legends of pirates past in this swift Trial, delving into the greatest stories ever told.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "e64b38c1-cfbd-4a35-9120-8230d180f13f",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Acquire a Flame of Fate from the Ferry.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Use your lantern to light a beacon with any Flame of Fate.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Light your ship's lanterns with blue or white Flames of Fate.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Aspiring Lightbringer",
+                        "Copy": "How you died is reflected in the Ferry's Well of Fates. Claim the Flames to complete this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c45ba117-229f-4033-b470-8d83bac60a7e",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Catch a fish on Old Sailor Isle.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find any Journal on Old Sailor Isle.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "m",
+                                "Title": "Complete the Maiden Voyage.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Aspiring Pioneer",
+                        "Copy": "Your Maiden Voyage began just beyond the Sea of Thieves. Relive it in this swift Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "f0ea2469-8958-487c-a3ae-c9fe11d8287f",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Cook some chicken on a campfire on Old Sailor Isle.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find a Rowboat on Old Sailor Isle.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Fire yourself from the cannon of the wrecked ship on Old Sailor Isle.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Accomplished Pioneer",
+                        "Copy": "Dig deep into the hidden secrets of the Maiden Voyage to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "ec7dbc07-1401-4286-a96e-0f1e92e011fd",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and destroy a Cursed Mermaid Statue.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 4,
+                                "XPGain": "s",
+                                "Title": "Set foot on an island in each of the four regions.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Visit a Skeleton Fort.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Visit a Seapost.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Accomplished Explorer",
+                        "Copy": "The more you venture out into the world, the closer you'll come to completing this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "7cf4f03d-b34d-44ec-b99f-61e4ea63e8ed",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Shipwrecked Chest to the Gold Hoarders.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a supply crate of any kind.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in an Ashen Chest to Larinna or the Reaper's Bones.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Accomplished Scavenger",
+                        "Copy": "Search high and low for valuables, then sell them on for a profit to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "9c07d586-e8ed-4001-847f-674e5cff255b",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Find some of Umbra's Immortalisations.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Find all of Umbra's Journals.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and examine a nameplate at Shipwreck Bay, or a unique rock painting at Snake Island, Plunder Valley or Thieves' Haven.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Accomplished Historian",
+                        "Copy": "Gaining a more complete understanding of legendary pirates is the key to this grand Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "6f369117-1877-41b1-a969-06fb74b157b0",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sail to Thieves' Haven.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit on the Throne at Thieves' Haven.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit on a Throne hidden in a sunken cave on K-9.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Throne Seeker",
+                        "Copy": "Sitting in Skeleton Thrones across the Sea of Thieves will see this grand Trial defeated.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "54d94e2c-2195-4af3-9fd4-97933b735ea9",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit in the Throne at Shipwreck Bay with another crew.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit in the Throne atop Devil's Ridge.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit in the Throne atop Hidden Spring Keep.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Sit in the Throne atop Mermaid's Hideaway.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Throne Climber",
+                        "Copy": "Skeleton Thrones high overhead must be reached to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "838c6da0-6858-4b9c-8fb6-6c7e225e5a3b",
+                        "Threshold": 6,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Mermaid Gem to the Gold Hoarders.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Mermaid Gem to the Merchant Alliance.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Mermaid Gem to the Order of Souls.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Destroy all three kinds of Cursed Mermaid Statue.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Accomplished Statue Smasher",
+                        "Copy": "Cursed Mermaid Statues lurk beneath the waves. Destroy them to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "dcdccaa8-bd6c-4af9-b1d1-a151ea603870",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Open Treasure Vaults. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Ring the bell high atop the Sea Dogs' Tavern.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find a way to reach the Shores of Gold.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Master Explorer",
+                        "Copy": "Visiting every last corner of the Sea of Thieves is the only way to complete this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c43bea93-56a0-4657-9cf4-c5b52314f301",
+                        "Threshold": 2,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Sit in all small Skeleton Thrones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Sit in all large Skeleton Thrones with another crew.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Master of Thrones",
+                        "Copy": "Ascending to every Skeleton Throne and taking your rightful place will defeat this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "33dccae5-e396-4d10-a45f-9d86a512f1be",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in Emerald Mermaid Gems.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in Ruby Mermaid Gems.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in Sapphire Mermaid Gems.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Destroy Cursed Mermaid Statues. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Master Statue Smasher",
+                        "Copy": "Complete this epic Trial and ensure that the seas are that much safer for unwary pirates. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c068cf29-3411-4a0d-8005-77bfee080d13",
+                        "Threshold": 11,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Find and read all of the Pirate Lord's Journals.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Unlock the hold of the Magpie's Fortune. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Master Pioneer",
+                        "Copy": "Leave no stone unturned in the Maiden Voyage to chart the Pirate Lord's legacy in this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    }
+                ],
+                "Title": "Trials of Exploration",
+                "Copy": "Journey across the ocean and meet its inhabitants.",
+                "Images": {
+                    "WebUIDesktop": "https://compass-ssl.xboxlive.com/assets/3a/ed/3aedc5f6-8deb-4933-b733-9018d29de540.png?n=ExplorationWeb.png"
+                },
+                "ProgressValue": 0,
+                "Threshold": 16,
+                "Percentage": 0
+            },
+            {
+                "Id": "9395734d-db75-40e9-a9d0-4b073ae79a3e",
+                "Challenges": [
+                    {
+                        "GoalId": "32d3af69-34ca-4a7e-9401-f96dc6e5c4ca",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 20,
+                                "XPGain": "s",
+                                "Title": "Destroy skeletons.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy a Skeleton Captain.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Bounty Skull.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Ambitious Mercenary",
+                        "Copy": "The Sea of Thieves is swarming with skeletons. Smash a few skulls as part of this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "dc122e62-a3cb-4762-bb94-88ffc89c7e5f",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in any type of skull to the Servant of the Flame.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Reaper's Chest or Reaper's Bounty Chest to the Reapers.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Become an Emissary for The Reaper’s Bones.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Ambitious Reaper",
+                        "Copy": "Ally with The Reaper's Bones in a swift, but risky, Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "a70659d6-2595-49c7-b3db-8be21b13fb81",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find a way to set a skeleton on fire. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Catch a Devilfish within The Devil's Roar.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Set foot on any island within The Devil's Roar.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Ambitious Firestarter",
+                        "Copy": "Fire can be a hazard, but also an opportunity. Fan the flames in this swift, smoky Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "6bb7cfe0-10ac-4180-9f13-1b710af75f67",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a broken Emissary Flag as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Purchase and equip the Reaper's Bones Costume as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hit a ship with a firebomb fired from a cannon.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Reach Grade 3 as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Infamous Reaper",
+                        "Copy": "As a loyal follower of The Reaper's Bones, you'll need aggression and cunning for this grand Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "b6fb4473-e577-4f89-bb26-dbf9f908dce5",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Destroy Skeleton Captains.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in Villainous Bounty Skulls to the Order of Souls or the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy an Ashen Guardian.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Infamous Mercenary",
+                        "Copy": "As your fame increases, you'll need to take on more difficult targets to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "1f672308-6595-4e01-b1f5-98f632ade15f",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hand in broken Reaper's Bones Emissary Flags as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Reaper's Chest.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Reaper's Bounty Chest.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Defiant Reaper",
+                        "Copy": "Handing in loot that exposes your position is no easy feat, but will complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "fc31ad4b-6fbd-48c8-b65e-caccfb948b39",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Complete a Ghost Ship Voyage for the Order of Souls.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Hand in Skulls of the Damned. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Defeat Flameheart's flagship, the Burning Blade.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Ghost Hunter",
+                        "Copy": "Clear the seas of spirits and spectres to complete this grand, spine-tingling Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "ef527246-7827-4ee4-84b7-3bab012f47d0",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Rock another crew's ship using a Wraith Cannonball.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Hit a ship with different types of purple Cursed Cannonball, while flying the Reaper's Mark flag.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Read Wanda's Journal on Thieves' Haven.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Warsmith",
+                        "Copy": "Follow in the footsteps of an infamous Skeleton Lord to finish this warmongering grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "86ccd5f6-0ba1-4243-bf1b-caecb314ed9e",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Explode Gunpowder Skeletons in a chain reaction.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Take out a group of 3 skeletons using a Gunpowder Skeleton.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Kill a shark using a Gunpowder Barrel.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Infamous Detonator",
+                        "Copy": "The colossal kabooms of Gunpowder Barrels are the only way to defeat this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "1b947579-1e9e-4ba7-952e-e0e84c535490",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Burn a group of 3 skeletons at the same time.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Burn skeletons using an Ashen Winds Skull.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hit a ship with a firebomb fired from a cannon.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Infamous Firestarter",
+                        "Copy": "The heat is turned up in this fiery grand Trial, which is all about setting things ablaze.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "d94da24e-c5c5-4106-b82d-e28f8b64bbd6",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Capture animals in cages. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 20,
+                                "XPGain": "s",
+                                "Title": "Disable tentacles while fighting the Kraken.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Defeat different breeds of Megalodon.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Find and defeat the Kraken.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Deadly Hunter",
+                        "Copy": "This epic Trial will see you battling the most dangerous creatures of all - sea monsters!",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "7d5ead8c-e13e-4652-8c4d-6acef3a8aae4",
+                        "Threshold": 4,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 9,
+                                "XPGain": "s",
+                                "Title": "Hand in all types of Bounty Skulls to the Order of Souls.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Defeat every Skeleton Lord on land at least once. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Equip the Order of Souls Costume and ship livery as an Order of Souls Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Light up a Skeleton Ship using an Ashen Winds Skull.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Deadly Mercenary",
+                        "Copy": "Only an undisputed skeleton slayer will make it through this epic Trial and live to tell the tale.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c687892a-2199-4eee-8cd1-170c3881518a",
+                        "Threshold": 7,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in Athena's Fortune items to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in Gold Hoarder items to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in Merchant Alliance items to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in Order of Souls items to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in a broken Emissary Flag from each Company as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 2,
+                                "XPGain": "s",
+                                "Title": "Hand in a Chest of Ancient Tributes and a Vault Key to the Reaper's Bones.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Equip the Reaper's Bones Costume and full ship livery as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Deadly Reaper",
+                        "Copy": "Completing this epic Trial will prove your eternal, unwavering loyalty to The Reaper's Bones.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "256e0cea-ff3e-4190-85a1-adfd6c8a0d7e",
+                        "Threshold": 5,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a Stronghold Gunpowder Barrel.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy a group of 3 Gold Skeletons using one Gunpowder Skeleton.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy a group of 3 Plant Skeletons using one Gunpowder Skeleton.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy a group of 3 Shadow Skeletons using one Gunpowder Skeleton.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Destroy a group of 5 skeletons using one Gunpowder Skeleton, at a Fort, with another crew present.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Deadly Detonator",
+                        "Copy": "Using Gunpowder Skeletons to blow up their friends is a satisfying way to beat this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "5674674a-8789-42a1-9978-d4c4603a0c69",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Defeat Flameheart's Ghost Ships while in an Alliance.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in a broken Grade 5 Reaper Emissary Flag as a Reaper's Bones Emissary.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Finish the Fort of the Damned while in an Alliance.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Alliance Adept",
+                        "Copy": "Whether sinking Reapers or forging Alliances, this epic Trial requires locating other crews.",
+                        "Images": {},
+                        "Percentage": 0
+                    }
+                ],
+                "Title": "Trials of Combat",
+                "Copy": "Battle against skeletons, monsters and other crews.",
+                "Images": {
+                    "WebUIDesktop": "https://compass-ssl.xboxlive.com/assets/e5/5e/e55e274d-0711-407a-94c3-e86811c95c19.png?n=CombatWeb.png"
+                },
+                "ProgressValue": 0,
+                "Threshold": 15,
+                "Percentage": 0
+            },
+            {
+                "Id": "7f4ad700-6be6-47d8-aa59-6be497654330",
+                "Challenges": [
+                    {
+                        "GoalId": "ef4c3cef-7b7e-43d5-be39-6b85f0c26b9a",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Cook a piece of food until burnt. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Cook a piece of meat to perfection.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 2,
+                                "XPGain": "s",
+                                "Title": "Eat perfectly cooked Trophy Fish of any kind.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Apprentice Cook",
+                        "Copy": "Demonstrate your culinary craft and fill your belly with this swift Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "8a065c5d-20cc-44f3-a761-fb28f609b333",
+                        "Threshold": 2,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Drink so much grog that your pirate is sick.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Play a shanty together with three other pirates in Adventure Mode.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Party Pirate",
+                        "Copy": "Relax, raise a tankard and get to grips with celebrating your misdeeds in this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "e7d3d22d-422b-4624-a4a6-130939416a22",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Go fishing and catch a fish.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in cooked animal meat to The Hunter's Call.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Hand in any Trophy Fish to The Hunter's Call. Cook it to perfection and earn more gold for it!",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Apprentice Hunter",
+                        "Copy": "This swift Trial helps you get used to catching and cooking hearty meals in the wilderness.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "4451d508-671e-4ff1-a769-9cfdc77b0dae",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Finish a Cargo Run Voyage while in an Alliance.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Form an Alliance with another crew. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Let another crew cash in one of your chests.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Apprentice Diplomat",
+                        "Copy": "Not every encounter needs to end in a fight. Practise your people skills in this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "a06a54db-4acb-494e-bc0b-362de59a31dd",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "s",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Drink with another crew while at any Outpost.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Greet another pirate on the Ferry of the Damned, using a Pirate Chat phrase.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Play an instrument while aboard your ship as it sinks.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Socialite",
+                        "Copy": "Learn how to make merry, quench your thirst and have fun with this swift Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "ec373b60-9052-4b3c-9d26-1ff4527509ee",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Block another pirate's attack, then strike them!",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Revive a fallen crewmate before they die.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hoard a number of chests at once. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Experienced Crewmate",
+                        "Copy": "You'll learn to defend your crew and take bigger risks as you work to complete this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "3d376044-69aa-46e9-844e-e5bfbaad793d",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Defeat a Skeleton Ship while in an Alliance.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Defeat Flameheart's Ghost Ships while in an Alliance.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Be in an Alliance with all ships' lanterns the same colour.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Experienced Diplomat",
+                        "Copy": "Your skill at forming and maintaining Alliances will be tested during this grand Trial. ",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "2b946c7c-8a40-4046-8ddf-5b616dc31011",
+                        "Threshold": 3,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Drink with another crew while at any Outpost.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Defeat skeletons that have been affected by a Grogball.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Throw a bucket of vomit on an enemy pirate holding a sword.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Experienced Reveller",
+                        "Copy": "Your tankard skills are the talk of the tavern - perfect for handling this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "0ba78be8-bdec-4f39-bb44-639afcc46185",
+                        "Threshold": 7,
+                        "XPGain": "l",
+                        "Category": "m",
+                        "Goals": [
+                            {
+                                "Threshold": 3,
+                                "XPGain": "s",
+                                "Title": "Catch Trophy Fish.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Hand in pieces of cooked Megalodon or Shark meat to The Hunter's Call.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Defeat a Megalodon.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Experienced Hunter",
+                        "Copy": "Seeking larger, more dangerous prey will be a necessary peril when completing this grand Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "d3e40961-be13-472e-a94a-1f72ebdf4b96",
+                        "Threshold": 2,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 20,
+                                "XPGain": "s",
+                                "Title": "Hoard a huge number of chests at once.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Launch from a cannon and land on another ship.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Thrillseeker",
+                        "Copy": "Tackling these daring Deeds will pile on the pressure - and complete this epic Trial!",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "c36854b3-81bc-4068-a0bd-4ae30760f95b",
+                        "Threshold": 5,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 2,
+                                "XPGain": "s",
+                                "Title": "Hand in Chests of a Thousand Grogs to the Gold Hoarders.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Drink with other crews while at any Outpost on a number of separate occasions.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 50,
+                                "XPGain": "s",
+                                "Title": "Defeat skeletons that have been affected by a Grogball.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 1,
+                                "XPGain": "s",
+                                "Title": "Play a shanty with pirates from another crew.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 5,
+                                "XPGain": "s",
+                                "Title": "Throw a bucket of vomit on an enemy pirate holding a sword.",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Life and Soul",
+                        "Copy": "You'll need to embrace your inner party animal and get rowdy to complete this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    },
+                    {
+                        "GoalId": "5b80a873-ed8b-4e9c-86d4-05938fa3dcb3",
+                        "Threshold": 5,
+                        "XPGain": "l",
+                        "Category": "l",
+                        "Goals": [
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Perfectly cook pieces of Kraken meat.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Perfectly cook pieces of Megalodon meat.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Cook some pieces of food until burnt. ",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Hand in pieces of sea monster meat to The Hunter's Call.",
+                                "ProgressValue": 0
+                            },
+                            {
+                                "Threshold": 10,
+                                "XPGain": "s",
+                                "Title": "Eat pieces of sea monster meat. ",
+                                "ProgressValue": 0
+                            }
+                        ],
+                        "ProgressValue": 0,
+                        "Title": "Seasoned Cook",
+                        "Copy": "No matter how exotic the ingredients, preparing sumptuous suppers will complete this epic Trial.",
+                        "Images": {},
+                        "Percentage": 0
+                    }
+                ],
+                "Title": "Trials of the Sea",
+                "Copy": "Conquer the many challenges of the pirate life.",
+                "Images": {
+                    "WebUIDesktop": "https://compass-ssl.xboxlive.com/assets/7a/83/7a838d57-8cff-4359-bd04-44f2b3879374.png?n=LifeAtSeaWeb.png"
+                },
+                "ProgressValue": 0,
+                "Threshold": 12,
+                "Percentage": 0
+            }
+        ],
+        "ProgressionPaths": {
+            "Base": {
+                "Title": "Base Renown Rewards",
+                "Copy": "",
+                "Images": {}
+            },
+            "Legendary": {
+                "Title": "Legendary Renown Rewards",
+                "Copy": "",
+                "Images": {}
+            },
+            "SeasonPass": {
+                "Title": "Plunder Pass",
+                "Copy": "Purchase a Plunder Pass for the chance to earn extra Seasonal rewards as your Renown grows!",
+                "Images": {
+                    "WebUIDesktop": "https://compass-ssl.xboxlive.com/assets/d7/91/d791440e-80d3-41ae-ad27-58a5838549fc.jpg?n=Profile_v2_Feature_Panel_Desktop.jpg",
+                    "WebUITablet": "https://compass-ssl.xboxlive.com/assets/43/0c/430cc507-60fd-40be-b548-5da9dc397447.jpg?n=Profile_v2_Feature_Panel_Tablet.jpg",
+                    "WebUIMediumPhone": "https://compass-ssl.xboxlive.com/assets/3f/59/3f596654-5118-469a-8517-b3c0bbc79506.jpg?n=Profile_v2_Feature_Panel_Large_Mobile.jpg",
+                    "WebUISmallPhone": "https://compass-ssl.xboxlive.com/assets/2e/de/2edecd20-d054-4ca9-8500-19b3ecf70718.jpg?n=Profile_v2_Feature_Panel_Mobile.jpg"
+                }
+            }
+        },
+        "AvailablePaths": {
+            "Base": true,
+            "Legendary": false,
+            "SeasonPass": false
+        },
+        "LevelProgress": 1,
+        "Tier": 1,
+        "Title": "Season One",
+        "Copy": "",
+        "Images": {},
+        "CdnPath": "https://athwebprofileassetsprod.azureedge.net/980921/Entitlement/Inventory",
+        "TotalChallenges": 57,
+        "CompleteChallenges": 0
+        }
+    }
+}

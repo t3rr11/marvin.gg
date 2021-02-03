@@ -93,3 +93,67 @@ body { background: var(--BlueGradient); width: 100vw; height: 100vh; }
   left: 2px;
   color: white;
 }
+
+/* SoT Stuffs */
+.sot-page-header {
+  display: grid;
+  grid-template-columns: 200px 50px auto;
+  grid-gap: 5px;
+}
+.sot-seasonal-container {
+  height: 100%;
+  padding-bottom: 50px;
+  padding-top: 5px;
+}
+.sot-category-title {
+  font-size: large;
+  padding: 0px 5px;
+}
+.sot-category-challenges {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+  grid-template-rows: repeat(auto-fill, minmax(200px, auto));
+  padding: 5px;
+  font-size: 14px;
+}
+.sot-challenge {
+  display: inline-block;
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  border: 1px rgba(0,0,0,0.2) solid;
+  background-color: rgba(0,0,0,0.1);
+}
+.sot-challenge-title {
+  padding: 5px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.2);
+}
+.sot-goal {
+  display: grid;
+  grid-template-columns: 17px auto;
+  padding: 5px;
+  width: 100%;
+}
+.sot-goal > .progress {
+  grid-column: 2;
+  background-color: rgba(0,0,0,0.3);
+}
+.sot-goal > .progress > .progress-bar {
+  grid-column: 2;
+  background-color: rgba(255,255,255,0.2);
+  overflow: initial;
+}
+.sot-goal > input {
+  margin-top: 5px;
+}
+.filterContainer {
+  display: grid;
+  grid-template-columns: 17px auto;
+  width: max-content;
+  line-height: 30px;
+}
+.filterContainer > input {
+  margin-top: 8px;
+}
