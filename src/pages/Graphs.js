@@ -124,7 +124,7 @@ class Graphs extends React.Component {
                 <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <XAxis dataKey="date" interval={37} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+            <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
             <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
             <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
             <Area type="monotone" dataKey="users" stroke="#8884d8" fillOpacity={1} fill="url(#colorUsers)" />
@@ -137,7 +137,7 @@ class Graphs extends React.Component {
                 <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <XAxis dataKey="date" interval={37} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+            <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
             <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
             <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
             <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
@@ -150,7 +150,7 @@ class Graphs extends React.Component {
                 <stop offset="95%" stopColor="#84d5d8" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <XAxis dataKey="date" interval={37} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+            <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
             <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
             <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
             <Area type="monotone" dataKey="servers" stroke="#84d5d8" fillOpacity={1} fill="url(#colorServers)" />
@@ -167,7 +167,7 @@ class Graphs extends React.Component {
                 <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <XAxis dataKey="date" interval={37} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+            <XAxis dataKey="date" interval={75} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
             <YAxis yAxisId={1} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
             <YAxis yAxisId={2} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} ticks={[0,5,10,20,50]} />
             <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />

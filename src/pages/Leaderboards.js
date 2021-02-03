@@ -190,6 +190,9 @@ class ServerRankings extends Component {
       case type === "garden": { return { name: "Garden of Salvation Clears", value: ["Clears"] }; }
       case type === "dsc": { return { name: "Deep Stone Crypt Clears", value: ["Clears"] }; }
       case type === "totalRaids": { return { name: "Total Raids", value: ["Clears"] }; }
+      case type === "shatteredThrone": { return { name: "Shattered Throne Clears", value: ["Clears", "Flawless"] } }
+      case type === "pitOfHeresy": { return { name: "Pit of Heresy Clears", value: ["Clears", "Flawless"] } }
+      case type === "prophecy": { return { name: "Prophecy Clears", value: ["Clears", "Flawless"] } }
       case type === "activeScore": { return { name: "Triumph Score", value: ["Score"] }; }
       case type === "legacyScore": { return { name: "Legacy Triumph Score", value: ["Score"] }; }
       case type === "lifetimeScore": { return { name: "Lifetime Triumph Score", value: ["Score"] }; }
