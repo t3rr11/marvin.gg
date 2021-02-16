@@ -3,13 +3,15 @@ h3::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
 .home-content {
   display: grid;
   grid-template-columns: 50% 50%;
+  height: 100%;
+  overflow-y: auto;
 }
 .howToConnect {
   margin: 20px;
   display: grid;
   grid-template-rows: 450px 40px 270px;
 }
-.features {
+.howToSetup {
   margin: 20px;
   display: grid;
   grid-template-rows: 450px 40px 350px;
@@ -49,14 +51,6 @@ h3::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
   border: none;
 }
 .d_highlight::selection { background-color: rgba(0, 0, 0, 0.8); }
-.marvinsDisplayImages {
-  height: 350px;
-  margin: auto;
-  padding: 20px;
-}
-.marvinsDisplayImages > img {
-  height: 100%;
-}
 .marvinBtn {
   height: 40px;
   margin-top: 30px;

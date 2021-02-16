@@ -22,6 +22,45 @@
   position: fixed;
   z-index: 11;
 }
+.mobile-header {
+  height: 100vh;
+  width: 100vw;
+  line-height: 10px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: none;
+  grid-template-rows: auto;
+  position: fixed;
+  z-index: 999;
+  top: 60px;
+}
+.mobile-header > .background-colors {
+  justify-content: space-evenly;
+}
+.mobile-header > .donation-links {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.mobile-header > .footer {
+  text-align: center;
+  width: 100%;
+  bottom: 135px;
+}
+.mobile-header.hidden {
+  display: none;
+}
+.menu-slider-btn {
+  display: none;
+  position: fixed;
+  top: 7px;
+  right: 5px;
+  font-size: 30px;
+  padding: 0px 15px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  z-index: 20;
+}
 .header-logo {
   height: 60px;
   cursor: pointer;

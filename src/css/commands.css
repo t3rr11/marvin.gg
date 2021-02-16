@@ -1,4 +1,4 @@
-.commands-content { padding-top: 10px; height: -webkit-fill-available; overflow-y: auto; padding-bottom: 10px; }
+.commands-content { padding-top: 10px; height: 100%; overflow-y: auto; padding-bottom: 10px; }
 .commands-content > .categories {
   width: 100%;
   display: grid;

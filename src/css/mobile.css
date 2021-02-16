@@ -1,0 +1,82 @@
+@media only screen and (max-width: 1550px) {
+  
+}
+@media only screen and (max-width: 1350px) {
+  /* Home */
+  .connectContainer > h2 {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  /* App and Header */
+  .app { grid-template-columns: auto !important; }
+  .app > .page-content { grid-column: 1 !important; }
+  .app > .page-content > .error-container { width: 80%; }
+  .app > .loaderBG { margin-left: 0px; }
+  .header-logo > img {
+    margin: -10px 5px 0px 5px;
+  }
+  .header-home-link {
+    margin-top: 4px;
+  }
+  .header-user-containter {
+    display: none;
+    line-height: 55px;
+  }
+  .left-header {
+    display: none;
+  }
+  .mobile-header {
+    display: grid;
+  }
+  .menu-slider-btn {
+    display: block;
+  }
+
+  /* Home */
+  .home-content {
+    grid-template-columns: auto;
+  }
+  .home-content > div {
+    display: block;
+  }
+  .statusLabels {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    padding-top: 30px;
+  }
+  .connectContainer > h2 {
+    font-size: 26px;
+  }
+  .howToSetup {
+    padding-bottom: 20px;
+  }
+  /* Commands */
+  .categories {
+    grid-template-columns: auto !important;
+    height: 100%;
+  }
+  .category-long {
+    min-width: 90% !important;
+    grid-column: 1 !important;
+    margin: 0 10px !important;
+  }
+  .category {
+    min-width: 90% !important;
+    grid-column: 1 !important;
+    margin: 0 10px !important;
+  }
+  /* Clans */
+  .clans-search-container {
+    padding-left: 0px;
+  }
+  .clans-searchbar {
+    width: 90%;
+    margin: 0px 5%;
+  }
+  .clans-content {
+    width: 95%;
+    margin-right: 5%;
+  }
+}

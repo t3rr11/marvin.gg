@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Gallery, GalleryImage } from 'react-gesture-gallery';
+import { Images, ImageSlider } from '../modules/ImageSlider';
 import Loader from '../modules/Loader';
 import * as Misc from '../Misc';
 
-const images = ["1.png", "1_1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png"];
-var galleryScroller;
+var imageScroller;
 
 export class Home extends Component {
 
@@ -17,13 +16,13 @@ export class Home extends Component {
   setIndex(i) { this.setState({ index: i }); }
   componentDidMount() {
     document.title = "Marvin - Home";
-    galleryScroller = setInterval(() => { if(this.state.index === images.length - 1) { this.setIndex(0) } else { this.setIndex(this.state.index + 1) }  }, 5000);
+    //imageScroller = setInterval(() => { if(this.state.index === images.length - 1) { this.setIndex(0) } else { this.setIndex(this.state.index + 1) }  }, 5000);
     return fetch('https://api.marvin.gg/GetFrontendStatus', { method: 'GET' }).then((response) => response.json()).then(async (response) => {
       if(!response.isError) { this.setState({ users: response.data[0].users, guilds: response.data[0].servers }); }
     })
     .catch((err) => { console.log(err); });
   }
-  componentWillUnmount() { clearInterval(galleryScroller); galleryScroller = null; }
+  componentWillUnmount() { clearInterval(imageScroller); imageScroller = null; }
   gotoMarvin() { window.open('https://discordapp.com/oauth2/authorize?client_id=631351366799065088&scope=bot&permissions=8', '_blank'); }
 
   render() {
@@ -49,14 +48,10 @@ export class Home extends Component {
               <p className="para">Marvin is a great bot to have to see who your most active members are, if you use the <span className="d_highlight">~glory</span> command for example you might find people who you were not aware pvp'd much in your clan, so you could ask them to help you out? Same goes with raids and other activities!</p>
             </div>
           </div>
-          <div className="features">
-            <div>
+          <div className="howToSetup">
+            <div className="features">
               <h3 style={{ textAlign: "center", margin: "10px" }}>Features</h3>
-              <div className="marvinsDisplayImages">
-                <Gallery index={this.state.index} onRequestChange={i => { this.setIndex(i) }} enableControls={ false } enableIndicators={ false }>
-                  { images.map(image => ( <GalleryImage objectFit="contain" src={`/images/marvin/${image}`} /> )) }
-                </Gallery>
-              </div>
+              <ImageSlider images={Images} />
             </div>
             <h2 className="paraTitle">How to Setup</h2>
             <div className="paraContainer">
