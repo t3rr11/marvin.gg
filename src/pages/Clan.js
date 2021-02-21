@@ -7,6 +7,7 @@ import * as apiRequest from '../modules/requests/API';
 import * as bungieRequest from '../modules/requests/BungieReq';
 import * as Manifest from '../modules/handlers/ManifestHandler';
 import * as Misc from '../Misc';
+import * as Checks from '../modules/scripts/Checks';
 
 export class Clan extends Component {
 
@@ -21,7 +22,12 @@ export class Clan extends Component {
 
   componentDidMount() {
     document.title = "Marvin - Clan";
-    this.GetClan();
+    this.startUpChecks();
+  }
+  async startUpChecks() {
+    this.setState({ status: { status: 'checkingManifest', statusText: 'Checking Manifest...' } });
+    if(Checks.checkManifestMounted()) { this.GetClan(); }
+    else { setTimeout(() => { this.startUpChecks(); }, 1000); }
   }
 
   GetClan() {
@@ -64,6 +70,7 @@ export class Clan extends Component {
       }
     });
   }
+  goToClan = (clanID) => { window.open(`https://www.bungie.net/en/ClanV2/Index?groupId=${ clanID }`, '_blank') }
 
   render() {
     const { status, statusText } = this.state.status;
@@ -76,9 +83,9 @@ export class Clan extends Component {
           <div className="clan-content">
             <div className="clan-info-container transScrollbar">
               <div className="clan-banner-container">
-                <ClanBannerGenerator clanID={ bungieData.clanData.detail.groupID } clanBanner={ bungieData.clanData.detail.clanInfo.clanBannerData } width="180px" height="240px" />
+                <ClanBannerGenerator clanBanner={ bungieData.clanData.detail.clanInfo.clanBannerData } width="180px" height="240px" />
                 <div className="creation-date">Since: { new Date(bungieData.clanData.detail.creationDate).toDateString().split(' ').slice(1).join(' ') }</div>
-                <div className={`join-btn ${ bungieData.clanData.detail.defaultPublicity === 0 ? "inviteOnly" : bungieData.clanData.detail.defaultPublicity === 1 ? "join" : "request" }`}>
+                <div className={`join-btn ${ bungieData.clanData.detail.defaultPublicity === 0 ? "inviteOnly" : bungieData.clanData.detail.defaultPublicity === 1 ? "join" : "request" }`} onClick={ (() => this.goToClan(bungieData.clanData.detail.groupId)) }>
                   { bungieData.clanData.detail.defaultPublicity === 0 ? "Invite Only" : bungieData.clanData.detail.defaultPublicity === 1 ? "Join Clan" : "Request to Join" }
                 </div>
               </div>
@@ -123,6 +130,7 @@ class ClanBroadcasts extends Component {
 class Broadcast extends Component {
   render() {
     const broadcast = this.props.broadcast;
+    console.log(broadcast);
     switch(broadcast.type) {
       case "clan": {
         return (
@@ -157,6 +165,19 @@ class Broadcast extends Component {
               { title ? ( <img className="broadcast-image title" src={`https://bungie.net${ title.displayProperties.icon }`} /> ) : "" }
               <div className="broadcast-username">{ broadcast.displayName }</div>
               <div className="broadcast-name">{ broadcast.broadcast }</div>
+              <div className="broadcast-date">{ new Date(broadcast.date).toDateString().split(' ').slice(1).join(' ') }</div>
+            </div>
+          </div>
+        )
+      }
+      case "gildedTitle": {
+        let title = broadcast.parentHash ? Manifest.MANIFEST.DestinyRecordDefinition[broadcast.parentHash] : null;
+        return (
+          <div className="broadcast-container">
+            <div className="broadcast-details">
+              { title ? ( <img className="broadcast-image title" src={`https://bungie.net${ title.displayProperties.icon }`} /> ) : "" }
+              <div className="broadcast-username">{ broadcast.displayName }</div>
+              <div className="broadcast-name">Gilded { broadcast.broadcast }</div>
               <div className="broadcast-date">{ new Date(broadcast.date).toDateString().split(' ').slice(1).join(' ') }</div>
             </div>
           </div>
@@ -205,11 +226,13 @@ class Member extends Component {
   render() {
     const member = this.props.member;
     const lastOnline = new Date().getTime() - new Date(member.lastPlayed).getTime();
+    let lastOnlineText = `Last seen: ${ Misc.formatTime((new Date().getTime() - new Date(member.lastPlayed).getTime()) / 1000) } ago`;
+    if(window.window.innerWidth < 700) { lastOnlineText = `Seen: ${ Misc.formatSmallMinutes((new Date().getTime() - new Date(member.lastPlayed).getTime()) / 1000) } ago` }
     return (
       <div className={`clan-member-container ${ this.props.tag === "founder" ? "founder" : lastOnline < 600000 ? "online" : lastOnline < 86400000 ? "daily" : lastOnline < 604800000 ? "weekly" : "" }` }>
         <div className="clan-member-details">
           <div className="clan-member-name">{ member.displayName } <Tag tag={ this.props.tag } /></div>
-          <div className="clan-member-last-seen">{ member.lastPlayed ? `Last seen: ${ Misc.formatTime((new Date().getTime() - new Date(member.lastPlayed).getTime()) / 1000) } ago` : "Private Account" }</div>
+          <div className="clan-member-last-seen">{ member.lastPlayed ? lastOnlineText : "Private Account" }</div>
         </div>
       </div>
     )

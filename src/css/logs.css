@@ -61,7 +61,7 @@
 }
 .database-log-data {
   display: grid;
-  grid-template-columns: 50px 70px 155px 155px 250px auto 50px 160px;
+  grid-template-columns: 85px 70px 155px 155px 250px auto 50px 160px;
 }
 .undefined-log-data {
   display: grid;
@@ -81,3 +81,4 @@
 .item-log { color: cornflowerblue; }
 .title-log { color: rgb(66, 185, 233); }
 .clan-log { color: #e371ea; }
+.gildedTitle-log { color: #c3ac2c; }

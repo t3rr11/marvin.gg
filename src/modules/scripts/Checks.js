@@ -10,3 +10,7 @@ export async function checkPlatform() { if(localStorage.getItem('SelectedAccount
 export async function checkCharacter() { if(localStorage.getItem('SelectedCharacter') === null) { return false; } else { return true; } }
 export async function checkLogin() { if(localStorage.getItem('Authorization') === null) { return false; } else { return true; } }
 export async function checkSettingsExist() { if(localStorage.getItem('Settings') === null) { return false; } else { return true; } }
+export function checkManifestMounted() {
+  if(MANIFEST !== null && MANIFEST !== undefined) { return true; }
+  else { return false; }
+}

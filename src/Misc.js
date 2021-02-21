@@ -59,6 +59,30 @@ export function formatSmallTime(TimeinSeconds) {
   if (TimeinSeconds >= 86400 && TimeinSeconds !== Infinity) { return dDisplay + hDisplay; }
   return dDisplay + hDisplay + mDisplay + sDisplay;
 }
+export function formatSmallMinutes(TimeinSeconds) {
+  var days, hours, minutes, seconds;
+
+  seconds = Math.floor(Number(TimeinSeconds));
+  days     = Math.floor(seconds / (24*60*60));
+  seconds -= Math.floor(days    * (24*60*60));
+  hours    = Math.floor(seconds / (60*60));
+  seconds -= Math.floor(hours   * (60*60));
+  minutes  = Math.floor(seconds / (60));
+  seconds -= Math.floor(minutes * (60));
+
+  var dDisplay, hDisplay, mDisplay, sDisplay;
+
+  dDisplay = days > 0 ? days + (days == 1 ? 'd ' : 'd ') : '';
+  hDisplay = hours > 0 ? hours + (hours == 1 ? 'h ' : 'h ') : '';
+  mDisplay = minutes > 0 ? minutes + (minutes == 1 ? 'm ' : 'm ') : '';
+  sDisplay = seconds > 0 ? seconds + (seconds == 1 ? 's ' : 's ') : '';
+
+  if (TimeinSeconds < 60) { return sDisplay; }
+  if (TimeinSeconds >= 60 && TimeinSeconds < 3600) { return mDisplay; }
+  if (TimeinSeconds >= 3600 && TimeinSeconds < 86400) { return hDisplay; }
+  if (TimeinSeconds >= 86400 && TimeinSeconds !== Infinity) { return dDisplay; }
+  return dDisplay + hDisplay + mDisplay + sDisplay;
+}
 export function formatCountDownTime(TimeinSeconds) {
   var days, hours, minutes, seconds;
 

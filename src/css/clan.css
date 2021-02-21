@@ -134,28 +134,36 @@
 .broadcast-container > .broadcast-details {
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 53px auto 70px;
 }
 .broadcast-container > .broadcast-details > .clan-banner-icon {
   position: relative;
+  grid-column: 1;
+  grid-row: 1;
   top: -5px;
 }
 .broadcast-container > .broadcast-details > .broadcast-username {
-  position: absolute;
   font-size: 14px;
-  left: 58px;
-  top: 20px;
+  margin-left: 53px;
+  margin-top: -10px;
+  grid-column: span 2;
+  grid-row: 2;
 }
 .broadcast-container > .broadcast-details > .broadcast-name {
-  position: absolute;
   font-size: 14px;
-  left: 58px;
-  top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 2px;
 }
 .broadcast-container > .broadcast-details > .broadcast-date {
-  position: absolute;
-  top: 4px;
-  right: 7px;
+  margin-top: 4px;
   font-size: 12px;
+  grid-column: 3;
+  grid-row: 1;
 }
 .broadcast-container > .broadcast-details > .broadcast-image {
   position: absolute;
@@ -168,8 +176,8 @@
   padding: 5px;
 }
 .broadcast-image.title {
-  width: 46px !important;
+  width: 53px !important;
   height: 53px !important;
-  left: 4px !important;
-  padding: 2px;
+  left: 0px !important;
+  padding: 6px !important;
 }

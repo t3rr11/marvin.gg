@@ -76,7 +76,33 @@
     margin: 0px 5%;
   }
   .clans-content {
-    width: 95%;
-    margin-right: 5%;
+    width: 100%;
   }
+  /* Clan */
+  .clan-content {
+    grid-template-columns: auto;
+  }
+  .clan-content > .clan-members-container {
+    grid-column: 1;
+    height: 200px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    background:rgba(0,0,0,0.2);
+  }
+  .clan-content > .clan-members-container > .clan-member-container > .clan-member-details {
+    display: grid;
+    grid-template-columns: auto auto;
+    font-size: 14px;
+  }
+  .clan-content > .clan-members-container > .clan-member-container > .clan-member-details > .clan-member-last-seen { text-align: right; }
+  .clan-content > .clan-members-container > .clan-member-container > .clan-member-details > .clan-member-name > .tag { top: 7px; }
+  .clan-info-container { display: grid; grid-template-columns: auto; grid-template-rows: auto auto auto; }
+  .clan-info-container > .clan-banner-container { grid-row: 1; width: 100%; margin: auto; position: relative; }
+  .clan-info-container > .clan-banner-container > .clan-banner-icon { position: relative; margin: auto; width: 210px; }
+  .clan-info-container > .clan-details { grid-column: 1; grid-row: 2; height: 100%; overflow: unset; width: 100%; text-align: center; }
+  .clan-info-container > .clan-details > .clan-name { font-size: 18px; display: grid; }
+  .clan-info-container > .clan-details > .clan-name > .clan-members::before { margin-top: 5px; }
+  .clan-info-container > .clan-details > .clan-name > .clan-members { display: block; }
+  .clan-info-container > .clan-details > .clan-about { max-height: unset; width: 98%; margin: auto; }
+  .clan-info-container > .clan-statistics { grid-column: 1 !important; grid-row: 3 !important; }
+  .clan-info-container > .clan-statistics > .clan-broadcasts-container { padding-bottom: 20px; }
 }

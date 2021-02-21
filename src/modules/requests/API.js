@@ -54,6 +54,8 @@ export const GetGlobals = async (callback) => { callback(await apiRequest(`/GetG
 
 export const GetWeeklyFrontendStatus = async () => apiRequest(`/GetWeeklyFrontendLogs`);
 export const GetWeeklyBackendStatus = async () => apiRequest(`/GetWeeklyBackendLogs`);
+export const GetNormalScanTimeLogs = async () => apiRequest(`/GetNormalScanTimeLogs`);
+export const GetRealtimeScanTimeLogs = async () => apiRequest(`/GetRealtimeScanTimeLogs`);
 export const GetAggregateWeeklyFrontendLogs = async () => apiRequest(`/GetAggregateWeeklyFrontendLogs`);
 
 export const SaveAuth = async (auth, callback) => { callback(await apiRequest(`/SaveAuth`, auth)); }
