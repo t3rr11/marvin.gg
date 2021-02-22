@@ -3,7 +3,7 @@ import { XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area } from 'recharts'
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
 import * as apiRequest from '../modules/requests/API';
-import { getDiscordUserInfo } from '../modules/requests/DiscordAuth';
+import * as misc from '../Misc';
 
 let graphUpdateTimer = null;
 
@@ -61,7 +61,7 @@ class Graphs extends React.Component {
       frontend = {
         users: frontendData.map((e, index) => { return { users: e.users, date: new Date(e.date).toLocaleString("en-AU") } }),
         servers: frontendData.map((e, index) => { return { servers: e.servers, date: new Date(e.date).toLocaleString("en-AU") } }),
-        commandsInput: this.compareData(frontendData, "commandsInput", 6),
+        commandsInput: this.compareData(frontendData, "commandsInput", 24),
         uptime: frontendData.map((e, index) => { return { uptime: e.uptime, date: new Date(e.date).toLocaleString("en-AU") } })
       }
 
@@ -77,9 +77,9 @@ class Graphs extends React.Component {
       });
 
       timeLogs = {
-        rtTime: this.mapData(rtScanData, "time", 10),
-        rtPlayers: this.mapData(rtScanData, "players", 10),
-        normalTime: this.mapData(normalScanData, "time", 1),
+        rtTime: this.avgMapData(rtScanData, "time", 10),
+        rtPlayers: this.avgMapData(rtScanData, "players", 10),
+        normalTime: this.avgMapData(normalScanData, "time", 1),
         normalPlayers: normalScanData.map((e, index) => { return { players: e.players, date: new Date(e.date).toLocaleString("en-AU") } })
       }
     });
@@ -94,19 +94,18 @@ class Graphs extends React.Component {
     this.setState({ status: { status: 'ready', statusText: `Finished Updating Graphs.`, loading: false }, frontend, backend, timeLogs });
   }
 
-  mapData = (data, variable, amount) => {
+  avgMapData = (data, variable, amount) => {
     let returnData = [];
     let total = 0;
     data.map((e, index) => {
       if(index % amount === 0) {
         total += parseInt(e[variable]);
-        returnData.push({ [variable]: parseInt(total), date: new Date(e.date).toLocaleString("en-AU") });
+        returnData.push({ [variable]: Math.round(parseInt(total) / amount), date: new Date(e.date).toLocaleString("en-AU") });
         total = 0;
       } else { total += parseInt(e[variable]); }
     });
     return returnData;
   }
-
   compareData = (data, variable, amount) => {
     let returnData = [];
     let total = 0;
@@ -124,6 +123,30 @@ class Graphs extends React.Component {
     });
     return returnData;
   }
+  formatTime = (TimeinSeconds) => {
+    var days, hours, minutes, seconds;
+  
+    seconds = Math.floor(Number(TimeinSeconds));
+    days     = Math.floor(seconds / (24*60*60));
+    seconds -= Math.floor(days    * (24*60*60));
+    hours    = Math.floor(seconds / (60*60));
+    seconds -= Math.floor(hours   * (60*60));
+    minutes  = Math.floor(seconds / (60));
+    seconds -= Math.floor(minutes * (60));
+  
+    var dDisplay, hDisplay, mDisplay, sDisplay;
+  
+    dDisplay = days > 0 ? days + (days == 1 ? 'd ' : 'd ') : '';
+    hDisplay = hours > 0 ? hours + (hours == 1 ? 'h ' : 'h ') : '';
+    mDisplay = minutes > 0 ? minutes + (minutes == 1 ? 'm ' : 'm ') : '';
+    sDisplay = seconds > 0 ? seconds + (seconds == 1 ? 's ' : 's ') : '';
+  
+    if (TimeinSeconds < 60) { return sDisplay; }
+    if (TimeinSeconds >= 60 && TimeinSeconds < 3600) { return mDisplay + sDisplay; }
+    if (TimeinSeconds >= 3600 && TimeinSeconds < 86400) { return hDisplay + mDisplay; }
+    if (TimeinSeconds >= 86400 && TimeinSeconds !== Infinity) { return dDisplay; }
+    return dDisplay + hDisplay + mDisplay + sDisplay;
+  }
 
   render() {
     const { status, statusText } = this.state.status;
@@ -139,7 +162,7 @@ class Graphs extends React.Component {
                   <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
               <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="users" stroke="#8884d8" fillOpacity={1} fill="url(#colorUsers)" />
@@ -151,7 +174,7 @@ class Graphs extends React.Component {
                   <stop offset="95%" stopColor="#84d5d8" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
               <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="servers" stroke="#84d5d8" fillOpacity={1} fill="url(#colorServers)" />
@@ -167,21 +190,21 @@ class Graphs extends React.Component {
                   <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" interval={75} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
               <YAxis yAxisId={1} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <YAxis yAxisId={2} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} ticks={[0,5,10,20,50]} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area yAxisId={1} type="monotone" dataKey="total_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorClans)" />
               <Area yAxisId={2} type="monotone" dataKey="rt_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorRTClans)" />
             </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.frontend.commandsInput.slice(2, this.state.frontend.commandsInput.length) } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <AreaChart width={550} height={200} data={ this.state.frontend.commandsInput } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorCommandsInput" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
                   <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" interval={100} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
               <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
@@ -194,7 +217,7 @@ class Graphs extends React.Component {
                 </linearGradient>
               </defs>
               <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
             </AreaChart>
@@ -206,7 +229,7 @@ class Graphs extends React.Component {
                 </linearGradient>
               </defs>
               <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="time" stroke="#F5CB39" fillOpacity={1} fill="url(#colorNormalTime)" />
             </AreaChart>

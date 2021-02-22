@@ -111,6 +111,15 @@ export class Commands extends Component {
               <div className="category-title">Others</div>
               <div className="category-paragraph">
                 <div className="category-row"><span className="d_highlight">~donate</span></div>
+                <div className="category-row"><span className="d_highlight">~clan activity</span></div>
+                <div className="category-row"><span className="d_highlight">~profile</span></div>
+                <div className="category-row"><span className="d_highlight">~profile raids</span>, <span className="d_highlight">~profile -r</span></div>
+                <div className="category-row"><span className="d_highlight">~profile broadcasts</span>, <span className="d_highlight">~profile -b</span></div>
+                <div className="category-row"><span className="d_highlight">~triumph score -active</span></div>
+                <div className="category-row"><span className="d_highlight">~triumph score -legacy</span></div>
+                <div className="category-row"><span className="d_highlight">~triumph score -lifetime</span></div>
+                <div className="category-row"><span className="d_highlight">~legend</span> - Daily legend lost sector</div>
+                <div className="category-row"><span className="d_highlight">~master</span> - Daily master lost sector</div>
               </div>
             </div>
           </div>

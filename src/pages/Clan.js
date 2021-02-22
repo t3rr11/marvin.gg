@@ -130,7 +130,6 @@ class ClanBroadcasts extends Component {
 class Broadcast extends Component {
   render() {
     const broadcast = this.props.broadcast;
-    console.log(broadcast);
     switch(broadcast.type) {
       case "clan": {
         return (

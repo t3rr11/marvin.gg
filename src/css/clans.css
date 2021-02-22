@@ -12,14 +12,6 @@
   overflow-y: auto;
   padding-top: 5px;
 }
-.clans-footer {
-  margin-top: 25px;
-  height: 100px;
-}
-.clans-footer > div {
-  width: fit-content;
-  margin: auto;
-}
 .clan-container {
   display: grid;
   width: 300px;
@@ -72,3 +64,21 @@
 }
 .not-tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); box-shadow: inset 4px 0px 0px 0px rgba(0,0,0,0.2); }
 .tracking { -webkit-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); -moz-box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); box-shadow: inset 4px 0px 0px 0px rgba(255,255,255,0.2); }
+.clans-footer > div {
+  width: fit-content;
+  margin: auto;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.clans-footer > .page-router > .left-arrow {
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+.clans-footer > .page-router > .right-arrow {
+  margin-left: 5px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}

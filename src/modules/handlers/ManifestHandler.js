@@ -85,7 +85,7 @@ export async function Load(callback) {
           let currentVersion = Data.Response.version;
           let storedVersion = await DB.table('ManifestVersion').toCollection().first();
           //Check versions
-          if(storedVersion?.version !== currentVersion?.version) { StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
+          if(storedVersion?.version === currentVersion?.version) { StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
           else {
             //Version were different, updating the manifest now.
             console.log("Updating Manifest");
