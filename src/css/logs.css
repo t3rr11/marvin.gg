@@ -82,3 +82,42 @@
 .title-log { color: rgb(66, 185, 233); }
 .clan-log { color: #e371ea; }
 .gildedTitle-log { color: #c3ac2c; }
+
+.Command-log > span {
+  color: rgba(77, 139, 255, 0.9);
+  cursor: pointer;
+}
+.Command-log > span:hover {
+  text-decoration: underline;
+}
+.user-interface {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 500px;
+  height: 600px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.user-interface > .user-interface-head {
+  width: 100%;
+  height: 30px;
+  background: rgba(0,0,0,0.3);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.user-interface > .user-interface-head > span {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  color: tomato;
+  height: 24px;
+  width: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.user-interface > .user-interface-head > #user-interface-id {
+  font-size: 14px;
+  line-height: 30px;
+  padding-left: 5px;
+}

@@ -138,7 +138,7 @@ class App extends React.Component {
             <Route path="/leaderboards" render={ props => { return <Guild props={ props } setSubPage={ ((page) => this.setSubPage(page)) } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/dashboard" render={ props => { return <Dashboard props={ props } currentSubPage={ this.state.currentSubPage } /> } }/>
             <Route path="/status" render={ props => { return <Status /> } }/>
-            <Route path="/logs" render={ props => { return <Logs /> } }/>
+            <Route path="/logs" render={ props => { return <Logs currentBackground={ this.state.currentBackground } /> } }/>
             <Route path="/graphs" render={ props => { return <Graphs /> } }/>
             <Route path="/loader" render={ props => { return <Loader statusText={ "Testing" } /> } }/>
             <Route path="/discord" render={ props => { return (window.location.href = "https://discord.gg/jbEbYej") } }/>
