@@ -61,7 +61,7 @@ class Graphs extends React.Component {
       frontend = {
         users: frontendData.map((e, index) => { return { users: e.users, date: new Date(e.date).toLocaleString("en-AU") } }),
         servers: frontendData.map((e, index) => { return { servers: e.servers, date: new Date(e.date).toLocaleString("en-AU") } }),
-        commandsInput: this.compareData(frontendData, "commandsInput", 24),
+        commandsInput: frontendData.map((e, index) => { return { commandsInput: e.commandsInput, date: e.date } }).slice(frontendData.length-24, frontendData.length),
         uptime: frontendData.map((e, index) => { return { uptime: e.uptime, date: new Date(e.date).toLocaleString("en-AU") } })
       }
 
@@ -77,10 +77,8 @@ class Graphs extends React.Component {
       });
 
       timeLogs = {
-        rtTime: this.avgMapData(rtScanData, "time", 10),
-        rtPlayers: this.avgMapData(rtScanData, "players", 10),
-        normalTime: this.avgMapData(normalScanData, "time", 1),
-        normalPlayers: normalScanData.map((e, index) => { return { players: e.players, date: new Date(e.date).toLocaleString("en-AU") } })
+        realtime: this.mAvgMapData(rtScanData, 10),
+        normal: normalScanData.map((e, index) => { return { players: e.players, time: e.time, date: e.date } })
       }
     });
 
@@ -100,9 +98,27 @@ class Graphs extends React.Component {
     data.map((e, index) => {
       if(index % amount === 0) {
         total += parseInt(e[variable]);
-        returnData.push({ [variable]: Math.round(parseInt(total) / amount), date: new Date(e.date).toLocaleString("en-AU") });
+        returnData.push({ [variable]: Math.round(parseInt(total) / amount), date: e.date });
         total = 0;
       } else { total += parseInt(e[variable]); }
+    });
+    return returnData;
+  }
+  mAvgMapData = (data, amount) => {
+    let returnData = [];
+    let totalTime = 0;
+    let totalPlayers = 0;
+    data.map((e, index) => {
+      if(index % amount === 0) {
+        totalTime += parseInt(e.time);
+        totalPlayers += parseInt(e.players);
+        returnData.push({ time: Math.round(parseInt(totalTime) / amount), players: Math.round(parseInt(totalPlayers) / amount), date: e.date });
+        totalTime = 0;
+        totalPlayers = 0;
+      } else {
+        totalTime += parseInt(e.time);
+        totalPlayers += parseInt(e.players);
+      }
     });
     return returnData;
   }
@@ -204,59 +220,46 @@ class Graphs extends React.Component {
                   <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+              <XAxis dataKey="date" interval={3} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
               <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
             </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.rtTime } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <AreaChart width={550} height={200} data={ this.state.timeLogs.realtime } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
               <defs>
+                <linearGradient id="colorRTPlayers" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
+                  <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
+                </linearGradient>
                 <linearGradient id="colorRTTime" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
                   <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
+              <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
+              <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+              <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
+              <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorRTPlayers)" />
+              <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
             </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.normalTime } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <AreaChart width={550} height={200} data={ this.state.timeLogs.normal } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
               <defs>
-                <linearGradient id="colorNormalTime" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#F5CB39" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#F5CB39" stopOpacity={0}/>
+                <linearGradient id="colorNormalPlayers" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
+                  <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
                 </linearGradient>
-              </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="time" stroke="#F5CB39" fillOpacity={1} fill="url(#colorNormalTime)" />
-            </AreaChart>
-            <div></div>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.rtPlayers } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorServers" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id="colorNormalTime" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
                   <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+              <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
+              <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+              <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="players" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.normalPlayers } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorNormalTime" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#F5CB39" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#F5CB39" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="players" stroke="#F5CB39" fillOpacity={1} fill="url(#colorNormalTime)" />
+              <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorNormalPlayers)" />
+              <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorNormalTime)" />
             </AreaChart>
           </div>
         </div>
@@ -270,6 +273,13 @@ class CustomizedDateAxisTick extends PureComponent {
   render() {
     const { x, y, stroke, payload } = this.props;
     return (<g transform={`translate(${x},${y})`}><text x={0} y={0} dy={16} textAnchor="right" style={{ fontSize: "12px", fill: "#d6d6d6" }}>{ payload.value.split(',')[0] }</text></g>);
+  }
+}
+
+class CustomizedTimeAxisTick extends PureComponent {
+  render() {
+    const { x, y, stroke, payload } = this.props;
+    return (<g transform={`translate(${x},${y})`}><text x={0} y={0} dy={16} textAnchor="right" style={{ fontSize: "12px", fill: "#d6d6d6" }}>{ new Date(payload.value).toLocaleTimeString("en-UK") }</text></g>);
   }
 }
 
