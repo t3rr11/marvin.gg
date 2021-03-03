@@ -51,6 +51,8 @@ export const GetUsersFromGuildID = async (data, callback) => { callback(await ap
 export const GetGuildDashboard = async (data, callback) => { callback(await apiRequest(`/GetGuildDashboard`, data)); }
 export const GetGuildRankings = async (data, callback) => { callback(await apiRequest(`/GetGuildRankings`, data)); }
 export const GetGlobals = async (callback) => { callback(await apiRequest(`/GetGlobals`)); }
+export const GetDiscordUserLogs = async (data) => apiRequest(`/GetDiscordUserLogs`, data);
+export const GetUserDetails = async (data) => apiRequest(`/GetUserDetails`, data);
 
 export const GetWeeklyFrontendStatus = async () => apiRequest(`/GetWeeklyFrontendLogs`);
 export const GetWeeklyBackendStatus = async () => apiRequest(`/GetWeeklyBackendLogs`);

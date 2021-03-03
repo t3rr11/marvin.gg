@@ -68,6 +68,10 @@
   grid-template-columns: 75px auto 160px;
   color: red !important;
 }
+.Command-log-data {
+  display: grid;
+  grid-template-columns: 75px 145px 150px auto 160px;
+}
 .Startup-log { color: #cecece; }
 .Info-log { color: #cecece; }
 .Scan-log { color: cornflowerblue; }
@@ -94,8 +98,9 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  width: 500px;
-  height: 600px;
+  width: 600px;
+  min-height: 300px;
+  height: 500px;
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
@@ -120,4 +125,21 @@
   font-size: 14px;
   line-height: 30px;
   padding-left: 5px;
+}
+.user-interface > .user-interface-body > .user-profile-container {
+  padding: 5px;
+}
+.user-interface > .user-interface-body > .user-commands-container {
+  padding: 5px;
+}
+.user-interface > .user-interface-body > .user-commands-container > .user-commands {
+  display: grid;
+  max-height: 300px;
+}
+.user-interface > .user-interface-body > .user-commands-container > .user-commands > .user-command-container {
+  display: grid;
+  grid-template-columns: max-content max-content auto max-content;
+  grid-gap: 10px;
+  font-size: 12px;
+  padding-right: 5px;
 }

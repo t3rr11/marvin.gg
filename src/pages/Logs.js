@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
 import * as apiRequest from '../modules/requests/API';
@@ -136,8 +137,8 @@ class Logs extends React.Component {
     }
   }
 
-  openUserInterface = (user) => {
-    this.setState({ userInterface: user })
+  openUserInterface = (log) => {
+    this.setState({ userInterface: log })
   }
   closeUserInterface = () => {
     this.setState({ userInterface: false })
@@ -147,7 +148,7 @@ class Logs extends React.Component {
     const { status, statusText } = this.state.status;
     const buildLog = (log, type) => {
       return (
-        <div className={`${ type }-log-data`}>
+        <div className={`${ type }-log-data`} key={ log["_id"] } >
           <div className={`${ log.type }-log`}>{ log.type }</div>
           <div className={`${ log.type }-log`}>{ log.log }</div>
           <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
@@ -156,20 +157,19 @@ class Logs extends React.Component {
     }
     const buildSmartLog = (log, type) => {
       if(type === "frontend" && log.type === "Command") {
-        let split = log.log.split(',');
-        let user = split[0].slice(6, split[0].length);
-        let command = split[1].slice(10, split[1].length);
         return (
-          <div className={`${ type }-log-data`}>
+          <div className={`${ log.type }-log-data`} key={ log["_id"] }>
             <div className={`${ log.type }-log`}>{ log.type }</div>
-            <div className={`${ log.type }-log`}>User: <span onClick={ (() => this.openUserInterface(user)) }>{ user }</span>, Command: <span>{ command }</span></div>
+            <div className={`${ log.type }-log`}><span>{ log.guildID }</span></div>
+            <div className={`${ log.type }-log`} style={{ width: "150px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}><span onClick={ (() => this.openUserInterface(log)) }>{ log.discordUser }</span></div>
+            <div className={`${ log.type }-log`} style={{ width: "185px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}><span>{ log.command }</span></div>
             <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
           </div>
         );
       }
       else {
         return (
-          <div className={`${ type }-log-data`}>
+          <div className={`${ type }-log-data`} key={ log["_id"] }>
             <div className={`${ log.type }-log`}>{ log.type }</div>
             <div className={`${ log.type }-log`}>{ log.log }</div>
             <div className={`${ log.type }-log`}>{ new Date(log.date).toLocaleString("en-AU") }</div>
@@ -179,7 +179,7 @@ class Logs extends React.Component {
     }
     const buildBroadcast = (log, type) => {
       return (
-        <div className={`${ type }-log-data`}>
+        <div className={`${ type }-log-data`} key={ log["_id"] }>
           <div className={`${ log.type }-log`}>{ log.type }</div>
           <div className={`${ log.type }-log`}>{ log.clanID }</div>
           <div className={`${ log.type }-log`}>{ log.guildID }</div>
@@ -322,13 +322,141 @@ class ErrorLogs extends React.Component {
   }
 }
 class UserInterface extends React.Component {
+  state = {
+    pos: { x: 50, y: 50 },
+    dragging: false,
+    rel: null
+  }
+
+  componentDidUpdate = (props, state) => {
+    if (this.state.dragging && !state.dragging) {
+      document.addEventListener('mousemove', this.onMouseMove)
+      document.addEventListener('mouseup', this.onMouseUp)
+    }
+    else if (!this.state.dragging && state.dragging) {
+      document.removeEventListener('mousemove', this.onMouseMove)
+      document.removeEventListener('mouseup', this.onMouseUp)
+    }
+  }
+
+  onMouseDown = (e) => {
+    //Only watch for left mouse down
+    if(e.button !== 0) return;
+    let dom = window.getComputedStyle(ReactDOM.findDOMNode(this));
+    var pos = { y: parseInt(dom.top), x: parseInt(dom.left) };
+    this.setState({ dragging: true, rel: { x: e.pageX - pos.x, y: e.pageY - pos.y } });
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  onMouseUp = (e) => {
+    this.setState({ dragging: false });
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  onMouseMove = (e) => {
+    if(!this.state.dragging) return;
+    this.setState({ pos: { x: e.pageX - this.state.rel.x, y: e.pageY - this.state.rel.y } });
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
   render() {
     const user = this.props.user;
     return (
-      <div className="user-interface" style={{ background: `var(--${ this.props.currentBackground })` }}>
-        <div className="user-interface-head"><div id="user-interface-id">{ user }</div><span onClick={(() => this.props.closeUserInterface())}>X</span></div>
+      <div className="user-interface" style={{ background: `var(--${ this.props.currentBackground })`, top: this.state.pos.y, left: this.state.pos.x }}>
+        <div className="user-interface-head" onMouseDown={this.onMouseDown}>
+          <div id="user-interface-id">{ user.discordUser } ({ user.discordID })</div>
+          <span onClick={(() => this.props.closeUserInterface())}>X</span>
+        </div>
+        <UserInterfaceBody user={user} />
+      </div>
+    )
+  }
+}
+class UserInterfaceBody extends React.Component {
+
+  state = {
+    status: {
+      status: 'startingUp',
+      statusText: `Loading User Details`,
+      loading: true
+    },
+    user: null
+  }
+
+  componentDidMount = () => {
+    this.load();
+  }
+  componentDidUpdate(newProps) {
+    if(newProps.user !== this.props.user) {
+      this.setState({ status: { status: 'loadingNewUser', statusText: `Loading User Details`, loading: true }, user: this.props.user });
+      this.load();
+    }
+  }
+  load = () => {
+    const adminToken = localStorage.getItem("adminToken") ? localStorage.getItem("adminToken") : "";
+    if(adminToken) {
+      Promise.all([
+        apiRequest.GetDiscordUserLogs({ discordID: this.props.user.discordID, token: adminToken }),
+        apiRequest.GetUserDetails({ discordID: this.props.user.discordID, token: adminToken }),
+      ]).then((data) => {
+        this.setState({
+          status: { status: 'ready', statusText: `Done`, loading: false },
+          user: this.props.user,
+          details: data[1].data,
+          commands: data[0].data
+        });
+      });
+    }
+    else {
+      this.setState({
+        status: { status: 'error', statusText: `Not authorized to see this data.`, loading: false },
+        user: this.props.user
+      });
+    }
+  }
+
+  render() {
+    const { status, statusText } = this.state.status;
+    if(status === "error") { return <Error error={ statusText } /> }
+    else if(status === "ready") {
+      return (
         <div className="user-interface-body">
-          
+          <UserInterfaceProfile user={this.state.user} details={this.state.details} />
+          <UserInterfaceCommands commands={this.state.commands} />
+        </div>
+      )
+    }
+    else { return <Loader statusText={ statusText } /> }
+  }
+}
+class UserInterfaceProfile extends React.Component {
+  render() {
+    return (
+      <div className="user-profile-container">
+        <h6>{ this.props.user.discordUser } ({ this.props.user.discordID })</h6>
+      </div>
+    )
+  }
+}
+class UserInterfaceCommands extends React.Component {
+  render() {
+    return (
+      <div className="user-commands-container">
+        <h6>History</h6>
+        <div className="user-commands transScrollbar">
+          {
+            this.props.commands.map((command) => {
+              return (
+                <div className="user-command-container">
+                  <div>{ command.guildID }</div>
+                  <div>{ command.discordUser }</div>
+                  <div>{ command.command }</div>
+                  <div>{ new Date(command.date).toLocaleDateString("en-AU") }</div>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     )

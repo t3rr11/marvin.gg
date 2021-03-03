@@ -61,7 +61,7 @@ class Graphs extends React.Component {
       frontend = {
         users: frontendData.map((e, index) => { return { users: e.users, date: new Date(e.date).toLocaleString("en-AU") } }),
         servers: frontendData.map((e, index) => { return { servers: e.servers, date: new Date(e.date).toLocaleString("en-AU") } }),
-        commandsInput: frontendData.map((e, index) => { return { commandsInput: e.commandsInput, date: e.date } }).slice(frontendData.length-24, frontendData.length),
+        commandsInput: frontendData.map((e, index) => { return { commandsInput: e.commandsInput, date: new Date(e.date).toLocaleString("en-AU") } }).slice(frontendData.length-168, frontendData.length),
         uptime: frontendData.map((e, index) => { return { uptime: e.uptime, date: new Date(e.date).toLocaleString("en-AU") } })
       }
 
@@ -216,11 +216,11 @@ class Graphs extends React.Component {
             <AreaChart width={550} height={200} data={ this.state.frontend.commandsInput } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorCommandsInput" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" interval={3} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
+              <XAxis dataKey="date" interval={48} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
               <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
               <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
               <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
