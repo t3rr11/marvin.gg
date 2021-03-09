@@ -164,6 +164,11 @@ class ServerRankings extends Component {
         users.sort((a, b) => b["dungeons"][leaderboardType].completions - a["dungeons"][leaderboardType].completions);
         break;
       }
+      case leaderboardType === "presage": {
+        users.sort((a, b) => b[leaderboardType].normal - a[leaderboardType].normal);
+        users.sort((a, b) => b[leaderboardType].master - a[leaderboardType].master);
+        break;
+      }
       default: { users.sort((a, b) => b[leaderboardType] - a[leaderboardType]); break; }
     }
     this.setState({ users });
@@ -193,6 +198,7 @@ class ServerRankings extends Component {
       case type === "shatteredThrone": { return { name: "Shattered Throne Clears", value: ["Clears", "Flawless"] } }
       case type === "pitOfHeresy": { return { name: "Pit of Heresy Clears", value: ["Clears", "Flawless"] } }
       case type === "prophecy": { return { name: "Prophecy Clears", value: ["Clears", "Flawless"] } }
+      case type === "presage": { return { name: "Presage Clears", value: ["Normal", "Master"] } }
       case type === "activeScore": { return { name: "Triumph Score", value: ["Score"] }; }
       case type === "legacyScore": { return { name: "Legacy Triumph Score", value: ["Score"] }; }
       case type === "lifetimeScore": { return { name: "Lifetime Triumph Score", value: ["Score"] }; }
@@ -220,6 +226,7 @@ class ServerRankings extends Component {
       case type === "shatteredThrone": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "pitOfHeresy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "prophecy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
+      case type === "presage": { return [member[type].normal, member[type].master] }
       case type === "activeScore": { return [member["triumphScore"][type]] }
       case type === "legacyScore": { return [member["triumphScore"][type]] }
       case type === "lifetimeScore": { return [member["triumphScore"][type]] }
