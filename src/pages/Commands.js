@@ -62,6 +62,9 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~season rank</span>, <span className="d_highlight">~sr</span></div>
                 <div className="category-row"><span className="d_highlight">~time played</span>, <span className="d_highlight">~time</span></div>
                 <div className="category-row"><span className="d_highlight">~highest power</span>, <span className="d_highlight">~power</span></div>
+                <div className="category-row"><span className="d_highlight">~empire hunts</span></div>
+                <div className="category-row"><span className="d_highlight">~presage</span></div>
+                <div className="category-row"><span className="d_highlight">~master presage</span></div>
               </div>
             </div>
             <div className="category">
@@ -75,6 +78,14 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~crown of sorrows</span>, <span className="d_highlight">~cos</span></div>
                 <div className="category-row"><span className="d_highlight">~garden of salvation</span>, <span className="d_highlight">~gos</span></div>
                 <div className="category-row"><span className="d_highlight">~deep stone crypt</span>, <span className="d_highlight">~dsc</span></div>
+              </div>
+            </div>
+            <div className="category">
+              <div className="category-title">Dungeons</div>
+              <div className="category-paragraph">
+                <div className="category-row"><span className="d_highlight">~shattered throne</span></div>
+                <div className="category-row"><span className="d_highlight">~pit of heresy</span></div>
+                <div className="category-row"><span className="d_highlight">~prophecy</span></div>
               </div>
             </div>
             <div className="category">
@@ -113,13 +124,13 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~donate</span></div>
                 <div className="category-row"><span className="d_highlight">~clan activity</span></div>
                 <div className="category-row"><span className="d_highlight">~profile</span></div>
-                <div className="category-row"><span className="d_highlight">~profile raids</span>, <span className="d_highlight">~profile -r</span></div>
-                <div className="category-row"><span className="d_highlight">~profile broadcasts</span>, <span className="d_highlight">~profile -b</span></div>
+                <div className="category-row"><span className="d_highlight">~profile -raids</span> ~profile -r</div>
+                <div className="category-row"><span className="d_highlight">~profile -broadcasts</span> ~profile -b</div>
                 <div className="category-row"><span className="d_highlight">~triumph score -active</span></div>
                 <div className="category-row"><span className="d_highlight">~triumph score -legacy</span></div>
                 <div className="category-row"><span className="d_highlight">~triumph score -lifetime</span></div>
-                <div className="category-row"><span className="d_highlight">~legend</span> - Daily legend lost sector</div>
-                <div className="category-row"><span className="d_highlight">~master</span> - Daily master lost sector</div>
+                <div className="category-row"><span className="d_highlight">~legend</span> Daily legend lost sector</div>
+                <div className="category-row"><span className="d_highlight">~master</span> Daily master lost sector</div>
               </div>
             </div>
           </div>
