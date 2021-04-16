@@ -3,7 +3,7 @@ import Loader from '../modules/Loader';
 import Error from '../modules/Error';
 import * as Misc from '../Misc';
 import Config from '../Config.json';
-import SoTExample from '../assets/jsons/sot_example.json';
+import SoTExample from '../assets/jsons/sot_example2.json';
 
 let refreshTimer = null;
 
