@@ -61,12 +61,12 @@ class Logs extends React.Component {
       let frontendStartup = data[0]; let backendStartup = data[1]; let expressStartup = data[2]; let globalsStartup = data[3];
       if(!frontendStartup?.isError && !backendStartup?.isError && !expressStartup?.isError && !globalsStartup?.isError) {
         await Promise.all([
-          await apiRequest.GetFrontendLogs({ date: frontendStartup.data[0].date }),
-          await apiRequest.GetBackendLogs({ date: backendStartup.data[0].date }),
-          await apiRequest.GetExpressLogs({ date: expressStartup.data[0].date }),
-          await apiRequest.GetDatabaseLogs({ date: frontendStartup.data[0].date }),
-          await apiRequest.GetBroadcasts({ date: frontendStartup.data[0].date }),
-          await apiRequest.GetGlobalsLogs({ date: globalsStartup.data[0].date }),
+          await apiRequest.GetFrontendLogs({ date: frontendStartup.data ? frontendStartup.data[0].date : new Date() }),
+          await apiRequest.GetBackendLogs({ date: backendStartup.data ? backendStartup.data[0].date : new Date() }),
+          await apiRequest.GetExpressLogs({ date: expressStartup.data ? expressStartup.data[0].date : new Date() }),
+          await apiRequest.GetDatabaseLogs({ date: frontendStartup.data ? frontendStartup.data[0].date : new Date() }),
+          await apiRequest.GetBroadcasts({ date: frontendStartup.data ? frontendStartup.data[0].date : new Date() }),
+          await apiRequest.GetGlobalsLogs({ date: globalsStartup.data ? globalsStartup.data[0].date : new Date() }),
           await apiRequest.GetErrorHandlerLogs({ date: new Date((new Date() - (1000 * 86400)) + 37800000).toISOString() })
         ]).then((log_data) => {
 
@@ -74,13 +74,13 @@ class Logs extends React.Component {
           this.setState({
             status: { status: 'ready', statusText: `Finished Updating Logs.`, loading: false },
             logs: {
-              frontend: log_data[0].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              backend: log_data[1].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              express: log_data[2].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              clan: log_data[3].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              database: log_data[4].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              globals: log_data[5].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-              errorHandler: log_data[6].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+              frontend: log_data[0] ? log_data[0].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              backend: log_data[1] ? log_data[1].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              express: log_data[2] ? log_data[2].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              clan: log_data[3] ? log_data[3].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              database: log_data[4] ? log_data[4].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              globals: log_data[5] ? log_data[5].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
+              errorHandler: log_data[6] ? log_data[6].data.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [],
             },
             lastUpdate: new Date().toISOString()
           });
@@ -99,12 +99,12 @@ class Logs extends React.Component {
   async UpdateLogs() {
     let logs = await apiRequest.GetLogs({ date: this.state.lastUpdate });
     let broadcasts = await apiRequest.GetBroadcasts({ date: this.state.lastUpdate });
-    if(!logs?.isError) {
+    if(logs && !logs?.isError) {
       if(logs.data.length > 0 || broadcasts.data.length > 0) {
         let { frontend, backend, express, database, globals, errorHandler } = this.state.logs;
         let startupDetected = false;
-        for(let i in broadcasts.data) { database.unshift(broadcasts.data[i]); }
-        for(let i in logs.data) {
+        for(let i in broadcasts?.data) { database.unshift(broadcasts.data[i]); }
+        for(let i in logs?.data) {
           if(logs.data[i].type === "Startup") { startupDetected = true; }
           else {
             switch(logs.data[i].location || logs.data[i].type) {
