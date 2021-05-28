@@ -24,6 +24,7 @@ export class Home extends Component {
   }
   componentWillUnmount() { clearInterval(imageScroller); imageScroller = null; }
   gotoMarvin() { window.open('https://discordapp.com/oauth2/authorize?client_id=631351366799065088&scope=bot&permissions=8', '_blank'); }
+  joinMarvin() { window.open('https://marvin.gg/discord', '_blank'); }
 
   render() {
     const { users, guilds } = this.state;
@@ -38,7 +39,10 @@ export class Home extends Component {
                 <div className="guildsStatusLabel">Servers: { Misc.AddCommas(guilds) }</div>
               </div>
               <div className="animatedLogo"><Loader custom={{ loader: "logo", height: "200px", width: "200px" }} /></div>
-              <div className="marvinBtn"><button className="btn btn-primary" onClick={ (() => this.gotoMarvin()) }>Invite</button></div>
+              <div className="marvinBtn">
+                <button className="btn btn-primary" onClick={ (() => this.gotoMarvin()) }>Invite Marvin</button>
+                <button className="btn btn-primary" onClick={ (() => this.joinMarvin()) }>Join Support Server</button>
+              </div>
             </div>
             <h2 className="paraTitle">Why would you want Marvin?</h2>
             <div className="paraContainer">

@@ -58,6 +58,7 @@ h3::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
   box-sizing: border-box;
   width: 100%;
   display: flex;
+  gap: 10px;
   justify-content: center;
 }
 .animatedLogo {
