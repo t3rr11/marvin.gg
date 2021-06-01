@@ -80,14 +80,20 @@
 }
 .server-tracked-items {
   padding: 5px 5px 0px 5px;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .server-tracked-items > .item-container {
-  display: inline-grid;
+  display: grid;
   justify-content: start;
+  grid-template-columns: 60px auto;
   border: 1px#b3b3b324 solid;
   margin: 0px 2px 3px;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
+  flex-basis: 49%;
 }
 .server-tracked-items > .item-container > .item-image {
   height: 45px;
@@ -197,4 +203,9 @@
   width: 18px;
   height: 15px;
   margin-top: 5px;
+}
+.server-details-container > .info {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }

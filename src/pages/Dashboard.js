@@ -145,6 +145,7 @@ export class DiscordServerContainer extends Component {
 export class DiscordServerDetails extends Component {
   render() {
     let server = this.props.server;
+    console.log(server);
     let smallName = server.name.match(/\b(\w)/g).join('').slice(0, 2);
     return(
       <div className="server-details-container">
@@ -165,7 +166,16 @@ export class DiscordServerDetails extends Component {
             })
           }
         </div>
+        <div>Guild ID: { server.guildID }</div>
+        <div>Guild Name: { server.guildName }</div>
+        <div>Started Tracking On: { server.joinedOn }</div>
+        <div>Name: { server.name }</div>
+        <div>Prefix: { server.prefix }</div>
+        <div>Clans: { JSON.stringify(server.clans) }</div>
+        <div>Announcements: { JSON.stringify(server.announcements) }</div>
+        <div>Broadcasts: { JSON.stringify(server.broadcasts) }</div>
         <TrackedItemsContainer server={ server } globals={ this.props.globals } />
+        <div className="info">This page is still way in beta.</div>
       </div>
     );
   }
@@ -256,11 +266,10 @@ export class TrackedItemsContainer extends Component {
     let trackedItems = [];
     if(server.broadcasts.mode === "Auto") { trackedItems = [...globalItems.filter(e => !ignoredItems.includes(e)), ...extraItems.filter(e => !globalItems.includes(e))]; }
     else { trackedItems = extraItems; }
-    //TODO need to add manifest library and pull item images and names etc. Possbily use the css for the armory items?
     return(
       <React.Fragment>
-        <div className="server-tracked-items-title">Items tracked by this server, not ordered in any way just yet as this page is still way in beta.</div>
-        <div className="server-tracked-items">
+        <div className="server-tracked-items-title">Tracked Items</div>
+        <div className="server-tracked-items transScrollbar">
           {
             trackedItems.map((collectibleHash) => {
               let itemData = MANIFEST?.DestinyCollectibleDefinition[collectibleHash];
@@ -268,6 +277,7 @@ export class TrackedItemsContainer extends Component {
                 return (
                   <div className="item-container" data-tip data-for={ `${ collectibleHash }-tooltip` }>
                     <img className="item-image" src={ `https://bungie.net${ itemData?.displayProperties?.icon }` } />
+                    <div>{ itemData?.displayProperties?.name }</div>
                     <ReactTooltip id={ `${ collectibleHash }-tooltip` } place="bottom" effect="solid" backgroundColor="#1a1d2d">
                       <div>{ itemData?.displayProperties?.name }</div>
                     </ReactTooltip>
