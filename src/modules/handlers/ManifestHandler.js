@@ -151,7 +151,17 @@ async function downloadManifest(callback) {
         //Set manifest
         StoreManifest((state) => { callback(state); });
         SetNextManifestCheck();
-      }).catch((error) => { console.log(error); callback({ status: 'failedManifestDownload', statusText: "Failed to Download Manifest, Try Refresh?", error: true, loading: true, manifestMounted: false }); });
+        
+      }).catch((error) => { 
+        console.log(error);
+        callback({ 
+          status: 'failedManifestDownload',
+          statusText: "Failed to Download Manifest, Try Refresh?",
+          error: true,
+          loading: true,
+          manifestMounted: false
+        });
+      });
     }
     else { callback(true, "Failed to get manifest version in order to download new manifest.") } //TODO ERROR HANDLER
   });

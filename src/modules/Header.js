@@ -113,6 +113,7 @@ export class Header extends Component {
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "sorrows" ? "active" : "" }`} onClick={ () => this.setSubPage("sorrows") }>Crown of Sorrows</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "garden" ? "active" : "" }`} onClick={ () => this.setSubPage("garden") }>Garden of Salvation</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "dsc" ? "active" : "" }`} onClick={ () => this.setSubPage("dsc") }>Deep Stone Crypt</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "vog" ? "active" : "" }`} onClick={ () => this.setSubPage("vog") }>Vault of Glass</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "shatteredThrone" ? "active" : "" }`} onClick={ () => this.setSubPage("shatteredThrone") }>Shattered Throne</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "pitOfHeresy" ? "active" : "" }`} onClick={ () => this.setSubPage("pitOfHeresy") }>Pit of Heresy</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "prophecy" ? "active" : "" }`} onClick={ () => this.setSubPage("prophecy") }>Prophecy</div>

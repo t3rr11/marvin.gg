@@ -78,6 +78,7 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~crown of sorrows</span>, <span className="d_highlight">~cos</span></div>
                 <div className="category-row"><span className="d_highlight">~garden of salvation</span>, <span className="d_highlight">~gos</span></div>
                 <div className="category-row"><span className="d_highlight">~deep stone crypt</span>, <span className="d_highlight">~dsc</span></div>
+                <div className="category-row"><span className="d_highlight">~vault of glass</span>, <span className="d_highlight">~vog</span></div>
               </div>
             </div>
             <div className="category">
@@ -115,7 +116,9 @@ export class Commands extends Component {
                 <div className="category-row"><span className="d_highlight">~remove announcements</span></div>
                 <div className="category-row"><span className="d_highlight">~manage announcements</span></div>
                 <div className="category-row"><span className="d_highlight">~toggle update announcements</span></div>
+                <div className="category-row"><span className="d_highlight">~toggle lost sector announcements</span></div>
                 <div className="category-row"><span className="d_highlight">~toggle gunsmith announcements</span></div>
+                <div className="category-row"><span className="d_highlight">~toggle ada announcements</span></div>
               </div>
             </div>
             <div className="category">
