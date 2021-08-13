@@ -121,7 +121,7 @@ export async function Load(callback) {
     if(localStorage.getItem('nextManifestCheck') && new Date().getTime() < parseInt(localStorage.getItem('nextManifestCheck'))) {
       //Manifest is less than an hour old. Set manifest to global variable: MANIFEST;
       callback({ status: 'unpackingManifest', statusText: 'Unpacking Manifest...', error: false, loading: true, manifestMounted: false });
-      StoreManifest((state) => { callback(state); });
+      await StoreManifest((state) => { callback(state); });
     }
     else {
       //Manifest has expired
@@ -133,7 +133,7 @@ export async function Load(callback) {
           let currentVersion = Data.Response.version;
           let storedVersion = await DB.table('ManifestVersion').toCollection().first();
           //Check versions
-          if(storedVersion?.version === currentVersion?.version) { StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
+          if(storedVersion?.version === currentVersion?.version) { await StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
           else {
             //Version were different, updating the manifest now.
             console.log("Updating Manifest");
@@ -197,7 +197,7 @@ async function downloadManifest(callback) {
         DB.table('DestinyVendorDefinition').add({ definition: 'DestinyVendorDefinition', data: values[10].Data }).then(() => { console.log("Successfully Added DestinyVendorDefinition"); }).catch(error => { this.handleError(error); return "Failed"; });
 
         //Set manifest
-        StoreManifest((state) => { callback(state); });
+        await StoreManifest((state) => { callback(state); });
         SetNextManifestCheck();
 
       }).catch((error) => {
