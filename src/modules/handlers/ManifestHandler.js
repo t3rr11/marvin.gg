@@ -69,7 +69,7 @@ export async function StoreManifest(callback) {
 
     // Check if the manifest components are empty
     Object.keys(MANIFEST).forEach((key) => {
-      if (MANIFEST[key].length === 0) {
+      if (Object.keys(MANIFEST[key]).length === 0) {
         isManifestRefreshRequired = true;
         console.warn(`Manifest is corrupted ('${key}' is empty)`);
       }
