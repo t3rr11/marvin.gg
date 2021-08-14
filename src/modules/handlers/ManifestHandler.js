@@ -1,6 +1,7 @@
 import Dexie from 'dexie';
 import * as BungieRequest from '../requests/BungieReq';
 
+const maxLoadAttempts = 3;
 export var MANIFEST;
 export const DB = new Dexie('manifest');
 DB.version(1).stores({
@@ -20,14 +21,12 @@ DB.version(1).stores({
 
 function SetNextManifestCheck() { localStorage.setItem('nextManifestCheck', new Date().getTime() + (1000 * 60 * 60)); }
 
-const manifestLoadAttempts = 0;
-const maxLoadAttempts = 3;
 export async function StoreManifest(callback) {
+  let manifestLoadAttempts = 0;
   try {
-    if (manifestLoadAttempts > maxLoadAttempts) {
-      throw `Manifest is corrupted after ${maxLoadAttempts} attempts.`;
-    }
+    if (manifestLoadAttempts > maxLoadAttempts) { throw `Manifest is corrupted after ${maxLoadAttempts} attempts.`; }
     manifestLoadAttempts++;
+
     callback({
       status: "storingManifest",
       statusText: "Storing Manifest...",
@@ -35,6 +34,7 @@ export async function StoreManifest(callback) {
       loading: true,
       manifestMounted: false
     });
+
     let isManifestRefreshRequired = false;
 
     let values = await Promise.all([
@@ -53,23 +53,23 @@ export async function StoreManifest(callback) {
 
     //Add data to global manifest object
     MANIFEST = {
-      DestinyActivityDefinition: values[0].data,
-      DestinyActivityTypeDefinition: values[1].data,
-      DestinyActivityModeDefinition: values[2].data,
-      DestinyCollectibleDefinition: values[3].data,
-      DestinyPresentationNodeDefinition: values[4].data,
-      DestinyRecordDefinition: values[5].data,
-      DestinyInventoryItemDefinition: values[6].data,
-      DestinyInventoryItemLiteDefinition: values[6].data,
-      DestinyObjectiveDefinition: values[7].data,
-      DestinyProgressionDefinition: values[8].data,
-      DestinyTalentGridDefinition: values[9].data,
-      DestinyVendorDefinition: values[10].data
+      DestinyActivityDefinition: values[0]?.data,
+      DestinyActivityTypeDefinition: values[1]?.data,
+      DestinyActivityModeDefinition: values[2]?.data,
+      DestinyCollectibleDefinition: values[3]?.data,
+      DestinyPresentationNodeDefinition: values[4]?.data,
+      DestinyRecordDefinition: values[5]?.data,
+      DestinyInventoryItemDefinition: values[6]?.data,
+      DestinyInventoryItemLiteDefinition: values[6]?.data,
+      DestinyObjectiveDefinition: values[7]?.data,
+      DestinyProgressionDefinition: values[8]?.data,
+      DestinyTalentGridDefinition: values[9]?.data,
+      DestinyVendorDefinition: values[10]?.data
     };
 
     // Check if the manifest components are empty
     Object.keys(MANIFEST).forEach((key) => {
-      if (Object.keys(MANIFEST[key]).length === 0) {
+      if (!MANIFEST[key] || Object.keys(MANIFEST[key]).length === 0) {
         isManifestRefreshRequired = true;
         console.warn(`Manifest is corrupted ('${key}' is empty)`);
       }
@@ -96,8 +96,8 @@ export async function StoreManifest(callback) {
       loading: true,
       manifestMounted: false
     });
-    DB.clear();
-    console.log("Error occured trying to grab manifest from IndexDB");
+    await ClearManifest();
+    console.log("Error occured trying to grab manifest from IndexDB", err);
   }
 }
 
@@ -120,6 +120,7 @@ export async function Load(callback) {
   if(await Dexie.exists("manifest")) {
     if(localStorage.getItem('nextManifestCheck') && new Date().getTime() < parseInt(localStorage.getItem('nextManifestCheck'))) {
       //Manifest is less than an hour old. Set manifest to global variable: MANIFEST;
+      console.log('Unpacking Manifest');
       callback({ status: 'unpackingManifest', statusText: 'Unpacking Manifest...', error: false, loading: true, manifestMounted: false });
       await StoreManifest((state) => { callback(state); });
     }
