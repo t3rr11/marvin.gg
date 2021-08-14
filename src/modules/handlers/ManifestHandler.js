@@ -1,6 +1,7 @@
 import Dexie from 'dexie';
 import * as BungieRequest from '../requests/BungieReq';
 
+const maxLoadAttempts = 3;
 export var MANIFEST;
 export const DB = new Dexie('manifest');
 DB.version(1).stores({
@@ -19,40 +20,87 @@ DB.version(1).stores({
 });
 
 function SetNextManifestCheck() { localStorage.setItem('nextManifestCheck', new Date().getTime() + (1000 * 60 * 60)); }
-export function StoreManifest(callback) {
-  callback({ status: 'storingManifest', statusText: 'Storing Manifest...', error: false, loading: true, manifestMounted: false });
-  Promise.all([
-    DB.table('DestinyActivityDefinition').toCollection().first(),
-    DB.table('DestinyActivityTypeDefinition').toCollection().first(),
-    DB.table('DestinyActivityModeDefinition').toCollection().first(),
-    DB.table('DestinyCollectibleDefinition').toCollection().first(),
-    DB.table('DestinyPresentationNodeDefinition').toCollection().first(),
-    DB.table('DestinyRecordDefinition').toCollection().first(),
-    DB.table('DestinyInventoryItemLiteDefinition').toCollection().first(),
-    DB.table('DestinyObjectiveDefinition').toCollection().first(),
-    DB.table('DestinyProgressionDefinition').toCollection().first(),
-    DB.table('DestinyTalentGridDefinition').toCollection().first(),
-    DB.table('DestinyVendorDefinition').toCollection().first()
-  ]).then(async (values) => {
+
+export async function StoreManifest(callback) {
+  let manifestLoadAttempts = 0;
+  try {
+    if (manifestLoadAttempts > maxLoadAttempts) { throw `Manifest is corrupted after ${maxLoadAttempts} attempts.`; }
+    manifestLoadAttempts++;
+
+    callback({
+      status: "storingManifest",
+      statusText: "Storing Manifest...",
+      error: false,
+      loading: true,
+      manifestMounted: false
+    });
+
+    let isManifestRefreshRequired = false;
+
+    let values = await Promise.all([
+      DB.table("DestinyActivityDefinition").toCollection().first(),
+      DB.table("DestinyActivityTypeDefinition").toCollection().first(),
+      DB.table("DestinyActivityModeDefinition").toCollection().first(),
+      DB.table("DestinyCollectibleDefinition").toCollection().first(),
+      DB.table("DestinyPresentationNodeDefinition").toCollection().first(),
+      DB.table("DestinyRecordDefinition").toCollection().first(),
+      DB.table("DestinyInventoryItemLiteDefinition").toCollection().first(),
+      DB.table("DestinyObjectiveDefinition").toCollection().first(),
+      DB.table("DestinyProgressionDefinition").toCollection().first(),
+      DB.table("DestinyTalentGridDefinition").toCollection().first(),
+      DB.table("DestinyVendorDefinition").toCollection().first()
+    ]);
+
     //Add data to global manifest object
     MANIFEST = {
-      "DestinyActivityDefinition": values[0].data,
-      "DestinyActivityTypeDefinition": values[1].data,
-      "DestinyActivityModeDefinition": values[2].data,
-      "DestinyCollectibleDefinition": values[3].data,
-      "DestinyPresentationNodeDefinition": values[4].data,
-      "DestinyRecordDefinition": values[5].data,
-      "DestinyInventoryItemDefinition": values[6].data,
-      "DestinyInventoryItemLiteDefinition": values[6].data,
-      "DestinyObjectiveDefinition": values[7].data,
-      "DestinyProgressionDefinition": values[8].data,
-      "DestinyTalentGridDefinition": values[9].data,
-      "DestinyVendorDefinition": values[10].data
+      DestinyActivityDefinition: values[0]?.data,
+      DestinyActivityTypeDefinition: values[1]?.data,
+      DestinyActivityModeDefinition: values[2]?.data,
+      DestinyCollectibleDefinition: values[3]?.data,
+      DestinyPresentationNodeDefinition: values[4]?.data,
+      DestinyRecordDefinition: values[5]?.data,
+      DestinyInventoryItemDefinition: values[6]?.data,
+      DestinyInventoryItemLiteDefinition: values[6]?.data,
+      DestinyObjectiveDefinition: values[7]?.data,
+      DestinyProgressionDefinition: values[8]?.data,
+      DestinyTalentGridDefinition: values[9]?.data,
+      DestinyVendorDefinition: values[10]?.data
     };
-  }).catch((error) => { callback({ status: 'failedManifestMount', statusText: "Failed to Mount Manifest, Try Refresh?", error: true, loading: true, manifestMounted: false }); console.log("Error occured trying to grab manifest from IndexDB"); });
-  console.log("Manifest Unpacked Successfully");
-  callback({ status: 'ready', statusText: '', loading: false, manifestMounted: true });
+
+    // Check if the manifest components are empty
+    Object.keys(MANIFEST).forEach((key) => {
+      if (!MANIFEST[key] || Object.keys(MANIFEST[key]).length === 0) {
+        isManifestRefreshRequired = true;
+        console.warn(`Manifest is corrupted ('${key}' is empty)`);
+      }
+    });
+
+    // If data is enpty, refresh from Bungie
+    if (isManifestRefreshRequired) {
+      await ClearManifest();
+      await Load(callback);
+    } else {
+      console.log("Manifest Unpacked Successfully");
+      callback({
+        status: "ready",
+        statusText: "",
+        loading: false,
+        manifestMounted: true
+      });
+    }
+  } catch (err) {
+    callback({
+      status: "failedManifestMount",
+      statusText: "Failed to Mount Manifest, Try Refresh?",
+      error: true,
+      loading: true,
+      manifestMounted: false
+    });
+    await ClearManifest();
+    console.log("Error occured trying to grab manifest from IndexDB", err);
+  }
 }
+
 export async function ClearManifest() {
   DB.table('ManifestVersion').clear();
   DB.table('DestinyActivityDefinition').clear();
@@ -72,8 +120,9 @@ export async function Load(callback) {
   if(await Dexie.exists("manifest")) {
     if(localStorage.getItem('nextManifestCheck') && new Date().getTime() < parseInt(localStorage.getItem('nextManifestCheck'))) {
       //Manifest is less than an hour old. Set manifest to global variable: MANIFEST;
+      console.log('Unpacking Manifest');
       callback({ status: 'unpackingManifest', statusText: 'Unpacking Manifest...', error: false, loading: true, manifestMounted: false });
-      StoreManifest((state) => { callback(state); });
+      await StoreManifest((state) => { callback(state); });
     }
     else {
       //Manifest has expired
@@ -85,7 +134,7 @@ export async function Load(callback) {
           let currentVersion = Data.Response.version;
           let storedVersion = await DB.table('ManifestVersion').toCollection().first();
           //Check versions
-          if(storedVersion?.version === currentVersion?.version) { StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
+          if(storedVersion?.version === currentVersion?.version) { await StoreManifest((state) => { callback(state); }); SetNextManifestCheck(); }
           else {
             //Version were different, updating the manifest now.
             console.log("Updating Manifest");
@@ -117,7 +166,7 @@ async function downloadManifest(callback) {
       const DestinyProgressionDefinition = Data.Response.jsonWorldComponentContentPaths['en'].DestinyProgressionDefinition;
       const DestinyTalentGridDefinition = Data.Response.jsonWorldComponentContentPaths['en'].DestinyTalentGridDefinition;
       const DestinyVendorDefinition = Data.Response.jsonWorldComponentContentPaths['en'].DestinyVendorDefinition;
-    
+
       Promise.all([
         await BungieRequest.GetManifest(DestinyActivityDefinition),
         await BungieRequest.GetManifest(DestinyActivityTypeDefinition),
@@ -133,7 +182,7 @@ async function downloadManifest(callback) {
       ]).then(async (values) => {
         callback({ status: 'storingManifest', statusText: "Storing Manfiest...", error: false, loading: true, manifestMounted: false });
         try { ClearManifest(); } catch (err) { console.log(err); console.log("No manifest to clear. Ignore this."); }
-    
+
         //Add data to databases
         DB.table('ManifestVersion').add({ version: Data.Response.version }).then(() => { console.log("Successfully Added ManifestVersion"); }).catch(error => { this.handleError(error); return "Failed"; });
         DB.table('DestinyActivityDefinition').add({ definition: 'DestinyActivityDefinition', data: values[0].Data }).then(() => { console.log("Successfully Added DestinyActivityDefinition"); }).catch(error => { this.handleError(error); return "Failed"; });
@@ -147,14 +196,14 @@ async function downloadManifest(callback) {
         DB.table('DestinyProgressionDefinition').add({ definition: 'DestinyProgressionDefinition', data: values[8].Data }).then(() => { console.log("Successfully Added DestinyProgressionDefinition"); }).catch(error => { this.handleError(error); return "Failed"; });
         DB.table('DestinyTalentGridDefinition').add({ definition: 'DestinyTalentGridDefinition', data: values[9].Data }).then(() => { console.log("Successfully Added DestinyTalentGridDefinition"); }).catch(error => { this.handleError(error); return "Failed"; });
         DB.table('DestinyVendorDefinition').add({ definition: 'DestinyVendorDefinition', data: values[10].Data }).then(() => { console.log("Successfully Added DestinyVendorDefinition"); }).catch(error => { this.handleError(error); return "Failed"; });
-    
+
         //Set manifest
-        StoreManifest((state) => { callback(state); });
+        await StoreManifest((state) => { callback(state); });
         SetNextManifestCheck();
-        
-      }).catch((error) => { 
+
+      }).catch((error) => {
         console.log(error);
-        callback({ 
+        callback({
           status: 'failedManifestDownload',
           statusText: "Failed to Download Manifest, Try Refresh?",
           error: true,
