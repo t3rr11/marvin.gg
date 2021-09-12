@@ -98,6 +98,7 @@ export class Header extends Component {
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "valor" ? "active" : "" }`} onClick={ () => this.setSubPage("valor") }>Valor</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "glory" ? "active" : "" }`} onClick={ () => this.setSubPage("glory") }>Glory</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "infamy" ? "active" : "" }`} onClick={ () => this.setSubPage("infamy") }>Infamy</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "trialsRank" ? "active" : "" }`} onClick={ () => this.setSubPage("trialsRank") }>Trials Rank</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "seasonRank" ? "active" : "" }`} onClick={ () => this.setSubPage("seasonRank") }>Season Rank</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "timePlayed" ? "active" : "" }`} onClick={ () => this.setSubPage("timePlayed") }>Time Played</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "highestPower" ? "active" : "" }`} onClick={ () => this.setSubPage("highestPower") }>Highest Power</div>

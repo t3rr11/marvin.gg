@@ -150,6 +150,7 @@ class ServerRankings extends Component {
     switch(true) {
       case leaderboardType === "valor": { users.sort((a, b) => b[leaderboardType].current - a[leaderboardType].current); break; }
       case leaderboardType === "infamy": { users.sort((a, b) => b[leaderboardType].current - a[leaderboardType].current); break; }
+      case leaderboardType === "trialsRank": { users.sort((a, b) => b[leaderboardType].current - a[leaderboardType].current); break; }
       case leaderboardType === "ironBanner": { users.sort((a, b) => b[leaderboardType].kills - a[leaderboardType].kills); break; }
       case leaderboardType === "activeScore": case leaderboardType === "legacyScore": case leaderboardType === "lifetimeScore": {
         users.sort((a, b) => b["triumphScore"][leaderboardType] - a["triumphScore"][leaderboardType]);
@@ -180,6 +181,7 @@ class ServerRankings extends Component {
       case type === "valor": { return { name: "Valor", value: ["Valor"] }; }
       case type === "glory": { return { name: "Glory", value: ["Glory"] }; }
       case type === "infamy": { return { name: "Infamy", value: ["Infamy"] }; }
+      case type === "trialsRank": { return { name: "Trials Rank", value: ["Trials Rank"] }; }
       case type === "seasonRank": { return { name: "Season Rank", value: ["SR"] }; }
       case type === "timePlayed": { return { name: "Time Played", value: ["Hours"] }; }
       case type === "highestPower": { return { name: "Highest Power Level", value: ["Power Level"] }; }
@@ -212,6 +214,7 @@ class ServerRankings extends Component {
     switch(true) {
       case type === "valor": { return [member[type].current] }
       case type === "infamy": { return [member[type].current] }
+      case type === "trialsRank": { return [member[type].current] }
       case type === "timePlayed": { return [(member[type] / 60).toFixed(0)] }
       case type === "ironBanner": { return [member[type].kills, member[type].wins] }
       case type === "levi": { return [member.raids[type]] }
