@@ -129,12 +129,12 @@ export class DiscordServerSelectionContainer extends Component {
 
 export class DiscordServerContainer extends Component {
   render() {
-    let smallName = this.props.server.name.match(/\b(\w)/g).join('').slice(0, 2);
+    let smallName = this.props.server.name.match(/\b(\w)/g)?.join('')?.slice(0, 2);
     return(
       <div className="server-info-container" onClick={ (() => this.props.selectServer(this.props.server)) }>
         { this.props.server.icon ? 
           <div className="server-icon" style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${ this.props.server.id }/${ this.props.server.icon }.png")` }}></div> :
-          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName }</div>
+          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName || this.props.server.name.slice(0, 1) }</div>
         }
         <div className="server-name" >{ this.props.server.name }</div>
       </div>
