@@ -146,7 +146,6 @@ export class DiscordServerDetails extends Component {
   render() {
     let server = this.props.server;
     console.log(server);
-    let smallName = server.name.match(/\b(\w)/g).join('').slice(0, 2);
     return(
       <div className="server-details-container">
         <div className="server-name" style={{ marginLeft: "150px", background: "rgba(0,0,0,0.2)", width: "fit-content", padding: "5px", borderRadius: "5px", marginTop: "5px" }}>

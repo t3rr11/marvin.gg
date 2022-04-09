@@ -201,12 +201,12 @@
 .donate-link#kofi > img { margin-right: 5px; }
 .donate-link#kofi:hover { color:white; }
 .header-user-containter {
-  display: inline-block;
-  padding-right: 10px;
+  display: flex;
   grid-column: 3;
-  width: 120px;
   height: 60px;
   line-height: 45px;
+  align-items: center;
+  justify-content: center;
 }
 .header-login-link {
   display: inline-block;
@@ -230,10 +230,9 @@
   font-size: 16px;
   height: 30px;
   line-height: 15px;
-  padding: 5px;
+  padding: 5px 10px;
   border: 1px #ddd solid;
   border-radius: 10px;
-  width: 120px;
   text-align: center;
   cursor: pointer;
 }

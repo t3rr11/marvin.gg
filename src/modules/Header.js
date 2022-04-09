@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Config from '../Config';
-import * as Misc from '../Misc';
 import * as apiRequest from '../modules/requests/API';
 import * as discord from '../modules/requests/DiscordAuth';
 import { generate } from 'build-number-generator';

@@ -1,9 +1,8 @@
-import React, { Component, PureComponent } from 'react';
-import { XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area } from 'recharts';
+import React, { PureComponent } from 'react';
+import { XAxis, YAxis, Tooltip, AreaChart, Area } from 'recharts';
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
 import * as apiRequest from '../modules/requests/API';
-import * as misc from '../Misc';
 
 let graphUpdateTimer = null;
 
@@ -171,96 +170,114 @@ class Graphs extends React.Component {
       return (
         <div className="page-content">
           <div className="graphs" style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
-            <AreaChart width={550} height={200} data={ this.state.frontend.users } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="users" stroke="#8884d8" fillOpacity={1} fill="url(#colorUsers)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.frontend.servers } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorServers" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#84d5d8" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#84d5d8" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="servers" stroke="#84d5d8" fillOpacity={1} fill="url(#colorServers)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.backend } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorClans" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3868b2" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
-                </linearGradient>
-                <linearGradient id="colorRTClans" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3868b2" stopOpacity={0.5}/>
-                  <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis yAxisId={1} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <YAxis yAxisId={2} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} ticks={[0,5,10,20,50]} />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area yAxisId={1} type="monotone" dataKey="total_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorClans)" />
-              <Area yAxisId={2} type="monotone" dataKey="rt_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorRTClans)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.frontend.commandsInput } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorCommandsInput" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" interval={48} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
-              <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.realtime } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorRTPlayers" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
-                  <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
-                </linearGradient>
-                <linearGradient id="colorRTTime" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
-              <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorRTPlayers)" />
-              <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
-            </AreaChart>
-            <AreaChart width={550} height={200} data={ this.state.timeLogs.normal } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id="colorNormalPlayers" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
-                  <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
-                </linearGradient>
-                <linearGradient id="colorNormalTime" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
-              <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
-              <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
-              <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
-              <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorNormalPlayers)" />
-              <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorNormalTime)" />
-            </AreaChart>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>Users</h5>
+              <AreaChart width={550} height={200} data={ this.state.frontend.users } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+                <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area type="monotone" dataKey="users" stroke="#8884d8" fillOpacity={1} fill="url(#colorUsers)" />
+              </AreaChart>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>Servers</h5>
+              <AreaChart width={550} height={200} data={ this.state.frontend.servers } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorServers" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#84d5d8" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#84d5d8" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+                <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area type="monotone" dataKey="servers" stroke="#84d5d8" fillOpacity={1} fill="url(#colorServers)" />
+              </AreaChart>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>Clans</h5>
+              <AreaChart width={550} height={200} data={ this.state.backend } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorClans" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3868b2" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorRTClans" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3868b2" stopOpacity={0.5}/>
+                    <stop offset="95%" stopColor="#3868b2" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+                <YAxis yAxisId={1} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <YAxis yAxisId={2} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} ticks={[0,5,10,20,50]} />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area yAxisId={1} type="monotone" dataKey="total_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorClans)" />
+                <Area yAxisId={2} type="monotone" dataKey="rt_clans" stroke="#3868b2" fillOpacity={1} fill="url(#colorRTClans)" />
+              </AreaChart>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>Commands / Hr</h5>
+              <AreaChart width={550} height={200} data={ this.state.frontend.commandsInput } margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorCommandsInput" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" interval={48} domain={['auto', 'auto']} tick={ <CustomizedDateAxisTick /> } />
+                <YAxis style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area type="monotone" dataKey="commandsInput" stroke="#82ca9d" fillOpacity={1} fill="url(#colorCommandsInput)" />
+              </AreaChart>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>Patreon Scan Times</h5>
+              <AreaChart width={550} height={200} data={ this.state.timeLogs.realtime } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorRTPlayers" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
+                    <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorRTTime" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
+                <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorRTPlayers)" />
+                <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorRTTime)" />
+              </AreaChart>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '5px' }}>
+              <h5>General Scan Times</h5>
+              <AreaChart width={550} height={200} data={ this.state.timeLogs.normal } margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorNormalPlayers" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#1ABD57" stopOpacity={0.5}/>
+                    <stop offset="95%" stopColor="#1ABD57" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorNormalTime" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#2BB7D0" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#2BB7D0" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="date" interval={60} domain={['auto', 'auto']} tick={ <CustomizedTimeAxisTick /> } />
+                <YAxis yAxisId={1} orientation="right" style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} />
+                <YAxis yAxisId={2} style={{ fontSize: "12px", fill: "#d6d6d6" }} domain={['dataMin', 'dataMax']} tickFormatter={ (label) => `${ this.formatTime(label/1000) }` } />
+                <Tooltip labelStyle={{ color: "black" }} wrapperStyle={{ fontSize: "12px", padding: "5px" }} />
+                <Area yAxisId={1} type="monotone" dataKey="players" stroke="#1ABD57" fillOpacity={1} fill="url(#colorNormalPlayers)" />
+                <Area yAxisId={2} type="monotone" dataKey="time" stroke="#2BB7D0" fillOpacity={1} fill="url(#colorNormalTime)" />
+              </AreaChart>
+            </div>
           </div>
         </div>
       );

@@ -1,11 +1,7 @@
-import React, { Component, useRef, useEffect } from 'react';
-import ReactTooltip from 'react-tooltip';
+import React, { Component } from 'react';
 import Error from '../modules/Error';
 import Loader from '../modules/Loader';
-import ClanBannerGenerator from '../modules/ClanBanner';
 import * as API from '../modules/requests/API';
-import * as bungieRequest from '../modules/requests/BungieReq';
-import * as Manifest from '../modules/handlers/ManifestHandler';
 import * as Misc from '../Misc';
 
 export class Leaderboards extends Component {
@@ -282,12 +278,12 @@ class DiscordServerSelectionContainer extends Component {
 
 class DiscordServerContainer extends Component {
   render() {
-    let smallName = this.props.server.name.match(/\b(\w)/g).join('').slice(0, 2);
+    let smallName = this.props.server.name.match(/\b(\w)/g).join('')?.slice(0, 2);
     return(
       <div key={ this.props.server.id } className="server-info-container" onClick={ (() => this.props.selectServer(this.props.server)) }>
         { this.props.server.icon ? 
           <div className="server-icon" style={{ backgroundImage: `url("https://cdn.discordapp.com/icons/${ this.props.server.id }/${ this.props.server.icon }.png")` }}></div> :
-          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName }</div>
+          <div className="server-icon" style={{ backgroundColor: '#151921', lineHeight: '50px', textAlign: 'center' }}>{ smallName || this.props.server.name.slice(0, 1) }</div>
         }
         <div className="server-name" >{ this.props.server.name }</div>
       </div>

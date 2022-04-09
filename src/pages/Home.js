@@ -30,7 +30,7 @@ export class Home extends Component {
     const { users, guilds } = this.state;
     return(
       <div className="page-content" style={{ overflow: "hidden" }}>
-        <div className="home-content">
+        <div className="home-content transScrollbar">
           <div className="howToConnect">
             <div className="connectContainer">
               <h2 style={{ textAlign: "center", margin: "10px", marginBottom: "-20px" }}>Marvin | The Clan Bot</h2>
