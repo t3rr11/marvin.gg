@@ -154,7 +154,7 @@ class ServerRankings extends Component {
       }
       case leaderboardType === "levi": case leaderboardType === "eow": case leaderboardType === "sos": case leaderboardType === "lastWish": case leaderboardType === "scourge":
       case leaderboardType === "sorrows": case leaderboardType === "garden": case leaderboardType === "dsc":
-      case leaderboardType === "vog": { users.sort((a, b) => b.raids[leaderboardType] - a.raids[leaderboardType]); break; }
+      case leaderboardType === "vog": case leaderboardType === "vow": { users.sort((a, b) => b.raids[leaderboardType] - a.raids[leaderboardType]); break; }
       case leaderboardType === "pLevi": { users.sort((a, b) => b.raids["prestige_levi"] - a.raids["prestige_levi"]); break; }
       case leaderboardType === "pEoW": { users.sort((a, b) => b.raids["prestige_eow"] - a.raids["prestige_eow"]); break; }
       case leaderboardType === "pSoS": { users.sort((a, b) => b.raids["prestige_sos"] - a.raids["prestige_sos"]); break; }
@@ -194,6 +194,7 @@ class ServerRankings extends Component {
       case type === "garden": { return { name: "Garden of Salvation Clears", value: ["Clears"] }; }
       case type === "dsc": { return { name: "Deep Stone Crypt Clears", value: ["Clears"] }; }
       case type === "vog": { return { name: "Vault of Glass Clears", value: ["Clears"] }; }
+      case type === "vow": { return { name: "Vow of the Disciple Clears", value: ["Clears"] }; }
       case type === "totalRaids": { return { name: "Total Raids", value: ["Clears"] }; }
       case type === "shatteredThrone": { return { name: "Shattered Throne Clears", value: ["Clears", "Flawless"] } }
       case type === "pitOfHeresy": { return { name: "Pit of Heresy Clears", value: ["Clears", "Flawless"] } }
@@ -226,6 +227,7 @@ class ServerRankings extends Component {
       case type === "dsc": { return [member.raids[type]] }
       case type === "gos": { return [member.raids[type]] }
       case type === "vog": { return [member.raids[type]] }
+      case type === "vow": { return [member.raids[type]] }
       case type === "shatteredThrone": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "pitOfHeresy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "prophecy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
