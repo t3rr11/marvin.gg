@@ -148,17 +148,24 @@ class ServerRankings extends Component {
       case leaderboardType === "infamy": { users.sort((a, b) => b[leaderboardType].current - a[leaderboardType].current); break; }
       case leaderboardType === "trialsRank": { users.sort((a, b) => b[leaderboardType].current - a[leaderboardType].current); break; }
       case leaderboardType === "ironBanner": { users.sort((a, b) => b[leaderboardType].kills - a[leaderboardType].kills); break; }
+
       case leaderboardType === "activeScore": case leaderboardType === "legacyScore": case leaderboardType === "lifetimeScore": {
         users.sort((a, b) => b["triumphScore"][leaderboardType] - a["triumphScore"][leaderboardType]);
         break;
       }
-      case leaderboardType === "levi": case leaderboardType === "eow": case leaderboardType === "sos": case leaderboardType === "lastWish": case leaderboardType === "scourge":
-      case leaderboardType === "sorrows": case leaderboardType === "garden": case leaderboardType === "dsc":
-      case leaderboardType === "vog": case leaderboardType === "vow": { users.sort((a, b) => b.raids[leaderboardType] - a.raids[leaderboardType]); break; }
+
+      case leaderboardType === "levi": case leaderboardType === "eow": case leaderboardType === "sos": case leaderboardType === "lastWish":
+      case leaderboardType === "scourge": case leaderboardType === "sorrows": case leaderboardType === "garden": case leaderboardType === "dsc":
+      case leaderboardType === "vog": case leaderboardType === "vow": {
+        users.sort((a, b) => b.raids[leaderboardType] - a.raids[leaderboardType]);
+        break;
+      }
       case leaderboardType === "pLevi": { users.sort((a, b) => b.raids["prestige_levi"] - a.raids["prestige_levi"]); break; }
       case leaderboardType === "pEoW": { users.sort((a, b) => b.raids["prestige_eow"] - a.raids["prestige_eow"]); break; }
       case leaderboardType === "pSoS": { users.sort((a, b) => b.raids["prestige_sos"] - a.raids["prestige_sos"]); break; }
-      case leaderboardType === "shatteredThrone": case leaderboardType === "pitOfHeresy": case leaderboardType === "prophecy": {
+
+      case leaderboardType === "shatteredThrone": case leaderboardType === "pitOfHeresy": case leaderboardType === "prophecy":
+      case leaderboardType === "grasp": case leaderboardType === "duality": {
         users.sort((a, b) => b["dungeons"][leaderboardType].completions - a["dungeons"][leaderboardType].completions);
         break;
       }
@@ -199,6 +206,8 @@ class ServerRankings extends Component {
       case type === "shatteredThrone": { return { name: "Shattered Throne Clears", value: ["Clears", "Flawless"] } }
       case type === "pitOfHeresy": { return { name: "Pit of Heresy Clears", value: ["Clears", "Flawless"] } }
       case type === "prophecy": { return { name: "Prophecy Clears", value: ["Clears", "Flawless"] } }
+      case type === "grasp": { return { name: "Grasp Clears", value: ["Clears", "Flawless"] } }
+      case type === "duality": { return { name: "Duality Clears", value: ["Clears", "Flawless"] } }
       case type === "presage": { return { name: "Presage Clears", value: ["Normal", "Master"] } }
       case type === "activeScore": { return { name: "Triumph Score", value: ["Score"] }; }
       case type === "legacyScore": { return { name: "Legacy Triumph Score", value: ["Score"] }; }
@@ -231,6 +240,8 @@ class ServerRankings extends Component {
       case type === "shatteredThrone": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "pitOfHeresy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "prophecy": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
+      case type === "grasp": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
+      case type === "duality": { return [member.dungeons[type].completions, member.dungeons[type].flawless] }
       case type === "presage": { return [member[type].normal, member[type].master] }
       case type === "activeScore": { return [member["triumphScore"][type]] }
       case type === "legacyScore": { return [member["triumphScore"][type]] }

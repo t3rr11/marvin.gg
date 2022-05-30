@@ -90,6 +90,7 @@
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
+  overflow: scroll;
 }
 .header-menu-item-container.active {
   background-color: rgba(0, 0, 0, 0.2);
@@ -208,6 +209,14 @@
   align-items: center;
   justify-content: center;
 }
+.header-user-containter-mobile {
+  display: none;
+  grid-column: 3;
+  height: 60px;
+  line-height: 45px;
+  align-items: center;
+  justify-content: center;
+}
 .header-login-link {
   display: inline-block;
   text-decoration: none;
@@ -235,6 +244,7 @@
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  width: fit-content;
 }
 .header-username:hover { background-color: rgba(0,0,0,0.4); color: #ddd; text-decoration: none; }
 .platformSelection {

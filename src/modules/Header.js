@@ -50,7 +50,7 @@ export class Header extends Component {
     const { loggedIn, isAdmin, discordInfo } = this.state;
     const leftHeader = (
       <>
-        <div className="header-menu">
+        <div className="header-menu transScrollbar">
             <div className={`header-menu-item-container ${ this.props.currentPage === "home" ? "active" : "" }`}>
                 <div className={ `header-menu-item ${ this.props.currentPage === "home" ? "active" : "" }` }>
                   <img alt="home-icon" className="header-menu-item-icon" src="/images/icons/home.png" />
@@ -113,9 +113,12 @@ export class Header extends Component {
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "garden" ? "active" : "" }`} onClick={ () => this.setSubPage("garden") }>Garden of Salvation</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "dsc" ? "active" : "" }`} onClick={ () => this.setSubPage("dsc") }>Deep Stone Crypt</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "vog" ? "active" : "" }`} onClick={ () => this.setSubPage("vog") }>Vault of Glass</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "vow" ? "active" : "" }`} onClick={ () => this.setSubPage("vow") }>Vow of the Disciple</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "shatteredThrone" ? "active" : "" }`} onClick={ () => this.setSubPage("shatteredThrone") }>Shattered Throne</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "pitOfHeresy" ? "active" : "" }`} onClick={ () => this.setSubPage("pitOfHeresy") }>Pit of Heresy</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "prophecy" ? "active" : "" }`} onClick={ () => this.setSubPage("prophecy") }>Prophecy</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "prophecy" ? "active" : "" }`} onClick={ () => this.setSubPage("prophecy") }>Grasp of Avarice</div>
+                      <div className={`sub-menu-item ${ this.props.currentSubPage === "duality" ? "active" : "" }`} onClick={ () => this.setSubPage("duality") }>Duality</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "totalRaids" ? "active" : "" }`} onClick={ () => this.setSubPage("totalRaids") }>Total Raid Clears</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "activeScore" ? "active" : "" }`} onClick={ () => this.setSubPage("activeScore") }>Active Triumph Score</div>
                       <div className={`sub-menu-item ${ this.props.currentSubPage === "legacyScore" ? "active" : "" }`} onClick={ () => this.setSubPage("legacyScore") }>Legacy Triumph Score</div>
@@ -152,6 +155,13 @@ export class Header extends Component {
                 ) : null
               }
             </div>
+        <div className="header-user-containter-mobile">
+          {
+            loggedIn ? 
+            (<div className="header-username">{ <div>{`${ discordInfo.username }#${ discordInfo.discriminator }`}</div> }</div>) :
+            (<div className="header-login-link" onClick={ (() => this.GotoAuth()) }>Connect</div>)
+          }
+        </div>
         <div className="background-colors">
               <div className="auto-color-box" style={ localStorage.getItem("background") === "Auto" ?  { border: "1px solid white", margin: "1px", marginTop: "10px" } : { } } onClick={ (() => this.props.setBackground("Auto")) }>Auto</div>
               { 

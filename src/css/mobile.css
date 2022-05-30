@@ -13,6 +13,9 @@
   .app > .page-content { grid-column: 1 !important; }
   .app > .page-content > .error-container { width: 80%; }
   .app > .loaderBG { margin-left: 0px; }
+  .header-menu {
+    max-height: calc(100% - 250px);
+  }
   .header-logo > img {
     margin: -10px 5px 0px 5px;
   }
@@ -21,7 +24,13 @@
   }
   .header-user-containter {
     display: none;
-    line-height: 55px;
+  }
+  .header-user-containter-mobile {
+    height: 50px;
+    position: absolute;
+    bottom: 210px;
+    width: 100%;
+    display: flex;
   }
   .left-header {
     display: none;
