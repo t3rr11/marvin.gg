@@ -142,6 +142,7 @@ class App extends React.Component {
             <Route path="/graphs" render={ props => { return <Graphs /> } }/>
             <Route path="/loader" render={ props => { return <Loader statusText={ "Testing" } /> } }/>
             <Route path="/discord" render={ props => { return (window.location.href = "https://discord.gg/5rxKrs49BE") } }/>
+            <Route path="/beta" render={ props => { return (window.location.href = "https://discord.com/oauth2/authorize?client_id=944401906057506846&scope=applications.commands%20bot&permissions=1644368886864") } }/>
             <Route path="/sot" render={ props => { return <SoT /> } }/>
             <Route path="/test" render={ props => { return "" } }/>
             <Route path="*" render={ props => { return <Error error={ "This page was not found" } /> } }/>

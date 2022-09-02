@@ -1,5 +1,11 @@
 h2::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
 h3::selection { background-color: rgba(0.2, 0.2, 0.2, 0.2); }
+.alert-bar {
+  padding: 5px;
+  background: rgb(255, 119, 95);
+  color: black;
+  text-align: center;
+}
 .home-content {
   display: grid;
   grid-template-columns: 50% 50%;
